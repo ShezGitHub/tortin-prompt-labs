@@ -201,22 +201,24 @@ const R = "#c0392b", RL = "#e74c3c", RLL = "#fdecea";
 const SF = "DM Sans, sans-serif";
 const PF = "Playfair Display, serif";
 
-async function callClaude(model, prompt) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+async function callClaude(model, prompt, system) {
+  const body = { model, max_tokens: 4096, messages: [{ role: "user", content: prompt }] };
+  if (system) body.system = system;
+  const res = await fetch("/api/anthropic", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ model, max_tokens: 4096, messages: [{ role: "user", content: prompt }] })
+    body: JSON.stringify(body)
   });
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
   return data.content?.map(b => b.text || "").join("\n") || "No response";
 }
-const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY;
+// API calls go through /api proxy functions (see api/anthropic.js and api/openai.js)
 
 async function callDalle(prompt) {
-  const res = await fetch("https://api.openai.com/v1/images/generations", {
+  const res = await fetch("/api/openai", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${OPENAI_KEY}` },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ model: "dall-e-3", prompt, n: 1, size: "1024x1024", quality: "standard" })
   });
   const data = await res.json();
@@ -267,7 +269,7 @@ Respond ONLY with a valid JSON object in exactly this format (no markdown, no ex
   "score": <number of criteria met>
 }`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+  const res = await fetch("/api/anthropic", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
