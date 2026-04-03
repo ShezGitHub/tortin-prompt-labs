@@ -189,6 +189,132 @@ const LESSONS = [
       placeholder: "I need to plan a 7-day technical alpine expedition to Mont Blanc via the Goûter Route for a group of 4 intermediate mountaineers in late July. Before answering directly, do the following:\n\n1. Identify the 5 most important factors that a comprehensive expedition planning prompt should cover for this type of trip\n2. Write the ideal, detailed prompt that would extract a complete expedition plan covering all those factors\n3. Then answer that prompt yourself, producing the full plan\n\nBe explicit about what makes a good expedition planning prompt, and flag any critical information I haven't provided that would change your recommendations.",
       evalCriteria: ["meta instruction given", "prompt design requested", "then execute it", "gap identification", "specific expedition context"]
     }
+  },
+
+  // ILO LABOUR & POLICY
+  {
+    id: "policy-brief", category: "Labour & Policy", icon: "📋",
+    title: "Policy Brief Drafting", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "AI as Your Policy Writing Partner", body: "ILO policy briefs must be evidence-based, politically nuanced, and persuasive to diverse stakeholders — ministers, employers, workers, and donors. AI can dramatically accelerate the drafting process, but only if you give it the right structure. Vague prompts produce generic output; precise prompts produce briefs that are almost ready to publish." },
+      { heading: "The Policy Brief Formula", body: "Every strong policy brief has: (1) A sharp problem statement grounded in data, (2) The policy context and who has authority to act, (3) Evidence-based recommendations with feasibility signals, (4) A call to action tailored to a specific decision-maker. Tell the AI each of these elements explicitly — do not assume it will infer them." }
+    ],
+    tips: ["Specify the decision-maker: 'written for the Minister of Labour, not a technical audience'", "Anchor with data: 'based on the following statistics: [paste data]'", "Define the tone: 'evidence-led, diplomatically worded, not prescriptive'", "Set the structure: 'Executive Summary (150 words), Problem, Evidence, Recommendations (3 bullets), Call to Action'", "Add country context: 'for a lower-middle income country with high informal employment'"],
+    activity: {
+      instruction: "Your country office needs a policy brief on rising youth unemployment. Transform the weak prompt into one that would produce a publication-ready brief for a Minister of Labour.",
+      weakPrompt: "Write a policy brief about youth unemployment.",
+      placeholder: "You are an ILO senior policy specialist. Draft a structured policy brief on youth unemployment for the Minister of Labour of a lower-middle income country in Sub-Saharan Africa, where youth (15-24) unemployment is 32% and 60% of youth are in informal work.\n\nStructure:\n**Executive Summary** (max 120 words, key finding + top recommendation)\n**The Problem** (2 paragraphs: data-driven, include gender disaggregation)\n**Why Current Policies Are Falling Short** (3 bullet points, evidence-based)\n**Recommendations** (3 actionable recommendations, each with: what to do, who is responsible, estimated timeline)\n**Call to Action** (1 paragraph, directly addressed to the Minister, diplomatically worded)\n\nTone: evidence-led, non-prescriptive, respects national sovereignty. No jargon. Max 800 words total.",
+      evalCriteria: ["decision-maker named", "country context", "structured sections", "data anchored", "tone specified"]
+    }
+  },
+  {
+    id: "labour-law-analysis", category: "Labour & Policy", icon: "⚖️",
+    title: "Labour Law & Standards Analysis", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "Decoding Legal Complexity with AI", body: "Analysing national labour legislation against ILO Conventions requires systematic comparison across multiple dimensions: scope of coverage, definitions, enforcement mechanisms, penalties, and gaps. AI can structure this analysis at speed — but it needs a clear analytical framework from you, not just 'compare these laws'." },
+      { heading: "The Gap Analysis Approach", body: "The most powerful legal analysis prompt specifies: the Convention or standard to benchmark against, the specific articles or provisions to examine, the country or legal text to analyse, and the output format (gap table, narrative, compliance scorecard). The more structured your framework, the more actionable the AI output." }
+    ],
+    tips: ["Name the ILO Convention explicitly: 'against ILO Convention No. 87 on Freedom of Association'", "Define the analysis dimensions: 'compare on: scope, definitions, exclusions, penalties, enforcement'", "Request a gap table: 'output as a table with columns: Article, Convention Requirement, National Law, Gap/Compliance Status'", "Ask for severity rating: 'rate each gap as Critical / Significant / Minor'", "Add context: 'the country has ratified the Convention but implementation is pending'"],
+    activity: {
+      instruction: "You need to quickly analyse whether a country's draft labour code aligns with ILO maternity protection standards. Write a prompt that produces a structured compliance gap analysis.",
+      weakPrompt: "Check if this labour law follows ILO standards on maternity.",
+      placeholder: "You are an ILO legal specialist conducting a compliance review. Analyse the following draft labour code provisions against ILO Convention No. 183 (Maternity Protection Convention, 2000) and Recommendation No. 191.\n\nProvisions to analyse:\n'Article 45: Female employees are entitled to 12 weeks of maternity leave. Leave may be taken 4 weeks before the expected date of birth. The employer shall pay 50% of regular salary during leave. Dismissal of pregnant employees is prohibited during leave period only.'\n\nOutput as a structured gap analysis table:\n| Provision | C183 Requirement | Current Draft | Gap | Severity (Critical/Significant/Minor) | Recommended Amendment |\n\nCover: duration of leave, cash benefits level, medical benefits, employment protection, health protection, non-discrimination. End with a 3-sentence executive summary of the overall compliance status.",
+      evalCriteria: ["Convention named", "specific articles covered", "table format requested", "severity rating", "amendment recommendations"]
+    }
+  },
+  {
+    id: "sdg-alignment", category: "Labour & Policy", icon: "🌐",
+    title: "SDG Alignment & Results Reporting", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Linking Your Work to the Global Goals", body: "ILO programmes must demonstrate alignment with the 2030 Agenda — particularly SDG 8 (Decent Work and Economic Growth) but also SDGs 1, 5, 10, and 16. AI can help you map programme outcomes to specific SDG targets and indicators, making results reporting faster and more rigorous. The key is being explicit about which targets you want mapped against." },
+      { heading: "Beyond SDG 8", body: "The most compelling SDG reporting shows cross-cutting impact. A skills programme might touch SDG 4 (Quality Education), SDG 5 (Gender Equality), SDG 8 (Decent Work), and SDG 10 (Reduced Inequalities). Ask AI to identify second- and third-order SDG linkages, not just the obvious ones. This strengthens donor reporting and advocacy." }
+    ],
+    tips: ["Specify the SDG targets, not just goals: 'map to SDG 8.3, 8.5, 8.6 targets specifically'", "Ask for indicator mapping: 'identify the most relevant SDG indicators for each linkage'", "Request primary and secondary linkages: 'distinguish direct from indirect SDG contributions'", "Include evidence: 'based on these programme results: [paste data]'", "Frame for audience: 'written for a UN donor report, not a technical document'"],
+    activity: {
+      instruction: "You have just completed a vocational training programme for young women in the informal economy. Write a prompt that maps your results to the most relevant SDG targets and produces a donor report narrative.",
+      weakPrompt: "Map our training programme to the SDGs.",
+      placeholder: "You are an ILO programme officer writing the results section of a donor report. Map the following programme outcomes to relevant SDG targets and produce a structured results narrative.\n\nProgramme outcomes:\n- 1,240 young women (18-25) completed vocational training in digital skills and financial literacy\n- 68% secured formal or semi-formal employment within 6 months\n- Average income of graduates increased by 34% compared to pre-programme baseline\n- 420 graduates started micro-enterprises; 78% still operating after 12 months\n- Programme reached 3 conflict-affected districts\n\nTask:\n1. Map each outcome to the most specific relevant SDG target — cover SDG 4, 5, 8, 10, and 16 as minimum, identify others where relevant\n2. For each SDG link, identify 1 official SDG indicator that best measures the contribution\n3. Write a 250-word results narrative for a donor report that weaves in SDG language naturally\n\nTone: evidence-based, results-focused, not promotional.",
+      evalCriteria: ["specific SDG targets named", "indicator mapping", "primary and secondary links", "evidence included", "donor audience"]
+    }
+  },
+
+  // ILO RESEARCH & ANALYSIS
+  {
+    id: "labour-market-intel", category: "Research & Analysis", icon: "📊",
+    title: "Labour Market Intelligence", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "Turning Data into Insight", body: "ILO professionals are surrounded by labour market data — employment surveys, wage statistics, sectoral reports, migration flows. The challenge is not finding data, but extracting insight fast. AI excels at synthesising multiple data sources, identifying patterns, and generating narrative interpretation — if you give it a clear analytical lens." },
+      { heading: "The Analyst Prompt Stack", body: "For labour market analysis: (1) Provide the data or context explicitly, (2) Define the analytical question precisely ('what explains the gap?' not 'analyse this'), (3) Specify comparators ('compare to regional average' or 'benchmark against ILO standards'), (4) Request the output in a format decision-makers can use — key finding first, evidence second." }
+    ],
+    tips: ["Lead with the question: 'What explains the divergence between GDP growth and formal employment rates?'", "Provide comparators: 'Benchmark against the regional average and the ILO global norm'", "Ask for the headline first: 'State the most important finding in one sentence, then support it'", "Request uncertainty flags: 'Note where data is insufficient to draw conclusions'", "Specify audience: 'Written for a non-technical audience, no statistical jargon'"],
+    activity: {
+      instruction: "You have employment data showing a widening gap between GDP growth and formal job creation. Write a prompt that produces an insightful analytical memo for a Country Director.",
+      weakPrompt: "Analyse this employment data for me.",
+      placeholder: "You are an ILO labour economist. Analyse the following data and produce a structured analytical memo for the Country Director — a senior non-technical decision-maker.\n\nData:\n- GDP growth: 6.2% (2022), 5.8% (2023), 6.1% (2024)\n- Formal employment growth: 1.1% (2022), 0.8% (2023), 0.9% (2024)\n- Informal employment share: 71% (2022), 74% (2023), 76% (2024)\n- Youth unemployment (15-24): 28% (2022), 31% (2023), 34% (2024)\n- Female labour force participation: 42% (stable across period)\n- Sectors with job growth: services (+4.2%), tech (+12%), construction (+2.1%)\n- Sectors with job losses: manufacturing (-3.4%), agriculture (-1.8%)\n\nAnalyse:\n1. **Headline finding** (1 sentence — the most important story in the data)\n2. **The jobless growth paradox** — why is GDP growing while formal jobs are not? (3 candidate explanations with evidence)\n3. **Most at-risk groups** (ranked by vulnerability, with evidence)\n4. **2 immediate policy levers** the Country Office should recommend\n5. **Data gaps** that limit confidence in these conclusions\n\nTone: direct, evidence-led, headline-first. Max 500 words.",
+      evalCriteria: ["analytical question clear", "data provided", "structured output", "headline first", "uncertainty flagged"]
+    }
+  },
+  {
+    id: "skills-gap-mapping", category: "Research & Analysis", icon: "🗺️",
+    title: "Skills Gap Mapping for Training Design", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "From Needs Assessment to Programme Design", body: "Training needs analysis (TNA) is the foundation of effective capacity building. AI can dramatically accelerate TNA by synthesising employer survey data, job market signals, curriculum gaps, and sector trends into a prioritised skills gap map. The output directly feeds programme design — if you prompt it to do so." },
+      { heading: "Connecting Analysis to Action", body: "The most valuable skills gap prompts do not just identify gaps — they map each gap to a training intervention, a delivery modality, and an audience. Ask AI to produce a skills map a programme designer can use directly: gap identified, competency needed, recommended module, suggested delivery method (classroom, mentoring, e-learning, on-the-job)." }
+    ],
+    tips: ["Define the sector and context: 'for the construction sector in a post-conflict context'", "Specify the target group precisely: 'low-skilled returnee workers aged 25-45, limited literacy'", "Ask for prioritisation: 'rank gaps by: prevalence times labour market demand times trainability'", "Link to outcomes: 'map each gap to the competency needed for formal employment'", "Request modality: 'suggest appropriate delivery method for each gap given the target group'"],
+    activity: {
+      instruction: "You need to design a vocational training programme for informal sector workers in the garment industry. Write a prompt that produces a prioritised skills gap map your programme team can use directly.",
+      weakPrompt: "What skills do garment workers need?",
+      placeholder: "You are an ILO skills development specialist conducting a training needs analysis. Based on the context below, produce a prioritised skills gap map that a programme design team can use directly.\n\nContext:\n- Target group: Women informal garment workers, mostly homeworkers, 20-45 years old, piecework pay, limited formal education (primary level), Bangladesh\n- Industry trend: Buyers are requiring ISO 9001 quality certification from suppliers, pushing formalisation pressure down to homeworkers\n- Employer feedback (n=45 factory owners): top gaps are quality control, machine maintenance, occupational health and safety, and record-keeping\n- Worker feedback (n=120 workers): barriers to better work are lack of quality checking skills, fear of formal contracts, limited digital literacy\n\nOutput as a structured table:\n| Skills Gap | Current Level | Required Level | Labour Market Demand (H/M/L) | Recommended Competency | Priority (1-5) | Delivery Modality | Training Hours |\n\nPrioritise by: labour market demand times gap severity times alignment with formalisation pathway. Add a 100-word note on the 2 highest-priority gaps and why.",
+      evalCriteria: ["target group defined", "sector context", "table format", "prioritisation criteria", "delivery modality"]
+    }
+  },
+  {
+    id: "report-synthesis", category: "Research & Analysis", icon: "📑",
+    title: "Research Synthesis & Summarisation", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Taming the Evidence Mountain", body: "ILO professionals read — and produce — enormous volumes of research. AI can compress a 60-page report into a 5-point executive summary in seconds. But 'summarise this' produces mediocre results. The quality of the summary depends entirely on the lens you provide: what questions should it answer? What decisions will this inform? Who is the reader?" },
+      { heading: "Synthesis vs Summary", body: "A summary recaps what a document says. A synthesis interprets across multiple sources: what do they agree on? Where do they contradict? What is the strongest evidence? What is missing? For policy work, synthesis is almost always more valuable. Ask for it explicitly — tell the AI you want comparative analysis, not just recapping." }
+    ],
+    tips: ["Define the reader: 'summarise for a senior manager with no time for details'", "State the purpose: 'extract findings relevant to programme design for rural women'", "Ask for synthesis across sources: 'where do these reports agree and contradict?'", "Request the decision lens: 'which findings are most relevant to the decision to scale this intervention?'", "Ask for gaps: 'what does the evidence not tell us that we would need to know?'"],
+    activity: {
+      instruction: "You have two conflicting research reports on cash transfer programmes and employment. Write a prompt that synthesises them into a decision-ready brief for a programme team.",
+      weakPrompt: "Summarise these reports on cash transfers and employment.",
+      placeholder: "You are an ILO research analyst preparing a decision brief for a programme team considering whether to add a cash transfer component to an existing skills training programme.\n\nSynthesise the following two research summaries into a structured evidence brief:\n\nReport A (ILO, 2023): 'A review of 18 cash transfer programmes in Sub-Saharan Africa found that unconditional cash transfers increased labour force participation by 12% on average, with strongest effects for women (17%). However, effects diminished after 18 months without complementary services. Three programmes linked to skills training showed sustained employment gains at 24-month follow-up.'\n\nReport B (World Bank, 2024): 'Meta-analysis of 34 cash transfer programmes globally found mixed evidence on employment effects. In low-income contexts, transfers reduced immediate labour supply short-term but improved job quality at 12+ months. Authors caution that context — particularly labour market tightness — is the dominant moderator.'\n\nProduce:\n1. **Points of agreement** between the two reports (2-3 bullets)\n2. **Key contradictions** and possible explanations for the divergence\n3. **Strength of evidence** — rate each report's methodology quality (Strong/Moderate/Weak) with one-line rationale\n4. **Recommendation** for the programme team in 3 sentences, explicitly noting what is and is not supported by evidence\n5. **Evidence gap** — one critical question the evidence does not yet answer\n\nTone: precise, evidence-led, decision-ready.",
+      evalCriteria: ["reader defined", "decision purpose", "synthesis not summary", "contradiction analysis", "evidence gaps"]
+    }
+  },
+
+  // ILO COMMUNICATION & LEARNING
+  {
+    id: "multilingual-prompting", category: "Communication & Learning", icon: "🌏",
+    title: "Multilingual & Cross-Cultural Communication", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "AI Across Languages and Cultures", body: "ILO operates in 6 official UN languages and dozens of national languages. AI models perform well across major world languages, but quality and nuance vary. More importantly, translating content is not the same as localising it — effective multilingual prompting specifies not just the target language, but the register, cultural context, and audience." },
+      { heading: "Prompting for Cultural Fit", body: "A training message that works in Geneva may fall flat in Dhaka or Lima. When asking AI to adapt content cross-culturally, go beyond translation: specify the communication style norms, the appropriate level of formality, cultural references to avoid, and examples that will resonate locally. Culture-aware prompts produce content that workers actually engage with." }
+    ],
+    tips: ["Specify language AND register: 'Translate to formal French as used in West African government documents'", "Name cultural context: 'adapt for a rural audience in Southern Ethiopia — use farming analogies'", "Flag cultural sensitivities: 'avoid direct references to religion or traditional gender roles'", "Request back-translation check: 'after translating, back-translate to English and flag any meaning shifts'", "Ask for localisation, not just translation: 'replace all Western examples with ones relevant to smallholder farmers'"],
+    activity: {
+      instruction: "You need to adapt an occupational safety message for garment factory workers in Bangladesh. Write a prompt that produces culturally appropriate, locally resonant content — not just a translation.",
+      weakPrompt: "Translate this safety message into Bengali.",
+      placeholder: "You are an ILO communications specialist adapting occupational health and safety content for garment factory workers in Bangladesh.\n\nOriginal English message: 'Report unsafe conditions immediately to your supervisor. Your safety rights are protected by law. You have the right to refuse dangerous work without fear of dismissal.'\n\nAdapt this message for:\n- **Audience**: Female garment workers, 18-35, limited formal education, working in Dhaka export factories, where reporting to supervisors can feel culturally risky and where dismissal fears are real\n- **Language**: Bengali (Bangladeshi standard, not formal literary Bengali)\n- **Register**: Warm, peer-to-peer, empowering — not institutional or top-down\n- **Cultural context**: In this context, collective action framing ('we') lands better than individual rights framing. Reference to garment workers' solidarity and pride in their contribution is effective\n- **Format**: A 40-word safety reminder suitable for a factory noticeboard\n\nAlso provide: (1) English back-translation to verify meaning is preserved, (2) One sentence explaining any significant cultural adaptations you made",
+      evalCriteria: ["language and register", "audience defined", "cultural context", "back-translation requested", "adaptation explained"]
+    }
+  },
+  {
+    id: "training-module-design", category: "Communication & Learning", icon: "🎓",
+    title: "Training Module & Case Study Design", difficulty: "Advanced", duration: "10 min",
+    theory: [
+      { heading: "AI as a Learning Designer", body: "Designing training modules for adult learners — especially in development contexts — requires more than content knowledge. It requires understanding adult learning principles (andragogy), the specific context and constraints of participants, and active learning methods that work in resource-constrained settings. AI can produce full module outlines, case studies, and facilitator guides at speed — if you brief it as a learning designer, not a content generator." },
+      { heading: "The Case Study Power Move", body: "Well-designed case studies are the gold standard for building AI prompting skills in development contexts — they make abstract concepts concrete, create safe spaces to practise, and stimulate discussion. When asking AI to build a case study, specify: the learning objective, the complexity level, the decision point, and the real-world stakes. A case study without a clear decision dilemma is just a story." }
+    ],
+    tips: ["Specify adult learning principles: 'use problem-based learning, not lecture format'", "Define the decision dilemma: 'participants must decide X — there is no single right answer'", "Include facilitator notes: 'add discussion questions and likely participant responses'", "Ground in context: 'set in a construction site in West Africa — reference local norms and challenges'", "Sequence activities: 'structure as: individual reflection, then small group, then plenary — 45 minutes total'"],
+    activity: {
+      instruction: "You are designing a 45-minute training session on using AI for policy analysis for ILO programme officers. Write a prompt that produces a complete, facilitation-ready case study with discussion guide.",
+      weakPrompt: "Create a training activity about AI and policy work.",
+      placeholder: "You are an ILO learning designer creating a 45-minute training session for senior programme officers on using AI tools for labour market policy analysis.\n\nParticipant profile: Senior ILO programme officers (10+ years experience), highly analytical, sceptical of technology hype, strong ownership of their expertise — they need to feel that AI enhances rather than replaces their professional judgement.\n\nLearning objective: By the end of this session, participants will be able to design a prompt that produces a structured, decision-ready labour market analysis memo — and critique its outputs using their professional expertise.\n\nDesign a complete case study activity with:\n1. **Scenario** (200 words): A realistic ILO country office situation requiring urgent labour market analysis — include messy real-world constraints (incomplete data, political pressure, tight deadline)\n2. **The Task**: Participants must draft a prompt to brief an AI analyst on the analysis needed\n3. **Sample AI Output** (150 words): A plausible but imperfect AI response with 2-3 subtle flaws that experienced officers should catch\n4. **Facilitator Guide**: 5 discussion questions, anticipated participant responses, and key learning points to surface\n5. **Debrief Framing**: 3 sentences connecting this exercise to participants' daily work\n\nTone: professionally demanding, peer-to-peer, no condescension. The case must feel real, not academic.",
+      evalCriteria: ["adult learning method", "decision dilemma", "facilitator guide", "realistic scenario", "learning objective"]
+    }
   }
 ];
 
@@ -586,7 +712,7 @@ export default function TortinPromptLabs() {
       <Panel open={showScores} onClose={() => setShowScores(false)} title="My Progress" icon="📊">
         {completed.length === 0 ? (
           <div style={{ textAlign: "center", padding: "40px 0", color: "#ccc" }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>🏔️</div>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>🌍</div>
             <div style={{ fontFamily: SF, fontSize: 14 }}>Complete a lesson to see your scores</div>
           </div>
         ) : (
