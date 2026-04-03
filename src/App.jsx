@@ -76,7 +76,77 @@ const LESSONS = [
       instruction: "You need to classify customer support tickets by urgency. Use few-shot examples to teach the model your classification system, then have it classify a new ticket.",
       weakPrompt: "Classify this support ticket: 'My account has been locked for 3 days and I can't access any of my files.'",
       placeholder: "Classify customer support tickets as CRITICAL, HIGH, MEDIUM, or LOW urgency based on business impact and time sensitivity.\n\nExamples:\nInput: 'Our entire team can't log in — this is blocking a product launch in 2 hours' → Output: CRITICAL — full team blocked, hard deadline\nInput: 'I forgot my password and need to reset it' → Output: MEDIUM — single user, no stated urgency\nInput: 'Can you add a dark mode to the dashboard?' → Output: LOW — feature request, no impact on current work\nInput: 'Payment processing has been failing for the last hour, we're losing sales' → Output: CRITICAL — revenue impact, ongoing\n\nNow classify this:\nInput: 'My account has been locked for 3 days and I can't access any of my files.' → Output:",
-      evalCriteria: ["examples provided", "input/output format", "pattern consistent", "edge cases covered", "real case last"]
+      evalCriteria: ["examples provided", "input/output format", "pattern consistent", "edge cases covered", "real case last"],
+    attachment: {
+      filename: "ILO_Programme_Helpdesk_Query_Batch_Nov2024.txt",
+      fileType: "txt",
+      meta: "ILO Skills Programme · Helpdesk inbox extract · November 2024 · 12 queries",
+      content: `# PROGRAMME HELPDESK — INCOMING QUERY BATCH
+## ILO Skills for Employment Programme | Dhaka Field Office
+## Extracted: 14 November 2024 | Unclassified, unassigned
+
+---
+
+QUERY #1147
+From: Gazipur TVET Centre coordinator
+"We have 43 enrolled participants for the garment quality module starting Monday but the training materials have not arrived. We also have no trainer confirmed. This is the third time this has happened. Please respond urgently."
+Received: 08:14
+
+QUERY #1148
+From: Unknown (web form submission)
+"Hello I want to know when the next training is."
+Received: 08:31
+
+QUERY #1149
+From: District Labour Office, Narsingdi
+"Requesting clarification on whether homeworkers are covered under the programme eligibility criteria. We have 200 potential beneficiaries waiting."
+Received: 09:02
+
+QUERY #1150
+From: Partner NGO — BRAC Skills
+"Monthly report submission — please confirm receipt of our Q3 data file sent yesterday via email to the programme coordinator."
+Received: 09:17
+
+QUERY #1151
+From: Training participant (via WhatsApp, forwarded)
+"The trainer told us the stipend would be 500 taka per day but we only received 300 taka today. Some participants are saying they will leave the programme if not corrected. Please help."
+Received: 10:44
+
+QUERY #1152
+From: Field officer, Savar
+"Routine check-in. Site visit completed. All good. Will submit report end of week."
+Received: 11:00
+
+QUERY #1153
+From: Media inquiry — Daily Star journalist
+"Can I get a comment on reports that the ILO programme excluded char-land communities in Jamalpur? Deadline today 3pm."
+Received: 11:23
+
+QUERY #1154
+From: Ministry of Labour focal point
+"The Minister has requested a programme update briefing for Friday. Can you prepare a 2-page summary by Thursday noon?"
+Received: 11:45
+
+QUERY #1155
+From: Training centre, Chattogram
+"One of our participants disclosed to the trainer that she is experiencing domestic violence at home. The trainer is unsure how to respond. What is the protocol?"
+Received: 13:02
+
+QUERY #1156
+From: Procurement officer
+"Following up on the pending equipment purchase order #4421 — 30 sewing machines for Mymensingh centre. Still awaiting approval signature."
+Received: 13:30
+
+QUERY #1157
+From: Participant alumni group (forwarded by field officer)
+"Several graduates from Cohort 3 report that employers are not recognising our programme certificate. Is there an accreditation issue?"
+Received: 14:15
+
+QUERY #1158
+From: Internal — Programme Admin
+"Reminder: Q3 financial reconciliation due Friday COB."
+Received: 15:00`
+    }
     }
   },
 
@@ -93,7 +163,61 @@ const LESSONS = [
       instruction: "You need a competitive analysis of two project management tools. Rewrite the weak prompt to get output in a clean, usable format you could paste straight into a report.",
       weakPrompt: "Compare Notion and Asana.",
       placeholder: "Compare Notion and Asana as project management tools for a 20-person product team. Output as a structured report with these exact sections:\n\n**Overview** (2 sentences each)\n**Feature Comparison** (markdown table with rows: Task Management, Docs/Wiki, Automations, Integrations, Mobile App — rate each Good/Fair/Weak)\n**Best For** (one sentence per tool)\n**Pricing** (per user per month, Pro tier)\n**Verdict** (which to choose and why, max 60 words)\n\nBe direct and opinionated. No filler.",
-      evalCriteria: ["sections defined", "table requested", "length constraints", "direct tone specified", "template provided"]
+      evalCriteria: ["sections defined", "table requested", "length constraints", "direct tone specified", "template provided"],
+    attachment: {
+      filename: "ILO_Training_Delivery_Options_Comparison_2024.txt",
+      fileType: "txt",
+      meta: "ILO Skills Programme · Options analysis briefing note · 2024",
+      content: `# TRAINING DELIVERY OPTIONS — COMPARATIVE BRIEFING
+## ILO Skills and Employability Programme | Programme Design Unit
+## Prepared for: Programme Manager decision meeting
+
+---
+
+## OPTION A: CLASSROOM-BASED DELIVERY (TVET CENTRES)
+
+Provider type: Accredited TVET institutions (government and NGO-run)
+Current coverage: 14 centres across Dhaka, Gazipur, Narsingdi, Chattogram
+Cohort size: 25-30 participants per cohort
+Duration: 3 months full-time (120 contact hours)
+Cost per participant: USD 285 (includes stipend, materials, trainer fees)
+Completion rate (2023 data): 71%
+Employment outcome at 6 months: 43% formal/semi-formal employment
+Certification: Nationally recognised NSDA Level 2
+Infrastructure required: Training room, equipment, power supply
+Accessibility issues: Requires participants to travel daily; excludes workers with caregiving responsibilities; excludes remote districts
+Gender participation: 58% female
+Dropout reasons: Travel cost, lost income during training, family obligations
+Trainer availability: Shortage of qualified trainers in 6 of 14 centres
+
+---
+
+## OPTION B: COMMUNITY-BASED MOBILE TRAINING
+
+Provider type: Contracted local NGOs with trained community facilitators
+Current coverage: Pilot in 3 upazilas (Mirpur, Savar, Ashulia)
+Cohort size: 12-15 participants (held in community spaces, participant homes)
+Duration: 6 weeks part-time (48 contact hours, 2 sessions/week)
+Cost per participant: USD 190 (lower overhead, no stipend)
+Completion rate (pilot data 2024): 89%
+Employment outcome at 6 months: 29% formal/semi-formal employment
+Certification: ILO programme certificate (not yet NSDA recognised)
+Infrastructure required: Portable equipment kit, facilitator transport
+Accessibility issues: Reaches homeworkers and caregivers; limited to areas with active NGO partner
+Gender participation: 94% female
+Dropout reasons: Minimal — flexible scheduling matches livelihood patterns
+Trainer availability: Relies on quality of NGO facilitator — variable
+
+---
+
+## CONTEXTUAL FACTORS FOR DECISION
+
+Budget ceiling for next phase: USD 850,000
+Target beneficiaries: 3,500 workers
+Timeline to first cohort: 3 months
+Donor priority: Reaching most marginalised workers, gender equality
+Government priority: NSDA certification and formal employment outcomes`
+    }
     }
   },
   {
@@ -123,7 +247,33 @@ const LESSONS = [
       instruction: "You have a batch of customer reviews to process. Write a prompt that extracts structured data from each review so it can be loaded into a spreadsheet or database.",
       weakPrompt: "Summarize this review: 'Amazing boots! Wore them on a 5-day traverse in the Cairngorms. Feet stayed dry the whole time. Only gripe is the break-in period — took about 50 miles before they stopped rubbing. Would buy again. Paid £180.'",
       placeholder: "Extract structured data from the following customer review and return it as a single JSON object. Use exactly this schema:\n\n{\n  \"sentiment\": \"positive | negative | neutral | mixed\",\n  \"rating_implied\": 1-5,\n  \"product_use_case\": string,\n  \"positives\": [string],\n  \"negatives\": [string],\n  \"price_mentioned\": number | null,\n  \"would_repurchase\": true | false | null,\n  \"summary\": string (max 20 words)\n}\n\nDo not invent data. Use null for any field not mentioned in the review. Return only the JSON object, no other text.\n\nReview: 'Amazing boots! Wore them on a 5-day traverse in the Cairngorms. Feet stayed dry the whole time. Only gripe is the break-in period — took about 50 miles before they stopped rubbing. Would buy again. Paid £180.'",
-      evalCriteria: ["schema defined", "null handling", "no invented data", "json only output", "field types specified"]
+      evalCriteria: ["schema defined", "null handling", "no invented data", "json only output", "field types specified"],
+    attachment: {
+      filename: "BGD_Garment_Worker_Field_Interviews_2024.txt",
+      fileType: "txt",
+      meta: "ILO Field Research Unit · Raw interview transcripts · Dhaka, 2024",
+      content: `# RAW FIELD INTERVIEW TRANSCRIPTS — GARMENT HOMEWORKERS
+## ILO Field Research Unit | Dhaka, Bangladesh | October 2024
+## Note: transcribed verbatim from audio, unedited
+
+---
+
+INTERVIEW 001
+Interviewer visited home in Mirpur-10. Worker present with two children.
+Name given: Fatema Begum. Age: approximately 34, exact DOB unknown. Works from home sewing buttonholes for a subcontractor named "Rahim Traders". Monthly earnings vary — she said "sometimes 3,500 taka, sometimes 4,800, depends on orders". No written contract. Has been doing this for 6 years. Learned from her sister. Main complaint: middlemen come late to collect work and delay payments. Does not use mobile banking — husband controls finances. No training received ever. Would attend training if held near home and children could come.
+
+INTERVIEW 002
+Name: Rashida Khatun. Age 28. Lives Gazipur. Makes collars and cuffs at home, works for three different subcontractors simultaneously. Income last month: 5,200 taka. Has a written receipt (not a contract) from one subcontractor. 4 years in homeworking. Previously worked in factory for 2 years — left due to harassment. Knows how to use bKash for receiving payments. Interested in quality checking training and says she already spots defects but doesn't know official standards. Has completed class 8 education.
+
+INTERVIEW 003
+Mirpur-14. Worker very reluctant initially. Name: did not give full name, called herself "Renu". Estimated age 45-50. Does finishing work — removing threads, folding, packing. Paid per piece — 0.80 taka per piece, does about 400 pieces per day when busy. Monthly approximately 6,000-9,000 taka. Has no formal education. Cannot read work orders — her daughter reads them for her. Health complaint: severe back pain from sitting on floor all day. No health coverage. Would like training but cannot leave home — elderly mother-in-law requires care.
+
+INTERVIEW 004
+Name: Shirin Akter. Age 22. Newlywed, husband works in construction. Savar district. Started homeworking 8 months ago. Monthly income: 2,800-3,200 taka. Feels underpaid but doesn't know how to negotiate. Has smartphone and uses it for WhatsApp. Secondary school graduate. Very interested in digital skills and understanding export market requirements. Said: "I want to upgrade my skills but I don't know where to start." No barriers to attending training nearby. Highly motivated.
+
+INTERVIEW 005
+Name: Amena Khatun. Age 38. Mirpur-2. Works with husband who also does tailoring — joint monthly household income from homeworking approximately 12,000 taka. Does complex embroidery work for export garments. 15 years experience. Considers herself skilled. Main gap: does not understand ISO quality requirements that buyers are now asking about. Cannot lose work time for training. Willing to pay small fee for certified training if it leads to better rates. Has completed class 10 (SSC).`
+    }
     }
   },
 
@@ -317,7 +467,63 @@ Upon return to work, female employees shall be entitled to two (2) nursing break
       instruction: "You have just completed a vocational training programme for young women in the informal economy. Write a prompt that maps your results to the most relevant SDG targets and produces a donor report narrative.",
       weakPrompt: "Map our training programme to the SDGs.",
       placeholder: "You are an ILO programme officer writing the results section of a donor report. Map the following programme outcomes to relevant SDG targets and produce a structured results narrative.\n\nProgramme outcomes:\n- 1,240 young women (18-25) completed vocational training in digital skills and financial literacy\n- 68% secured formal or semi-formal employment within 6 months\n- Average income of graduates increased by 34% compared to pre-programme baseline\n- 420 graduates started micro-enterprises; 78% still operating after 12 months\n- Programme reached 3 conflict-affected districts\n\nTask:\n1. Map each outcome to the most specific relevant SDG target — cover SDG 4, 5, 8, 10, and 16 as minimum, identify others where relevant\n2. For each SDG link, identify 1 official SDG indicator that best measures the contribution\n3. Write a 250-word results narrative for a donor report that weaves in SDG language naturally\n\nTone: evidence-based, results-focused, not promotional.",
-      evalCriteria: ["specific SDG targets named", "indicator mapping", "primary and secondary links", "evidence included", "donor audience"]
+      evalCriteria: ["specific SDG targets named", "indicator mapping", "primary and secondary links", "evidence included", "donor audience"],
+    attachment: {
+      filename: "ILO_YEP_Programme_Completion_Report_2024.txt",
+      fileType: "txt",
+      meta: "ILO Country Office · Youth Employment Programme · End-of-Phase Report · 2024",
+      content: `# YOUTH EMPLOYMENT PROGRAMME (YEP) — PHASE II COMPLETION REPORT
+## ILO Country Office, Nairobi | Kenya | January–December 2024
+
+---
+
+## PROGRAMME OVERVIEW
+
+Target group: Young women aged 18-29 in informal economy (Nairobi, Mombasa, Kisumu)
+Total beneficiaries enrolled: 1,240
+Programme completed: 1,087 (completion rate: 87.7%)
+Duration: 6-month vocational skills and entrepreneurship programme
+Sectors: Tailoring & textiles, food processing, digital services, beauty & wellness
+
+---
+
+## KEY OUTPUTS DELIVERED
+
+Training hours delivered: 96,400 hours total
+Certified graduates: 1,031 (TVET Kenya Level 3 certification)
+Business development training recipients: 890
+Digital literacy sessions completed: 1,087 (100% of completers)
+Mentorship sessions conducted: 4,320 (individual + group)
+Financial literacy workshops: 48 workshops, 1,087 participants
+
+---
+
+## KEY OUTCOMES (AT 6-MONTH FOLLOW-UP)
+
+Employment outcomes:
+- Employed (formal sector): 187 (18.2% of completers)
+- Self-employed / own business started: 312 (30.4%)
+- Employed informal sector with improved conditions: 203 (19.8%)
+- Still seeking employment: 385 (37.5%)
+- Not in labour market (family reasons): 0 (excluded from follow-up sample)
+
+Income outcomes:
+- Average monthly income pre-programme: KES 4,200
+- Average monthly income at 6-month follow-up: KES 9,800 (+133% increase)
+- Participants earning above minimum wage: 61%
+
+Gender and social inclusion:
+- Female participants: 100%
+- Participants with disabilities: 47 (4.3%)
+- Participants from refugee communities: 89 (8.2%)
+- First-generation workers (no prior formal employment): 78%
+
+Additional outcomes:
+- Participants who opened bank/mobile money account: 934 (91%)
+- Participants reporting improved confidence: 96% (self-assessment)
+- Employer satisfaction rating (surveyed employers, n=87): 4.2/5.0
+- Participants who reported experience of workplace harassment during programme: 12 (1.1%), all cases referred to support services`
+    }
     }
   },
 
@@ -538,7 +744,45 @@ Heterogeneity index I2 = 74% - substantial variation across contexts. Authors ca
       instruction: "You need to adapt an occupational safety message for garment factory workers in Bangladesh. Write a prompt that produces culturally appropriate, locally resonant content — not just a translation.",
       weakPrompt: "Translate this safety message into Bengali.",
       placeholder: "You are an ILO communications specialist adapting occupational health and safety content for garment factory workers in Bangladesh.\n\nOriginal English message: 'Report unsafe conditions immediately to your supervisor. Your safety rights are protected by law. You have the right to refuse dangerous work without fear of dismissal.'\n\nAdapt this message for:\n- **Audience**: Female garment workers, 18-35, limited formal education, working in Dhaka export factories, where reporting to supervisors can feel culturally risky and where dismissal fears are real\n- **Language**: Bengali (Bangladeshi standard, not formal literary Bengali)\n- **Register**: Warm, peer-to-peer, empowering — not institutional or top-down\n- **Cultural context**: In this context, collective action framing ('we') lands better than individual rights framing. Reference to garment workers' solidarity and pride in their contribution is effective\n- **Format**: A 40-word safety reminder suitable for a factory noticeboard\n\nAlso provide: (1) English back-translation to verify meaning is preserved, (2) One sentence explaining any significant cultural adaptations you made",
-      evalCriteria: ["language and register", "audience defined", "cultural context", "back-translation requested", "adaptation explained"]
+      evalCriteria: ["language and register", "audience defined", "cultural context", "back-translation requested", "adaptation explained"],
+    attachment: {
+      filename: "BGD_Factory_OSH_Guidelines_English_Source.txt",
+      fileType: "txt",
+      meta: "ILO SafeWork Programme · Source text for localisation · English original",
+      content: `# OCCUPATIONAL SAFETY AND HEALTH GUIDELINES
+## For Garment Factory Workers
+## ILO SafeWork Programme | Source Document for Adaptation
+
+---
+
+## FIRE SAFETY
+
+Know the location of all emergency exits before starting your shift. Emergency exits must never be blocked or locked during working hours. If you discover a fire, alert your supervisor and fellow workers immediately. Do not use lifts during a fire evacuation. Assemble at the designated muster point outside the building and wait for further instructions. Fire drills are conducted regularly — take them seriously, as they prepare you to respond correctly in a real emergency.
+
+---
+
+## ELECTRICAL SAFETY
+
+Do not touch or tamper with electrical equipment unless you are authorised to do so. If you notice a damaged cable, sparking socket, or malfunctioning machine, report it to your supervisor immediately. Do not use mobile phone chargers or personal electrical devices at workstations. Electrical hazards are a leading cause of factory fires — vigilance is everyone's responsibility.
+
+---
+
+## ERGONOMICS AND MUSCULOSKELETAL HEALTH
+
+Sewing machine operators are at high risk of back pain, neck strain, and repetitive strain injury from prolonged sitting and repetitive movements. Adjust your chair and workstation height so that your elbows are level with the machine. Take a five-minute standing break every 45-60 minutes. Report any persistent pain to your supervisor — early reporting prevents long-term injury. Stretching exercises are available from the health and safety officer.
+
+---
+
+## CHEMICAL HAZARDS
+
+Some dyes, adhesives, and cleaning agents used in garment production contain hazardous chemicals. Always read the label before using any chemical product. Wear gloves and protective eyewear when handling dye baths or chemical cleaning agents. Ensure adequate ventilation in areas where chemicals are used. If you experience dizziness, skin irritation, or breathing difficulty, leave the area immediately and seek medical attention.
+
+---
+
+## GRIEVANCE AND REPORTING
+
+Every worker has the right to report safety concerns without fear of retaliation. Safety concerns can be reported to: your line supervisor, the factory safety officer, the worker welfare committee, or anonymously via the suggestion box. Retaliation against workers who report safety concerns is prohibited under the Bangladesh Labour Act.`
+    }
     }
   },
   {
@@ -553,7 +797,76 @@ Heterogeneity index I2 = 74% - substantial variation across contexts. Authors ca
       instruction: "You are designing a 45-minute training session on using AI for policy analysis for ILO programme officers. Write a prompt that produces a complete, facilitation-ready case study with discussion guide.",
       weakPrompt: "Create a training activity about AI and policy work.",
       placeholder: "You are an ILO learning designer creating a 45-minute training session for senior programme officers on using AI tools for labour market policy analysis.\n\nParticipant profile: Senior ILO programme officers (10+ years experience), highly analytical, sceptical of technology hype, strong ownership of their expertise — they need to feel that AI enhances rather than replaces their professional judgement.\n\nLearning objective: By the end of this session, participants will be able to design a prompt that produces a structured, decision-ready labour market analysis memo — and critique its outputs using their professional expertise.\n\nDesign a complete case study activity with:\n1. **Scenario** (200 words): A realistic ILO country office situation requiring urgent labour market analysis — include messy real-world constraints (incomplete data, political pressure, tight deadline)\n2. **The Task**: Participants must draft a prompt to brief an AI analyst on the analysis needed\n3. **Sample AI Output** (150 words): A plausible but imperfect AI response with 2-3 subtle flaws that experienced officers should catch\n4. **Facilitator Guide**: 5 discussion questions, anticipated participant responses, and key learning points to surface\n5. **Debrief Framing**: 3 sentences connecting this exercise to participants' daily work\n\nTone: professionally demanding, peer-to-peer, no condescension. The case must feel real, not academic.",
-      evalCriteria: ["adult learning method", "decision dilemma", "facilitator guide", "realistic scenario", "learning objective"]
+      evalCriteria: ["adult learning method", "decision dilemma", "facilitator guide", "realistic scenario", "learning objective"],
+    attachment: {
+      filename: "ILO_AI_Training_Needs_Assessment_Officers_2024.txt",
+      fileType: "txt",
+      meta: "ILO Training Unit · Learner Needs Assessment · Programme Officers · Geneva, 2024",
+      content: `# LEARNER NEEDS ASSESSMENT — AI SKILLS FOR ILO PROGRAMME OFFICERS
+## ILO Learning & Development Unit | Survey conducted September 2024
+## Respondents: 67 programme officers across 14 country offices
+
+---
+
+## SECTION 1: CURRENT AI USAGE
+
+Use AI tools at least weekly: 34%
+Use AI tools occasionally: 41%
+Have never used AI tools professionally: 25%
+
+Tools currently used:
+ChatGPT: 71% of current users
+Claude: 18%
+Gemini: 9%
+Copilot: 22%
+Other/organisation-approved tools: 6%
+
+Primary use cases reported:
+Drafting reports and correspondence: 68%
+Summarising documents: 54%
+Translating content: 47%
+Research assistance: 39%
+Data analysis: 12%
+
+---
+
+## SECTION 2: CONFIDENCE LEVELS
+
+"I know how to write an effective prompt" — Confident: 19% | Somewhat confident: 38% | Not confident: 43%
+"I understand AI's limitations and risks" — Confident: 22% | Somewhat: 41% | Not confident: 37%
+"I could use AI to analyse a policy document" — Confident: 14% | Somewhat: 33% | Not confident: 53%
+"I understand data privacy implications of AI tools" — Confident: 11% | Somewhat: 29% | Not confident: 60%
+
+---
+
+## SECTION 3: LEARNING NEEDS (TOP-RANKED)
+
+1. Writing effective prompts for policy and report work (ranked #1 by 61%)
+2. Using AI for data analysis and visualisation (ranked #2 by 54%)
+3. Understanding what AI can and cannot reliably do (ranked #3 by 49%)
+4. AI tools for multilingual and cross-cultural work (ranked #4 by 44%)
+5. Privacy, ethics, and responsible AI use (ranked #5 by 43%)
+
+---
+
+## SECTION 4: LEARNING PREFERENCES
+
+Preferred format: Short online modules (45-90 min): 58% | In-person workshop: 31% | Self-paced reading: 11%
+Preferred session length: Under 1 hour: 44% | 1-2 hours: 39% | Half-day: 17%
+Learning constraints: Heavy meeting load (avg 4.2 meetings/day): 89% cited as barrier
+Best learning time: Early morning before 9am or late afternoon after 4pm: 67%
+Language needs: English-only comfortable: 61% | Need French option: 28% | Need Spanish: 19%
+
+---
+
+## SECTION 5: OPEN COMMENTS (SELECTED)
+
+"I use AI daily but feel like I'm only using 10% of what it can do."
+"The biggest barrier is not knowing if the output is accurate — I always have to check everything."
+"I need practical examples from ILO's actual work, not generic tutorials."
+"Privacy is my biggest concern — I don't know what data I'm allowed to share with these tools."
+"I'd love a short course specifically on using AI for donor reporting."`
+    }
     }
   }
 ];
