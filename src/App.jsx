@@ -365,6 +365,29 @@ function ScoreBar({ score, max = 4 }) {
   );
 }
 
+function renderMarkdown(text) {
+  let html = text
+    .replace(/```[\w]*
+?([\s\S]*?)```/g, (_,c) => `<pre style="background:#f7f7f7;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:12px;line-height:1.6;margin:10px 0"><code>${c.trim()}</code></pre>`)
+    .replace(/`([^`]+)`/g, '<code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:0.88em;font-family:monospace">$1</code>')
+    .replace(/^### (.+)$/gm, '<h3 style="font-size:14px;font-weight:700;margin:14px 0 5px;color:#222">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-size:16px;font-weight:700;margin:16px 0 6px;color:#222">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 style="font-size:18px;font-weight:700;margin:18px 0 8px;color:#222">$1</h1>')
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^\s*[-*] (.+)$/gm, '<li style="margin:3px 0">$1</li>')
+    .replace(/^\s*\d+\. (.+)$/gm, '<li style="margin:3px 0">$1</li>')
+    .replace(/(<li[^>]*>[\s\S]*?<\/li>
+?)+/g, m => `<ul style="padding-left:18px;margin:8px 0">${m}</ul>`)
+    .replace(/
+
++/g, '</p><p style="margin:8px 0">')
+    .replace(/
+/g, "<br/>");
+  return `<p style="margin:0;line-height:1.75">${html}</p>`;
+}
+
 function TypewriterText({ text, speed = 8 }) {
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
@@ -377,7 +400,8 @@ function TypewriterText({ text, speed = 8 }) {
     }, speed);
     return () => clearInterval(iv);
   }, [text]);
-  return <span>{displayed}{!done && <span style={{ animation: "blink 0.8s step-end infinite", color: R }}>|</span>}</span>;
+  if (done) return <div style={{ fontSize: 13, lineHeight: 1.75, fontFamily: SF }} dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }} />;
+  return <span style={{ whiteSpace: "pre-wrap", fontSize: 13, lineHeight: 1.75, fontFamily: SF }}>{displayed}<span style={{ animation: "blink 0.8s step-end infinite", color: R }}>|</span></span>;
 }
 
 // ── AI-powered prompt scorer ─────────────────────────────────────────────────
