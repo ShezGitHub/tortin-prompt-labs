@@ -204,7 +204,49 @@ const LESSONS = [
       instruction: "Your country office needs a policy brief on rising youth unemployment. Transform the weak prompt into one that would produce a publication-ready brief for a Minister of Labour.",
       weakPrompt: "Write a policy brief about youth unemployment.",
       placeholder: "You are an ILO senior policy specialist. Draft a structured policy brief on youth unemployment for the Minister of Labour of a lower-middle income country in Sub-Saharan Africa, where youth (15-24) unemployment is 32% and 60% of youth are in informal work.\n\nStructure:\n**Executive Summary** (max 120 words, key finding + top recommendation)\n**The Problem** (2 paragraphs: data-driven, include gender disaggregation)\n**Why Current Policies Are Falling Short** (3 bullet points, evidence-based)\n**Recommendations** (3 actionable recommendations, each with: what to do, who is responsible, estimated timeline)\n**Call to Action** (1 paragraph, directly addressed to the Minister, diplomatically worded)\n\nTone: evidence-led, non-prescriptive, respects national sovereignty. No jargon. Max 800 words total.",
-      evalCriteria: ["decision-maker named", "country context", "structured sections", "data anchored", "tone specified"]
+      evalCriteria: ["decision-maker named", "country context", "structured sections", "data anchored", "tone specified"],
+    attachment: {
+      filename: "BGD_Youth_Employment_Situation_Report_2024.pdf",
+      fileType: "pdf",
+      meta: "ILO Country Office Report · 4 pages · 2024",
+      content: `# BANGLADESH: YOUTH EMPLOYMENT SITUATION REPORT 2024
+## Prepared by the ILO Country Office, Dhaka
+
+---
+
+**KEY STATISTICS (2024)**
+
+Youth population (15-24): 28.4 million
+Youth labour force participation rate: 54.2%
+Youth unemployment rate: 31.8% (male: 26.1%, female: 39.4%)
+Youth in informal employment: 61.3%
+Youth NEET (Not in Education, Employment or Training): 29.7%
+
+---
+
+## 1. OVERVIEW
+
+Bangladesh has experienced sustained GDP growth averaging 6.5% annually over the past decade. However, this growth has not translated proportionally into quality employment for young people. Youth unemployment rose from 27.4% in 2020 to 31.8% in 2024, driven primarily by a mismatch between skills produced by the education system and those demanded by employers.
+
+## 2. SECTORAL ANALYSIS
+
+The garment and textile sector has seen a 12% reduction in youth entry-level positions since 2022, attributed to automation adoption. Meanwhile, the digital services and fintech sectors have grown by 34% but require tertiary education qualifications that most youth lack.
+
+## 3. GENDER DIMENSIONS
+
+Female youth face compounded barriers: social norms restricting mobility, limited access to technical training, early marriage (34% of girls marry before age 18), and concentration in lower-paid informal work. The female youth unemployment rate of 39.4% is 13 percentage points higher than males.
+
+## 4. POLICY CONTEXT
+
+Current government programmes include the National Skills Development Authority (NSDA) framework and the Youth Employment Programme (YEP), reaching approximately 180,000 youth annually. Coverage is estimated at 6.3% of unemployed youth.
+
+## 5. PRIORITY RECOMMENDATIONS (DRAFT)
+
+- Scale technical and vocational education and training (TVET) with employer-linked curricula
+- Introduce targeted incentives for employers hiring first-time youth workers
+- Expand social protection for young workers in informal arrangements
+- Address gender-specific barriers through community-based outreach`
+    }
     }
   },
   {
@@ -219,7 +261,48 @@ const LESSONS = [
       instruction: "You need to quickly analyse whether a country's draft labour code aligns with ILO maternity protection standards. Write a prompt that produces a structured compliance gap analysis.",
       weakPrompt: "Check if this labour law follows ILO standards on maternity.",
       placeholder: "You are an ILO legal specialist conducting a compliance review. Analyse the following draft labour code provisions against ILO Convention No. 183 (Maternity Protection Convention, 2000) and Recommendation No. 191.\n\nProvisions to analyse:\n'Article 45: Female employees are entitled to 12 weeks of maternity leave. Leave may be taken 4 weeks before the expected date of birth. The employer shall pay 50% of regular salary during leave. Dismissal of pregnant employees is prohibited during leave period only.'\n\nOutput as a structured gap analysis table:\n| Provision | C183 Requirement | Current Draft | Gap | Severity (Critical/Significant/Minor) | Recommended Amendment |\n\nCover: duration of leave, cash benefits level, medical benefits, employment protection, health protection, non-discrimination. End with a 3-sentence executive summary of the overall compliance status.",
-      evalCriteria: ["Convention named", "specific articles covered", "table format requested", "severity rating", "amendment recommendations"]
+      evalCriteria: ["Convention named", "specific articles covered", "table format requested", "severity rating", "amendment recommendations"],
+    attachment: {
+      filename: "BGD_Draft_Labour_Code_Chapter5_2024.docx",
+      fileType: "docx",
+      meta: "Ministry of Labour and Employment · Draft for consultation · March 2024",
+      content: `# BANGLADESH DRAFT LABOUR CODE 2024
+## Chapter 5: Maternity and Paternity Protection
+
+---
+
+**Article 43 - Scope of Application**
+
+This chapter applies to all female employees engaged in establishments employing five (5) or more persons, whether in the formal or informal sector, except for domestic workers who are governed by separate regulations under Chapter 12.
+
+**Article 44 - Definition of Maternity Leave**
+
+For the purposes of this Chapter, maternity leave means a period of absence from work granted to a female employee in connection with the birth of a child, including any period of pregnancy-related illness.
+
+**Article 45 - Duration of Maternity Leave**
+
+Female employees are entitled to maternity leave of twelve (12) weeks total. Of this period, a minimum of four (4) weeks shall be taken after the date of confinement. The remaining period may be taken before or after confinement at the employee's discretion.
+
+**Article 46 - Maternity Benefit (Cash Benefits)**
+
+During the period of maternity leave, the employer shall pay the employee a cash benefit equivalent to fifty percent (50%) of the employee's last drawn basic salary. Payment shall be made in two instalments: the first before leave commences and the second upon return to work.
+
+**Article 47 - Medical Benefits**
+
+Employees on maternity leave shall retain access to any employer-sponsored health scheme for the duration of the leave period only. Costs related to childbirth complications shall be borne by the employee unless covered under a separate social insurance scheme.
+
+**Article 48 - Employment Protection**
+
+An employer shall not dismiss or give notice of dismissal to a female employee during the period of maternity leave as defined in Article 45. This prohibition does not apply where the employee is dismissed for gross misconduct unrelated to the pregnancy or birth.
+
+**Article 49 - Right to Return**
+
+Upon expiry of maternity leave, the employee shall be entitled to return to the same position or, where that position no longer exists, to a comparable position with equivalent terms and conditions of employment.
+
+**Article 50 - Nursing Breaks**
+
+Upon return to work, female employees shall be entitled to two (2) nursing breaks of thirty (30) minutes each per working day, for a period of six (6) months from the date of birth.`
+    }
     }
   },
   {
@@ -251,7 +334,64 @@ const LESSONS = [
       instruction: "You have employment data showing a widening gap between GDP growth and formal job creation. Write a prompt that produces an insightful analytical memo for a Country Director.",
       weakPrompt: "Analyse this employment data for me.",
       placeholder: "You are an ILO labour economist. Analyse the following data and produce a structured analytical memo for the Country Director — a senior non-technical decision-maker.\n\nData:\n- GDP growth: 6.2% (2022), 5.8% (2023), 6.1% (2024)\n- Formal employment growth: 1.1% (2022), 0.8% (2023), 0.9% (2024)\n- Informal employment share: 71% (2022), 74% (2023), 76% (2024)\n- Youth unemployment (15-24): 28% (2022), 31% (2023), 34% (2024)\n- Female labour force participation: 42% (stable across period)\n- Sectors with job growth: services (+4.2%), tech (+12%), construction (+2.1%)\n- Sectors with job losses: manufacturing (-3.4%), agriculture (-1.8%)\n\nAnalyse:\n1. **Headline finding** (1 sentence — the most important story in the data)\n2. **The jobless growth paradox** — why is GDP growing while formal jobs are not? (3 candidate explanations with evidence)\n3. **Most at-risk groups** (ranked by vulnerability, with evidence)\n4. **2 immediate policy levers** the Country Office should recommend\n5. **Data gaps** that limit confidence in these conclusions\n\nTone: direct, evidence-led, headline-first. Max 500 words.",
-      evalCriteria: ["analytical question clear", "data provided", "structured output", "headline first", "uncertainty flagged"]
+      evalCriteria: ["analytical question clear", "data provided", "structured output", "headline first", "uncertainty flagged"],
+    attachment: {
+      filename: "KEN_Labour_Market_Statistics_Q3_2024.xlsx",
+      fileType: "xlsx",
+      meta: "Kenya National Bureau of Statistics · Quarterly Labour Force Survey · Q3 2024",
+      content: `# KENYA QUARTERLY LABOUR FORCE SURVEY - Q3 2024
+## National Bureau of Statistics | Released November 2024
+
+---
+
+## TABLE 1: KEY LABOUR MARKET INDICATORS
+
+Working age population (15+): 31.4 million
+Labour force participation rate: 61.3%
+Employment rate: 55.2%
+Unemployment rate: 10.0%
+Youth (15-24) unemployment rate: 28.1%
+Youth NEET rate: 32.6%
+Male labour force participation: 71.2%
+Female labour force participation: 51.9%
+Male unemployment: 7.8%
+Female unemployment: 13.1%
+
+---
+
+## TABLE 2: GDP AND EMPLOYMENT TRENDS (ANNUAL)
+
+Year 2021: GDP growth 7.5% | Formal employment growth 2.8% | Informal share 69.4%
+Year 2022: GDP growth 6.2% | Formal employment growth 1.1% | Informal share 71.0%
+Year 2023: GDP growth 5.8% | Formal employment growth 0.8% | Informal share 74.3%
+Year 2024: GDP growth 6.1% | Formal employment growth 0.9% | Informal share 76.1%
+
+---
+
+## TABLE 3: SECTORAL EMPLOYMENT (Q3 2024)
+
+Agriculture: 38.4% share | YoY change -1.8%
+Manufacturing: 8.2% share | YoY change -3.4%
+Construction: 6.1% share | YoY change +2.1%
+Trade & Commerce: 18.7% share | YoY change +0.4%
+Services (general): 19.3% share | YoY change +4.2%
+Technology & ICT: 2.4% share | YoY change +12.0%
+
+---
+
+## TABLE 4: WAGES (MEDIAN MONTHLY, KES)
+
+Formal sector median wage: KES 42,500
+Informal sector median wage: KES 11,200
+Youth formal sector wage: KES 28,100
+Minimum wage (Nairobi): KES 15,120
+
+---
+
+## NOTES
+
+Data collected via household survey, n=24,680 households. Margin of error plus or minus 1.2% at 95% confidence. Informal employment defined as work without written contract or social security contribution.`
+    }
     }
   },
   {
@@ -266,7 +406,66 @@ const LESSONS = [
       instruction: "You need to design a vocational training programme for informal sector workers in the garment industry. Write a prompt that produces a prioritised skills gap map your programme team can use directly.",
       weakPrompt: "What skills do garment workers need?",
       placeholder: "You are an ILO skills development specialist conducting a training needs analysis. Based on the context below, produce a prioritised skills gap map that a programme design team can use directly.\n\nContext:\n- Target group: Women informal garment workers, mostly homeworkers, 20-45 years old, piecework pay, limited formal education (primary level), Bangladesh\n- Industry trend: Buyers are requiring ISO 9001 quality certification from suppliers, pushing formalisation pressure down to homeworkers\n- Employer feedback (n=45 factory owners): top gaps are quality control, machine maintenance, occupational health and safety, and record-keeping\n- Worker feedback (n=120 workers): barriers to better work are lack of quality checking skills, fear of formal contracts, limited digital literacy\n\nOutput as a structured table:\n| Skills Gap | Current Level | Required Level | Labour Market Demand (H/M/L) | Recommended Competency | Priority (1-5) | Delivery Modality | Training Hours |\n\nPrioritise by: labour market demand times gap severity times alignment with formalisation pathway. Add a 100-word note on the 2 highest-priority gaps and why.",
-      evalCriteria: ["target group defined", "sector context", "table format", "prioritisation criteria", "delivery modality"]
+      evalCriteria: ["target group defined", "sector context", "table format", "prioritisation criteria", "delivery modality"],
+    attachment: {
+      filename: "BGD_Garment_TNA_Survey_Results_2024.xlsx",
+      fileType: "xlsx",
+      meta: "ILO Skills Programme · Training Needs Analysis Survey · Dhaka, Bangladesh · 2024",
+      content: `# TRAINING NEEDS ANALYSIS: BANGLADESH GARMENT HOMEWORKERS
+## ILO Skills and Employability Programme | Dhaka, 2024
+## Sample: 120 homeworkers + 45 factory owners (Mirpur, Gazipur, Savar districts)
+
+---
+
+## SECTION 1: WORKER SURVEY FINDINGS (n=120)
+
+Female: 100% | Age range: 20-45 | Average age: 31
+Education: No schooling 12%, Primary 58%, Secondary 28%, Tertiary 2%
+Monthly income (median): BDT 4,200 (piecework)
+Work arrangement: 100% homebased, no written contract
+
+**Self-Reported Skill Gaps (% saying "I need this skill")**
+Quality checking and defect identification: 78%
+Machine maintenance and basic repair: 71%
+Occupational health and safety: 67%
+Record-keeping and invoice preparation: 63%
+Negotiating piece rates with middlemen: 82%
+Digital payments and mobile banking: 54%
+Reading and understanding work orders: 69%
+
+**Barriers to Upgrading**
+Cannot afford to stop work for training: 81%
+Family responsibilities prevent attendance: 77%
+Training is too far from home: 68%
+Do not know how to access training: 74%
+
+---
+
+## SECTION 2: EMPLOYER SURVEY FINDINGS (n=45)
+
+**Top Skills Gaps Observed in Homeworker Output**
+Quality control (dimensional accuracy, finishing): 89% of employers cited
+Machine maintenance awareness: 76%
+Occupational health and safety compliance: 71%
+Record-keeping and delivery documentation: 64%
+
+**Willingness to Pay Premium for Certified Workers**
+Yes, significant premium (above 15%): 22%
+Yes, modest premium (5-15%): 51%
+No premium but preference: 18%
+
+**ISO 9001 Compliance Pressure from Buyers**
+Already required: 38%
+Will require within 12 months: 44%
+
+---
+
+## SECTION 3: LABOUR MARKET CONTEXT
+
+Current formal employment rate for female garment homeworkers: 3%
+Estimated workers who could access semi-formal employment with certification: 40-60%
+Average wage premium in certified supply chains: 23% above current median`
+    }
     }
   },
   {
@@ -281,7 +480,48 @@ const LESSONS = [
       instruction: "You have two conflicting research reports on cash transfer programmes and employment. Write a prompt that synthesises them into a decision-ready brief for a programme team.",
       weakPrompt: "Summarise these reports on cash transfers and employment.",
       placeholder: "You are an ILO research analyst preparing a decision brief for a programme team considering whether to add a cash transfer component to an existing skills training programme.\n\nSynthesise the following two research summaries into a structured evidence brief:\n\nReport A (ILO, 2023): 'A review of 18 cash transfer programmes in Sub-Saharan Africa found that unconditional cash transfers increased labour force participation by 12% on average, with strongest effects for women (17%). However, effects diminished after 18 months without complementary services. Three programmes linked to skills training showed sustained employment gains at 24-month follow-up.'\n\nReport B (World Bank, 2024): 'Meta-analysis of 34 cash transfer programmes globally found mixed evidence on employment effects. In low-income contexts, transfers reduced immediate labour supply short-term but improved job quality at 12+ months. Authors caution that context — particularly labour market tightness — is the dominant moderator.'\n\nProduce:\n1. **Points of agreement** between the two reports (2-3 bullets)\n2. **Key contradictions** and possible explanations for the divergence\n3. **Strength of evidence** — rate each report's methodology quality (Strong/Moderate/Weak) with one-line rationale\n4. **Recommendation** for the programme team in 3 sentences, explicitly noting what is and is not supported by evidence\n5. **Evidence gap** — one critical question the evidence does not yet answer\n\nTone: precise, evidence-led, decision-ready.",
-      evalCriteria: ["reader defined", "decision purpose", "synthesis not summary", "contradiction analysis", "evidence gaps"]
+      evalCriteria: ["reader defined", "decision purpose", "synthesis not summary", "contradiction analysis", "evidence gaps"],
+    attachment: {
+      filename: "ILO_WorldBank_CashTransfer_Reports_2023-24.pdf",
+      fileType: "pdf",
+      meta: "Two research reports compiled for synthesis exercise",
+      content: `# REPORT A: ILO WORKING PAPER
+# Cash Transfers and Labour Market Outcomes in Sub-Saharan Africa
+## ILO Employment Policy Department | 2023
+
+---
+
+Programmes reviewed: 18 | Countries: 11 | Total beneficiaries: 2.3 million
+
+Average effect on labour force participation: +12% (95% CI: 8-16%)
+Effect for female beneficiaries: +17% (95% CI: 12-22%)
+Effect for male beneficiaries: +7% (95% CI: 3-11%)
+
+At 12-month follow-up, effects were sustained in 14 of 18 programmes. At 18-month follow-up, effects had diminished to below statistical significance in 11 programmes where no complementary services were provided.
+
+Three programmes integrated with vocational skills training showed sustained positive employment outcomes at 24-month follow-up (average +14% employment rate vs comparison group).
+
+Fourteen studies used randomised control trials. Four used quasi-experimental difference-in-differences designs. Study quality rated Moderate to Strong across the sample.
+
+---
+
+# REPORT B: WORLD BANK POLICY RESEARCH PAPER
+# Do Cash Transfers Increase Employment? A Global Meta-Analysis
+## World Bank Social Protection and Jobs | 2024
+
+---
+
+Programmes reviewed: 34 | Countries: 22 | Study period: 2010-2023
+
+Short-term effect on hours worked: -6.2% (beneficiaries reduced hours in first 6 months)
+Medium-term effect on employment quality (12+ months): +9.4% likelihood of formal/semi-formal employment
+Effect in tight labour markets (unemployment below 8%): +15.3%
+Effect in slack labour markets (unemployment above 20%): +2.1% (not statistically significant)
+
+Labour market tightness is the dominant moderator of cash transfer effects on employment. Programmes in contexts with high unemployment show minimal employment gains, as transfers alone cannot create jobs where none exist.
+
+Heterogeneity index I2 = 74% - substantial variation across contexts. Authors caution strongly against generalising findings across labour market contexts.`
+    }
     }
   },
 
@@ -534,6 +774,54 @@ function HighlightLayer({ onSave }) {
         style={{ background: R, border: "none", borderRadius: 6, padding: "3px 10px", color: "#fff", fontSize: 11, cursor: "pointer", fontFamily: SF, fontWeight: 600 }}>
         📌 Save
       </button>
+    </div>
+  );
+}
+
+
+// ── Document attachment viewer ────────────────────────────────────────────────
+function DocumentViewer({ attachment }) {
+  const [open, setOpen] = useState(false);
+  const icons = { pdf: "📄", docx: "📝", xlsx: "📊", txt: "📃", csv: "📊" };
+  const colors = { pdf: "#e74c3c", docx: "#2980b9", xlsx: "#27ae60", txt: "#888", csv: "#27ae60" };
+  const icon = icons[attachment.fileType] || "📄";
+  const color = colors[attachment.fileType] || "#888";
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 11, letterSpacing: 2, color: "#bbb", textTransform: "uppercase", marginBottom: 8, fontFamily: SF }}>Attached Document</div>
+      <div style={{ border: "1px solid #f0e8e8", borderRadius: 14, overflow: "hidden", background: "#fff", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+        {/* File header */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 18px", background: "#fdf8f8", borderBottom: open ? "1px solid #f0e8e8" : "none" }}>
+          <div style={{ width: 38, height: 46, background: color, borderRadius: 6, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexShrink: 0, position: "relative", boxShadow: "0 2px 6px rgba(0,0,0,0.15)" }}>
+            <div style={{ position: "absolute", top: 0, right: 0, width: 12, height: 12, background: "rgba(255,255,255,0.3)", borderRadius: "0 6px 0 6px" }} />
+            <span style={{ fontSize: 14 }}>{icon}</span>
+            <span style={{ fontSize: 8, color: "#fff", fontWeight: 700, marginTop: 1, fontFamily: SF }}>{attachment.fileType.toUpperCase()}</span>
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: "#333", fontFamily: SF, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{attachment.filename}</div>
+            <div style={{ fontSize: 11, color: "#aaa", fontFamily: SF, marginTop: 2 }}>{attachment.meta}</div>
+          </div>
+          <button onClick={() => setOpen(o => !o)} style={{ padding: "6px 14px", background: open ? "#f0e8e8" : RLL, border: `1px solid ${open ? "#ddd" : "rgba(192,57,43,0.2)"}`, borderRadius: 8, color: open ? "#888" : R, fontSize: 11, fontFamily: SF, fontWeight: 600, cursor: "pointer", letterSpacing: 0.5, transition: "all 0.2s", flexShrink: 0 }}>
+            {open ? "Close ↑" : "View ↓"}
+          </button>
+        </div>
+        {/* Document content */}
+        {open && (
+          <div style={{ padding: "20px 24px", maxHeight: 420, overflowY: "auto", background: "#fefefe" }}>
+            <div style={{ padding: "24px 28px", background: "#fff", border: "1px solid #e8e8e8", borderRadius: 8, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", fontFamily: "'Georgia', serif" }}>
+              {attachment.content.split("\n").map((line, i) => {
+                if (line.startsWith("# ")) return <h1 key={i} style={{ fontSize: 16, fontWeight: 700, color: "#111", margin: "0 0 12px", fontFamily: SF, borderBottom: "2px solid #f0e8e8", paddingBottom: 8 }}>{line.slice(2)}</h1>;
+                if (line.startsWith("## ")) return <h2 key={i} style={{ fontSize: 14, fontWeight: 700, color: "#333", margin: "16px 0 6px", fontFamily: SF }}>{line.slice(3)}</h2>;
+                if (line.startsWith("**") && line.endsWith("**")) return <p key={i} style={{ fontSize: 12, fontWeight: 700, color: "#444", margin: "10px 0 4px", fontFamily: SF }}>{line.slice(2, -2)}</p>;
+                if (line.startsWith("---")) return <hr key={i} style={{ border: "none", borderTop: "1px solid #eee", margin: "14px 0" }} />;
+                if (line.trim() === "") return <div key={i} style={{ height: 8 }} />;
+                return <p key={i} style={{ fontSize: 12, color: "#555", lineHeight: 1.8, margin: "3px 0", fontFamily: "'Georgia', serif" }}>{line}</p>;
+              })}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 10, color: "#ccc", fontFamily: SF, textAlign: "center", fontStyle: "italic" }}>Sample document for training purposes only</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -950,6 +1238,9 @@ export default function TortinPromptLabs() {
                     ))}
                   </div>
                 </div>
+              )}
+              {activeLesson.activity.attachment && (
+                <DocumentViewer attachment={activeLesson.activity.attachment} />
               )}
               {isImageLesson && (
                 <div style={{ marginBottom: 16, padding: "10px 14px", background: "#f5f0f0", borderRadius: 10, display: "flex", alignItems: "center", gap: 8 }}>
