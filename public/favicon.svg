@@ -1,4 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#c0392b"/>
-  <text y=".9em" font-size="80" x="10">✦</text>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6600"/>
+      <stop offset="40%" style="stop-color:#cc0000"/>
+      <stop offset="100%" style="stop-color:#330066"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Open book - left page -->
+  <path d="M50 72 Q30 68 10 72 L14 82 Q30 78 50 80 Z" fill="url(#grad)"/>
+  <!-- Open book - right page -->
+  <path d="M50 72 Q70 68 90 72 L86 82 Q70 78 50 80 Z" fill="url(#grad)"/>
+  <!-- Book spine bottom -->
+  <ellipse cx="50" cy="80" rx="2" ry="4" fill="#1a0033"/>
+  <!-- Left page lines -->
+  <path d="M50 75 Q32 72 14 75" stroke="#ffffff44" stroke-width="0.8" fill="none"/>
+  <path d="M50 77 Q32 74 14 77" stroke="#ffffff44" stroke-width="0.8" fill="none"/>
+  <!-- Right page lines -->
+  <path d="M50 75 Q68 72 86 75" stroke="#ffffff44" stroke-width="0.8" fill="none"/>
+  <path d="M50 77 Q68 74 86 77" stroke="#ffffff44" stroke-width="0.8" fill="none"/>
+
+  <!-- Mountain peaks rising from book -->
+  <!-- Main center peak -->
+  <path d="M50 18 L38 52 L50 46 L62 52 Z" fill="url(#grad)"/>
+  <!-- Left peak -->
+  <path d="M36 30 L26 52 L36 48 L44 52 Z" fill="url(#grad)"/>
+  <!-- Right peak -->
+  <path d="M64 30 L56 52 L64 48 L74 52 Z" fill="url(#grad)"/>
+  <!-- Snow/white highlights on peaks -->
+  <path d="M50 18 L45 30 L50 27 L55 30 Z" fill="white" opacity="0.85"/>
+  <path d="M36 30 L33 38 L36 36 L39 38 Z" fill="white" opacity="0.75"/>
+  <path d="M64 30 L61 38 L64 36 L67 38 Z" fill="white" opacity="0.75"/>
+
+  <!-- Mountain base connecting to book -->
+  <path d="M22 52 L50 72 L78 52 L62 52 L50 46 L38 52 Z" fill="url(#grad)"/>
 </svg>
