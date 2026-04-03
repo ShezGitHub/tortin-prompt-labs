@@ -926,6 +926,9 @@ export default function TortinPromptLabs() {
       setEvaluating(false);
     }
 
+    const att = activeLesson.activity.attachment;
+    const docBlock = att ? `<document filename="${att.filename}">\n${att.content}\n</document>\n\n` : "";
+
     if (isImageLesson) {
       Promise.all([
         callDalle(userPrompt).then(url => { setWeakResponse(url); setLoadingWeak(false); }).catch(e => { setWeakResponse("error:" + e.message); setLoadingWeak(false); }),
@@ -933,8 +936,8 @@ export default function TortinPromptLabs() {
       ]);
     } else {
       Promise.all([
-        callClaude(selectedModel, userPrompt).then(t => { setWeakResponse(t); setLoadingWeak(false); }).catch(e => { setWeakResponse("Error: " + e.message); setLoadingWeak(false); }),
-        callClaude(selectedModel, improved).then(t => { setUserResponse(t); setLoadingUser(false); }).catch(e => { setUserResponse("Error: " + e.message); setLoadingUser(false); })
+        callClaude(selectedModel, docBlock + userPrompt).then(t => { setWeakResponse(t); setLoadingWeak(false); }).catch(e => { setWeakResponse("Error: " + e.message); setLoadingWeak(false); }),
+        callClaude(selectedModel, docBlock + improved).then(t => { setUserResponse(t); setLoadingUser(false); }).catch(e => { setUserResponse("Error: " + e.message); setLoadingUser(false); })
       ]);
     }
   };
