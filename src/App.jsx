@@ -13,7 +13,7 @@ const LESSONS = [
     ],
     tips: ["Start with a role: 'You are an expert copywriter…'", "State output format explicitly: 'Reply in 3 bullet points'", "Add constraints: 'Keep it under 100 words, professional tone'", "Avoid negatives: say what you WANT, not what you don't"],
     activity: {
-      instruction: "You need a one-line product description for a mountain hiking app. Rewrite the weak prompt below into a strong, specific one — then compare the results!",
+      instruction: "You need a one-line product description for a mountain hiking app. Write the strongest, most specific prompt you can — we'll show you an AI-improved version side by side.",
       weakPrompt: "Write something about a hiking app.",
       placeholder: "You are a product copywriter specialising in outdoor adventure brands. Write a single punchy tagline for a mountain hiking app called 'Summit', aimed at adventure seekers aged 25–40. Max 15 words. Energetic, aspirational tone — no clichés.",
       evalCriteria: ["specific role", "format constraint", "target audience", "tone"]
@@ -28,7 +28,7 @@ const LESSONS = [
     ],
     tips: ["Open with 'I am a [role] working on [project]…'", "Share what you've already tried: 'I've attempted X but the problem is…'", "Define your audience: 'This is for non-technical stakeholders'", "Include examples: 'Something like this, but more…'", "State what to avoid: 'Don't include jargon or technical terms'"],
     activity: {
-      instruction: "You're a UX designer who needs feedback on a button label. Rewrite the weak prompt to include rich context so the AI can give you truly useful, specific advice.",
+      instruction: "You're a UX designer who needs feedback on a button label. Write a prompt that loads enough context for the AI to give genuinely useful, specific advice.",
       weakPrompt: "Is 'Submit' a good button label?",
       placeholder: "I'm a UX designer working on a B2B SaaS onboarding flow for non-technical HR managers. The button currently says 'Submit' and appears at the end of a 5-step form where users input employee data for payroll. Users have been abandoning at this step — we suspect the label feels too final and scary. Suggest 3 alternative button labels with rationale for each, ranked by psychological safety.",
       evalCriteria: ["user role stated", "audience defined", "problem context", "specific ask", "output format"]
@@ -43,7 +43,7 @@ const LESSONS = [
     ],
     tips: ["Add: 'Think step by step before answering'", "Ask the model to show its reasoning: 'Explain your logic at each stage'", "For analysis tasks: 'First list your assumptions, then work through each'", "Use: 'Before giving your final answer, draft a rough outline'", "Combine with output format: 'Show your reasoning, then give a final recommendation'"],
     activity: {
-      instruction: "You need to figure out if a business idea is viable. Transform the weak prompt below into one that forces structured, visible, step-by-step reasoning.",
+      instruction: "You need to figure out if a business idea is viable. Write a prompt that forces structured, visible, step-by-step reasoning from the AI.",
       weakPrompt: "Is opening a coffee shop a good idea?",
       placeholder: "Analyze whether opening a specialty coffee shop in a suburban UK town of 30,000 people is commercially viable. Think step by step: (1) identify the key success factors for independent coffee shops, (2) list 3 major risks with a likelihood rating (low/medium/high) for each, (3) weigh up the pros and cons, (4) give a clear final verdict with your confidence level and the single biggest assumption you're making.",
       evalCriteria: ["step by step", "structured stages", "explicit reasoning", "verdict required", "specific context"]
@@ -58,7 +58,7 @@ const LESSONS = [
     ],
     tips: ["Be specific: 'warm and encouraging, not sycophantic'", "Reference voices: 'in the style of The Economist — authoritative but readable'", "Pair tone with audience: 'friendly but credible, for a risk-averse CFO'", "Use contrast: 'confident, not arrogant; direct, not blunt'", "Provide a sample: 'Match this tone: [paste example]'"],
     activity: {
-      instruction: "You need to write a rejection email to a job applicant. Rewrite the weak prompt to produce an email that's genuinely kind, human, and preserves the candidate's dignity.",
+      instruction: "You need to write a rejection email to a job applicant. Write a prompt that produces something genuinely kind, human, and that preserves the candidate's dignity.",
       weakPrompt: "Write a rejection email for a job applicant.",
       placeholder: "Write a rejection email for a software engineering candidate who made it to the final round but wasn't selected. Tone: warm, genuinely respectful, and human — not corporate boilerplate. The email should: acknowledge their effort specifically (they completed a technical task), give one vague but honest reason for the decision, leave the door open for future roles, and end on an encouraging note. Max 150 words. No clichés like 'we had many strong candidates'.",
       evalCriteria: ["tone specified", "audience considered", "specific content required", "word limit", "avoid clichés"]
@@ -160,7 +160,7 @@ Received: 15:00`
     ],
     tips: ["Specify structure: 'Use H2 headers for each section'", "Request tables for comparisons: 'Output as a markdown table with columns X, Y, Z'", "Define length: 'Max 200 words per section'", "Ask for JSON when you need structured data", "Provide a template: 'Use this skeleton: [paste template]'"],
     activity: {
-      instruction: "You need a competitive analysis of two project management tools. Rewrite the weak prompt to get output in a clean, usable format you could paste straight into a report.",
+      instruction: "You need a competitive analysis of two project management tools. Write a prompt that produces output in a clean, structured format you could paste straight into a report.",
       weakPrompt: "Compare Notion and Asana.",
       placeholder: "Compare Notion and Asana as project management tools for a 20-person product team. Output as a structured report with these exact sections:\n\n**Overview** (2 sentences each)\n**Feature Comparison** (markdown table with rows: Task Management, Docs/Wiki, Automations, Integrations, Mobile App — rate each Good/Fair/Weak)\n**Best For** (one sentence per tool)\n**Pricing** (per user per month, Pro tier)\n**Verdict** (which to choose and why, max 60 words)\n\nBe direct and opinionated. No filler.",
       evalCriteria: ["sections defined", "table requested", "length constraints", "direct tone specified", "template provided"],
@@ -287,7 +287,7 @@ Name: Amena Khatun. Age 38. Mirpur-2. Works with husband who also does tailoring
     ],
     tips: ["Lead with the subject: 'A lone climber on a snow-capped peak…'", "Specify lighting: golden hour, dramatic rim light, soft diffused", "Add style anchors: 'hyperrealistic', 'concept art', 'film still'", "Include camera: 'wide angle', 'macro', 'aerial drone shot'", "End with quality tags: 'ultra detailed, 8k, award winning'"],
     activity: {
-      instruction: "You want a dramatic image of mountains at sunrise for a travel magazine cover. Upgrade the weak prompt into a vivid, detailed image prompt that a generation model could use directly.",
+      instruction: "You want a dramatic image of mountains at sunrise for a travel magazine cover. Write a vivid, detailed image prompt that a generation model could use directly.",
       weakPrompt: "Mountains at sunrise.",
       placeholder: "Dramatic alpine landscape at golden hour, jagged snow-capped peaks catching first light, misty valleys below, lone pine tree silhouette in foreground, cinematic wide angle shot, warm amber and deep violet color palette, hyperrealistic photography, National Geographic style, ultra detailed, 8k, award winning travel photography",
       evalCriteria: ["lighting specified", "style anchor", "camera angle", "color palette", "quality tags"]
@@ -302,7 +302,7 @@ Name: Amena Khatun. Age 38. Mirpur-2. Works with husband who also does tailoring
     ],
     tips: ["Stack physical descriptors: age, build, skin, hair, expression", "Specify clothing with context: not 'jacket' but 'worn Gore-Tex mountaineering jacket, faded red'", "Define the moment: 'caught mid-stride', 'looking off-frame, pensive'", "Set the relationship to environment: 'dwarfed by the ridge behind them'", "Add lighting character: 'harsh side-light casting deep shadows'"],
     activity: {
-      instruction: "You're creating a character portrait for a mountain rescue story. Transform the weak prompt into a richly detailed portrait prompt that would generate a compelling, specific character.",
+      instruction: "You're creating a character portrait for a mountain rescue story. Write a richly detailed portrait prompt that would generate a compelling, specific character.",
       weakPrompt: "A mountain rescue worker.",
       placeholder: "Close-up portrait of a female mountain rescue team leader, late 40s, weathered face with sun-creased lines around sharp, focused eyes, dark hair escaping from beneath a bright orange helmet, wearing a high-visibility rescue jacket over thermal layers, expression of calm authority mid-decision, radio held to chin, jagged snow ridge visible out of focus behind her, overcast flat light creating even exposure, documentary photography style, Canon 85mm f/1.4, shot on film",
       evalCriteria: ["age and appearance", "clothing detail", "expression and moment", "environment relationship", "lighting and lens"]
@@ -319,7 +319,7 @@ Name: Amena Khatun. Age 38. Mirpur-2. Works with husband who also does tailoring
     ],
     tips: ["Open with role: 'You are [Name], a specialized [domain] assistant'", "Add hard rules: 'Never give medical advice. Always cite sources.'", "Define format defaults: 'Always respond in markdown with headers'", "Set personality: 'Be direct, concise, and slightly skeptical'", "Limit scope: 'Only answer questions about [domain]. Politely decline anything else.'"],
     activity: {
-      instruction: "You're building an AI assistant for a mountain gear retailer. Write a full system prompt that makes the model a helpful, knowledgeable, on-brand assistant.",
+      instruction: "You're building an AI assistant for a mountain gear retailer. Write a complete system prompt that turns the model into a helpful, knowledgeable, on-brand assistant.",
       weakPrompt: "You are a helpful assistant for a store.",
       placeholder: "You are Peak Advisor, an expert gear consultant for Summit Outfitters, a premium mountain sports retailer. You have deep knowledge of hiking, climbing, skiing, and backcountry equipment across all major brands.\n\nRules:\n- Always ask about the user's experience level and intended terrain before recommending gear\n- Recommend products based on skill level, conditions, and budget — never oversell\n- Flag safety considerations for technical equipment (crampons, ice axes, avalanche gear)\n- Never recommend gear beyond a user's stated experience level\n- Keep responses concise — use bullet points for gear lists, prose for explanations\n- If you don't know a specific product's current price or availability, say so\n\nTone: knowledgeable and enthusiastic about mountains, never condescending, peer-to-peer rather than salesperson.",
       evalCriteria: ["named persona", "domain expertise", "behavioral rules", "safety awareness", "tone defined"]
@@ -351,7 +351,7 @@ Name: Amena Khatun. Age 38. Mirpur-2. Works with husband who also does tailoring
     ],
     tips: ["Specify the decision-maker: 'written for the Minister of Labour, not a technical audience'", "Anchor with data: 'based on the following statistics: [paste data]'", "Define the tone: 'evidence-led, diplomatically worded, not prescriptive'", "Set the structure: 'Executive Summary (150 words), Problem, Evidence, Recommendations (3 bullets), Call to Action'", "Add country context: 'for a lower-middle income country with high informal employment'"],
     activity: {
-      instruction: "Your country office needs a policy brief on rising youth unemployment. Transform the weak prompt into one that would produce a publication-ready brief for a Minister of Labour.",
+      instruction: "Your country office needs a policy brief on rising youth unemployment. Write a prompt that would produce a publication-ready brief for a Minister of Labour.",
       weakPrompt: "Write a policy brief about youth unemployment.",
       placeholder: "You are an ILO senior policy specialist. Draft a structured policy brief on youth unemployment for the Minister of Labour of a lower-middle income country in Sub-Saharan Africa, where youth (15-24) unemployment is 32% and 60% of youth are in informal work.\n\nStructure:\n**Executive Summary** (max 120 words, key finding + top recommendation)\n**The Problem** (2 paragraphs: data-driven, include gender disaggregation)\n**Why Current Policies Are Falling Short** (3 bullet points, evidence-based)\n**Recommendations** (3 actionable recommendations, each with: what to do, who is responsible, estimated timeline)\n**Call to Action** (1 paragraph, directly addressed to the Minister, diplomatically worded)\n\nTone: evidence-led, non-prescriptive, respects national sovereignty. No jargon. Max 800 words total.",
       evalCriteria: ["decision-maker named", "country context", "structured sections", "data anchored", "tone specified"],
@@ -408,7 +408,7 @@ Current government programmes include the National Skills Development Authority 
     ],
     tips: ["Name the ILO Convention explicitly: 'against ILO Convention No. 87 on Freedom of Association'", "Define the analysis dimensions: 'compare on: scope, definitions, exclusions, penalties, enforcement'", "Request a gap table: 'output as a table with columns: Article, Convention Requirement, National Law, Gap/Compliance Status'", "Ask for severity rating: 'rate each gap as Critical / Significant / Minor'", "Add context: 'the country has ratified the Convention but implementation is pending'"],
     activity: {
-      instruction: "You need to quickly analyse whether a country's draft labour code aligns with ILO maternity protection standards. Write a prompt that produces a structured compliance gap analysis.",
+      instruction: "You need to analyse whether the attached draft labour code aligns with ILO maternity protection standards. Write a prompt that produces a structured compliance gap analysis.",
       weakPrompt: "Check if this labour law follows ILO standards on maternity.",
       placeholder: "You are an ILO legal specialist conducting a compliance review. Analyse the following draft labour code provisions against ILO Convention No. 183 (Maternity Protection Convention, 2000) and Recommendation No. 191.\n\nProvisions to analyse:\n'Article 45: Female employees are entitled to 12 weeks of maternity leave. Leave may be taken 4 weeks before the expected date of birth. The employer shall pay 50% of regular salary during leave. Dismissal of pregnant employees is prohibited during leave period only.'\n\nOutput as a structured gap analysis table:\n| Provision | C183 Requirement | Current Draft | Gap | Severity (Critical/Significant/Minor) | Recommended Amendment |\n\nCover: duration of leave, cash benefits level, medical benefits, employment protection, health protection, non-discrimination. End with a 3-sentence executive summary of the overall compliance status.",
       evalCriteria: ["Convention named", "specific articles covered", "table format requested", "severity rating", "amendment recommendations"],
