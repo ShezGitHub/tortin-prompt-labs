@@ -876,6 +876,65 @@ const MODELS = [
   { id: "claude-haiku-4-5-20251001", label: "Claude Haiku 4.5", badge: "Fast" },
 ];
 
+
+const TRACKS = [
+  {
+    id: "fundamentals",
+    title: "AI Prompting Fundamentals",
+    tagline: "Master the core techniques every AI user needs — from clear instructions to advanced reasoning.",
+    icon: "✦",
+    color: "#c0392b",
+    colorLight: "#fdecea",
+    colorGrad: "linear-gradient(135deg, #e74c3c, #c0392b)",
+    categories: ["Text Prompting", "Output Engineering", "Image Prompting", "Advanced Techniques"],
+    available: true
+  },
+  {
+    id: "labour-policy",
+    title: "AI for Labour & Policy",
+    tagline: "Purpose-built for ILO programme officers, policy analysts, and field researchers.",
+    icon: "🌍",
+    color: "#1a6b8a",
+    colorLight: "#e3f2f8",
+    colorGrad: "linear-gradient(135deg, #2980b9, #1a6b8a)",
+    categories: ["Labour & Policy", "Research & Analysis", "Communication & Learning"],
+    available: true
+  },
+  {
+    id: "marketing",
+    title: "AI for Marketing & Comms",
+    tagline: "Brand voice, campaigns, content strategy, copywriting, and audience targeting.",
+    icon: "📣",
+    color: "#d35400",
+    colorLight: "#fef0e6",
+    colorGrad: "linear-gradient(135deg, #e67e22, #d35400)",
+    categories: [],
+    available: false
+  },
+  {
+    id: "data-research",
+    title: "AI for Data & Research",
+    tagline: "Analysis, synthesis, structured extraction, and turning raw data into insight.",
+    icon: "📊",
+    color: "#1e8449",
+    colorLight: "#e8f8ee",
+    colorGrad: "linear-gradient(135deg, #27ae60, #1e8449)",
+    categories: [],
+    available: false
+  },
+  {
+    id: "learning-design",
+    title: "AI for Learning Design",
+    tagline: "Build training programmes, case studies, facilitation guides, and assessments.",
+    icon: "🎓",
+    color: "#6c3483",
+    colorLight: "#f4ecfa",
+    colorGrad: "linear-gradient(135deg, #8e44ad, #6c3483)",
+    categories: [],
+    available: false
+  }
+];
+
 const R = "#c0392b", RL = "#e74c3c", RLL = "#fdecea";
 const SF = "DM Sans, sans-serif";
 const PF = "Playfair Display, serif";
@@ -1140,6 +1199,7 @@ function DocumentViewer({ attachment }) {
 }
 
 export default function TortinPromptLabs() {
+  const [selectedTrack, setSelectedTrack] = useState(null);
   const [activeLesson, setActiveLesson] = useState(null);
   const [step, setStep] = useState("lesson");
   const [userPrompt, setUserPrompt] = useState("");
@@ -1255,7 +1315,8 @@ export default function TortinPromptLabs() {
     }
   };
 
-  const categories = [...new Set(LESSONS.map(l => l.category))];
+  const trackLessons = selectedTrack ? LESSONS.filter(l => selectedTrack.categories.includes(l.category)) : LESSONS;
+  const categories = selectedTrack ? selectedTrack.categories.filter(cat => LESSONS.some(l => l.category === cat)) : [...new Set(LESSONS.map(l => l.category))];
   const diffColor = { Beginner: "#27ae60", Intermediate: "#e67e22", Advanced: R };
   const overallAvg = completed.length ? Math.round(completed.reduce((a, id) => a + (scores[id]?.score / scores[id]?.max) * 100, 0) / completed.length) : null;
 
@@ -1422,16 +1483,60 @@ export default function TortinPromptLabs() {
       {/* ── MAIN CONTENT ───────────────────────────────────────────────── */}
       {!activeLesson ? (
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 40px" }}>
+
+          {/* ── TRACKS ENTRY PAGE ── */}
+          {!selectedTrack ? (
+            <div style={{ animation: "fadeUp 0.4s ease" }}>
+              <div style={{ textAlign: "center", marginBottom: 56 }}>
+                <div style={{ display: "inline-block", padding: "6px 18px", background: RLL, borderRadius: 20, fontSize: 11, letterSpacing: 3, color: R, textTransform: "uppercase", fontFamily: SF, marginBottom: 22 }}>✦ Choose Your Track ✦</div>
+                <h1 style={{ fontFamily: PF, fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 900, lineHeight: 1.1, color: "#1a0505" }}>
+                  Your AI Learning<br />
+                  <span style={{ background: selectedTrack ? selectedTrack.colorGrad : `linear-gradient(135deg, ${RL}, ${R})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Starts Here</span>
+                </h1>
+                <p style={{ marginTop: 18, fontSize: 15, color: "#888", maxWidth: 500, margin: "18px auto 0", lineHeight: 1.8, fontFamily: SF }}>
+                  Pick the track that fits your work. Each one is a focused curriculum with live AI practice and instant feedback.
+                </p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
+                {TRACKS.map(track => {
+                  const lessonCount = LESSONS.filter(l => track.categories.includes(l.category)).length;
+                  return (
+                    <div key={track.id} onClick={() => track.available && setSelectedTrack(track)}
+                      style={{ background: "#fff", border: `1px solid ${track.available ? track.color + "33" : "#eee"}`, borderRadius: 20, padding: 28, cursor: track.available ? "pointer" : "default", position: "relative", overflow: "hidden", transition: "all 0.2s", opacity: track.available ? 1 : 0.6, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
+                      onMouseEnter={e => { if (track.available) e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,0,0,0.10)"; }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.04)"; }}>
+                      {/* colour bar */}
+                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: track.colorGrad }} />
+                      {!track.available && (
+                        <div style={{ position: "absolute", top: 14, right: 14, background: "#f0f0f0", color: "#aaa", fontSize: 10, letterSpacing: 2, padding: "3px 10px", borderRadius: 20, textTransform: "uppercase", fontFamily: SF }}>Coming Soon</div>
+                      )}
+                      <div style={{ fontSize: 36, marginBottom: 14, marginTop: 6 }}>{track.icon}</div>
+                      <h2 style={{ fontFamily: PF, fontSize: 20, fontWeight: 700, color: "#1a0505", marginBottom: 8, lineHeight: 1.25 }}>{track.title}</h2>
+                      <p style={{ fontSize: 13, color: "#777", lineHeight: 1.7, fontFamily: SF, marginBottom: 20 }}>{track.tagline}</p>
+                      {track.available ? (
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <span style={{ fontSize: 12, color: track.color, fontFamily: SF, fontWeight: 600, background: track.colorLight, padding: "4px 12px", borderRadius: 20 }}>{lessonCount} lessons</span>
+                          <span style={{ fontSize: 13, color: track.color, fontFamily: SF, fontWeight: 600 }}>Start →</span>
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: 12, color: "#bbb", fontFamily: SF }}>Launching soon</div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+          <div>
+          {/* ── LESSON LIST (inside track) ── */}
           {/* Hero */}
-          <div style={{ textAlign: "center", marginBottom: 56, animation: "fadeUp 0.5s ease" }}>
-            <div style={{ display: "inline-block", padding: "6px 18px", background: RLL, borderRadius: 20, fontSize: 11, letterSpacing: 3, color: R, textTransform: "uppercase", fontFamily: SF, marginBottom: 22 }}>✦ Interactive Curriculum ✦</div>
-            <h1 style={{ fontFamily: PF, fontSize: "clamp(36px, 5vw, 62px)", fontWeight: 900, lineHeight: 1.1, color: "#1a0505" }}>
-              Master the Art<br />
-              <span style={{ background: `linear-gradient(135deg, ${RL}, ${R})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>of AI Prompting</span>
+          <div style={{ textAlign: "center", marginBottom: 48, animation: "fadeUp 0.5s ease" }}>
+            <button onClick={() => setSelectedTrack(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "#aaa", fontSize: 12, fontFamily: SF, letterSpacing: 2, textTransform: "uppercase", marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 6 }}>← All Tracks</button>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "6px 18px", background: selectedTrack.colorLight, borderRadius: 20, fontSize: 11, letterSpacing: 3, color: selectedTrack.color, textTransform: "uppercase", fontFamily: SF, marginBottom: 22, marginLeft: 12 }}>{selectedTrack.icon} {selectedTrack.title}</div>
+            <h1 style={{ fontFamily: PF, fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 900, lineHeight: 1.1, color: "#1a0505" }}>
+              <span style={{ background: selectedTrack.colorGrad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{selectedTrack.title}</span>
             </h1>
-            <p style={{ marginTop: 18, fontSize: 15, color: "#888", maxWidth: 460, margin: "18px auto 0", lineHeight: 1.8, fontFamily: SF }}>
-              Guided lessons, live AI practice, and instant feedback on every prompt you write. Highlight anything to save it to your notes.
-            </p>
+            <p style={{ marginTop: 14, fontSize: 15, color: "#888", maxWidth: 480, margin: "14px auto 0", lineHeight: 1.8, fontFamily: SF }}>{selectedTrack.tagline}</p>
           </div>
 
           {/* Progress summary on homepage if scores exist */}
@@ -1462,7 +1567,7 @@ export default function TortinPromptLabs() {
                 <div style={{ flex: 1, height: 1, background: "#f0e0e0" }} />
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 16 }}>
-                {LESSONS.filter(l => l.category === cat).map((lesson, i) => {
+                {trackLessons.filter(l => l.category === cat).map((lesson, i) => {
                   const sc = scores[lesson.id];
                   const pct = sc ? Math.round((sc.score / sc.max) * 100) : null;
                   return (
@@ -1485,6 +1590,8 @@ export default function TortinPromptLabs() {
               </div>
             </div>
           ))}
+        </div>
+        )}
         </div>
       ) : (
         <div style={{ maxWidth: step === "result" ? 1200 : 820, margin: "0 auto", padding: "40px 32px", transition: "max-width 0.4s ease" }}>
