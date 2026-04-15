@@ -1069,6 +1069,487 @@ NOTE: Notice how different command words — 'to what extent', 'evaluate', 'comp
       placeholder: "I'm studying [subject] and I got the following question wrong:\n\nQuestion: [paste the question]\nMy answer: [paste what you wrote or your reasoning]\nFeedback/mark received: [paste any feedback, or 'incorrect' if no feedback given]\n\nDo NOT just give me the correct answer. Instead:\n1. Identify exactly what is wrong with my reasoning — be specific about where my thinking broke down\n2. What concept or principle have I misunderstood or misapplied?\n3. What is the correct way to think about this, and why does it lead to the right answer?\n4. Give me an analogous practice question I can try immediately to check I've actually understood it — and don't give me the answer until I've attempted it\n\nI want to fix the gap in my understanding, not just know this answer.",
       evalCriteria: ["own answer shared not just question", "reasoning explained", "diagnosis not answer requested", "concept gap identified", "follow-up practice requested"]
     }
+  },
+  // ── MARKETING & COMMS ───────────────────────────────────────────────────────
+  {
+    id: "mktg-copy", category: "Brand & Copy", icon: "✍️",
+    title: "Writing Copy That Actually Converts", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Good Copy Is a Conversation, Not a Broadcast", body: "The most common mistake in copywriting is writing about the product instead of writing for the reader. Effective copy speaks directly to a specific person's specific problem, desire, or fear — and shows them how your product or message resolves it. AI can produce fluent copy instantly, but fluent is not the same as persuasive. The brief you give it determines everything: who the reader is, what they want, what's stopping them, and what action you want them to take." },
+      { heading: "The Four Elements Every Copy Brief Needs", body: "Before prompting, define: (1) The audience — one specific person, not 'our customers'. (2) The single job this copy must do — one message, one action. (3) The insight — what does this person secretly believe or fear that your message can connect to? (4) The tone — irreverent, authoritative, warm, urgent? Giving AI all four produces copy you can actually use. Missing any one produces generic content you'll rewrite anyway." }
+    ],
+    tips: ["Describe one specific reader, not a demographic: 'a 34-year-old founder who...'", "State the single action you want: 'click', 'sign up', 'believe X'", "Give the emotional hook: what does this person secretly want or fear?", "Specify length and format: '3 options, each under 30 words'", "Ask for multiple variations with different angles so you can test"],
+    activity: {
+      instruction: "Write a prompt that produces genuinely persuasive copy for a product or campaign you're working on — not generic marketing language, but something that speaks to a specific reader's specific motivation.",
+      weakPrompt: "Write some marketing copy for our product.",
+      placeholder: "You are a senior direct-response copywriter. Write copy for the following:\n\nProduct/service: [describe it in one sentence]\nTarget reader: [describe one specific person — their situation, what they want, what frustrates them]\nSingle goal of this copy: [the one action or belief you want to create]\nKey insight: [what does this reader believe or fear that your product addresses?]\nTone: [e.g. 'confident but not arrogant', 'warm and direct', 'punchy and irreverent']\n\nDeliver 3 variations:\n- Version A: leads with the problem/pain\n- Version B: leads with the outcome/desire\n- Version C: leads with a surprising or counter-intuitive angle\n\nEach version: headline + 2-3 sentences of body copy. Max 60 words per version. No clichés, no exclamation marks unless essential.",
+      evalCriteria: ["specific reader defined", "single goal stated", "emotional insight included", "tone specified", "multiple variations requested"]
+    }
+  },
+  {
+    id: "mktg-brand-voice", category: "Brand & Copy", icon: "🎙️",
+    title: "Defining & Maintaining Brand Voice", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Brand Voice Is How You Sound When No One Is Watching", body: "Brand voice is not a list of adjectives on a style guide. It's the consistent personality that comes through in every word — the tweet, the error message, the invoice, the job ad. The problem is that when multiple people or AI tools produce content, voice drifts. The solution is giving AI a precise voice brief: not just 'professional and friendly' (meaningless) but specific examples of what you sound like and — crucially — what you don't." },
+      { heading: "The 'Sound Like / Don't Sound Like' Technique", body: "The most effective way to brief AI on brand voice is to give it contrasting pairs: a sentence that sounds like you, and the same sentence rewritten in a way that doesn't. This shows the model the gap between your voice and generic corporate writing. Pair this with 3-5 example sentences in your actual brand voice, and the output becomes recognisably yours rather than interchangeable with every other brand." }
+    ],
+    tips: ["Give examples: 'We'd say X, we'd never say Y'", "Define 3 voice dimensions with contrasts: e.g. 'direct, not blunt; warm, not sycophantic'", "Include an example of your best existing copy as a reference", "Specify what your voice is NOT: 'never corporate jargon, never passive voice'", "Ask AI to rewrite a weak piece of your content in brand voice as a test"],
+    activity: {
+      instruction: "Write a prompt that establishes your brand voice clearly enough for AI to write consistently in it — then test it by having the AI produce a short piece of content in that voice.",
+      weakPrompt: "Write in our brand voice — professional but friendly.",
+      placeholder: "I'm going to define our brand voice and then ask you to write in it consistently.\n\nOur brand in one sentence: [describe what you do and who for]\n\nOur voice is:\n- [dimension 1, e.g. 'Direct, not blunt — we get to the point but we're never harsh']\n- [dimension 2, e.g. 'Warm, not sycophantic — we care about our customers but don't flatter them']\n- [dimension 3, e.g. 'Confident, not arrogant — we know our stuff but we don't lecture']\n\nWe sound like this: '[paste 2-3 sentences of your best existing copy]'\nWe do NOT sound like this: '[paste an example of copy that feels wrong for your brand]'\n\nNow write [specific piece of content — e.g. 'a 3-tweet thread announcing our new feature X'] in this voice. Show me 2 versions.",
+      evalCriteria: ["voice dimensions defined with contrasts", "positive example provided", "negative example provided", "brand context given", "specific content requested"]
+    }
+  },
+  {
+    id: "mktg-campaign-brief", category: "Campaigns & Social", icon: "📢",
+    title: "Writing a Campaign Brief with AI", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "A Brief Is the Most Leveraged Document in Marketing", body: "A good campaign brief multiplies the quality of everything that comes from it — copy, creative, targeting, messaging. A weak brief produces scattered execution where every piece feels disconnected. AI can help you build a rigorous brief quickly, but you need to give it the strategic inputs: business goal, audience insight, message, reason to believe, and channel. Miss any of these and the brief — and everything downstream — will be vague." },
+      { heading: "Brief First, Executions Second", body: "The temptation is to jump straight to 'write me some ads'. Resist this. Spending 10 minutes building a solid brief with AI first means every execution that follows is coherent and on-strategy. You can even use AI to pressure-test the brief: 'What is unclear or weak about this brief?' is one of the most valuable prompts in marketing." }
+    ],
+    tips: ["Always start with the business goal, not the creative idea", "Define the single most important thing you want the audience to feel, think, or do", "Give the 'reason to believe' — why should they trust the claim?", "Specify the channels and how they work together", "Ask AI to critique the brief before you use it: 'What is missing?'"],
+    activity: {
+      instruction: "Write a prompt that builds a complete, strategy-led campaign brief for a product launch, promotion, or initiative — one rigorous enough that any creative team could execute from it.",
+      weakPrompt: "Write a campaign brief for our product launch.",
+      placeholder: "Act as a senior brand strategist. Help me build a rigorous campaign brief for the following:\n\nBusiness context: [what we're launching/promoting and why now]\nBusiness goal: [specific, measurable — e.g. '500 sign-ups in 4 weeks']\nTarget audience: [one specific person — their situation, motivations, current behaviour]\nCurrent perception: [how does the audience think about us or this category today?]\nDesired perception: [how do we want them to think after the campaign?]\nKey message: [the single most important thing we want them to take away]\nReason to believe: [why should they believe our claim?]\nChannels: [where will this campaign run?]\nBudget/scale: [optional — helps calibrate]\n\nOutput a complete campaign brief in a structured format. Then critique it: what is unclear, missing, or strategically weak?",
+      evalCriteria: ["business goal specified", "single audience defined", "perception shift articulated", "reason to believe included", "brief critique requested"],
+      attachment: {
+        filename: "Campaign_Brief_Template.txt",
+        fileType: "txt",
+        meta: "Standard campaign brief framework · Fill in your own details",
+        content: `# CAMPAIGN BRIEF TEMPLATE
+## Use this to structure your inputs before prompting
+
+---
+
+**CAMPAIGN NAME:** [working title]
+**DATE:** [brief date]
+**CAMPAIGN PERIOD:** [start - end]
+
+---
+
+## 1. BUSINESS OBJECTIVE
+What specific, measurable business outcome does this campaign need to drive?
+[e.g. 500 new trial sign-ups / £50k revenue / 20% increase in brand awareness among 25-34s]
+
+## 2. BACKGROUND & CONTEXT
+Why are we doing this campaign now? What's changed in the market, business, or audience?
+
+## 3. TARGET AUDIENCE
+Who is the ONE person we are speaking to? (Not a segment — a person)
+- Name/role:
+- Their situation:
+- Their goal:
+- Their frustration:
+- Where they spend time:
+
+## 4. CURRENT VS. DESIRED PERCEPTION
+- They currently think:
+- After this campaign, we want them to think:
+- After this campaign, we want them to feel:
+- After this campaign, we want them to do:
+
+## 5. SINGLE KEY MESSAGE
+If they remember one thing, it should be:
+
+## 6. REASON TO BELIEVE
+Why should they believe our claim? (Proof point, testimonial, data, guarantee)
+
+## 7. TONE & PERSONALITY
+How should this campaign feel? (3 adjectives + one 'not')
+
+## 8. CHANNELS & FORMAT
+Where will this run and in what formats?
+
+## 9. BUDGET & TIMELINE
+Budget: | Go-live date: | Key milestones:
+
+## 10. SUCCESS METRICS
+How will we know if this worked?`
+      }
+    }
+  },
+  {
+    id: "mktg-social", category: "Campaigns & Social", icon: "📱",
+    title: "Social Content at Scale", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Volume Is Not Strategy", body: "The mistake most brands make with AI and social media is using it to produce more content faster without thinking about what that content should do. More posts that say nothing is not better than fewer posts that land. Before asking AI to produce social content, be clear about: what platform you're posting on and how it works, what your audience wants from you specifically on that platform, and what each post needs to do — entertain, educate, convert, or build trust." },
+      { heading: "Platform Context Changes Everything", body: "A LinkedIn post that performs well is completely different from a tweet, a TikTok caption, or an Instagram carousel. LinkedIn rewards nuance and professional insight. Twitter/X rewards brevity and a strong take. Instagram rewards visual storytelling with emotion. TikTok rewards relatability and pattern interruption. Telling AI which platform you're on — and what kind of content performs on it — is not optional. It's the most important context you can give." }
+    ],
+    tips: ["Always specify platform and explain how your audience uses it", "Define the content's job: entertain, educate, inspire, convert", "Give your engagement history: 'posts about X get 3x our usual engagement'", "Ask for a mix of content types, not just one format", "Request native platform behaviour: 'write in the style of a LinkedIn thought leader post, not a press release'"],
+    activity: {
+      instruction: "Write a prompt that produces a batch of social content for a specific platform and purpose — not generic posts but content tailored to how your audience actually behaves on that platform.",
+      weakPrompt: "Write some social media posts for us.",
+      placeholder: "You are an expert social media strategist who deeply understands [platform: LinkedIn/Instagram/Twitter/TikTok].\n\nContext:\n- Brand: [brief description]\n- Audience on this platform: [who they are and what they come to this platform for]\n- Content goal for this batch: [educate/entertain/convert/build trust]\n- Our tone: [how we sound]\n- Topic/theme for this batch: [the subject matter]\n\nCreate 5 posts for [platform]. For each post:\n- Write the caption/text in the native style of [platform] — not a press release, not an ad\n- Suggest the visual or format (image, carousel, video hook, etc.)\n- Note the primary goal of that specific post\n\nAvoid: [specific things that don't work for your brand — e.g. 'no hashtag stuffing', 'no motivational quotes', 'no emojis']",
+      evalCriteria: ["platform specified", "audience behaviour described", "content goal defined", "native style requested", "avoid list given"]
+    }
+  },
+  {
+    id: "mktg-email", category: "Campaigns & Social", icon: "📧",
+    title: "Email Marketing That Converts", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "The Subject Line Is 80% of the Email", body: "If your subject line doesn't get the open, nothing else matters. Subject lines that work have three things in common: they create curiosity or relevance without being clickbait, they feel personal rather than broadcast, and they interrupt the pattern of every other email in the inbox. AI can generate dozens of options — but you need to brief it with the reader's context, the email's emotional hook, and what you specifically want to avoid." },
+      { heading: "Every Good Email Has One Job", body: "The most common email marketing failure is trying to do too much in one email — announce the product, share the testimonial, offer the discount, and invite them to the webinar. One email, one goal, one call to action. Everything in the email should serve that single goal. When briefing AI, state the one thing you want the reader to do or feel after reading. If you can't state it in one sentence, the email will be unfocused." }
+    ],
+    tips: ["Lead with the reader's situation, not your product announcement", "State the single CTA before writing — one email, one action", "Brief the subject line separately with 5+ variations to test", "Give the reader's relationship to you: cold, warm, lapsed, loyal", "Ask AI to flag any sentences that sound like marketing speak"],
+    activity: {
+      instruction: "Write a prompt that produces a high-converting email — subject line, body, and CTA — for a specific goal and a specific reader relationship. Brief it tightly enough that the output needs minimal editing.",
+      weakPrompt: "Write a marketing email about our new product.",
+      placeholder: "You are an expert email copywriter. Write a marketing email with the following brief:\n\nGoal: [the single thing this email must achieve — e.g. 'get warm leads to book a demo']\nReader relationship: [cold/warm/existing customer/lapsed] — they [brief context on what they know about us]\nContext for this email: [why are we sending this now — what's the hook or reason?]\nKey message: [what's the most important thing we want them to understand or feel?]\nCTA: [the one action we want them to take]\nTone: [how this email should feel]\nLength: [e.g. short and punchy under 150 words / mid-length story-led / long-form nurture]\n\nDeliver:\n1. 5 subject line options (2 curiosity-led, 2 benefit-led, 1 contrarian)\n2. Preview text for each subject line\n3. Full email body\n4. One alternative version with a different emotional angle\n\nFlag any sentences that sound like generic marketing copy.",
+      evalCriteria: ["single goal stated", "reader relationship defined", "hook/reason given", "subject line variations requested", "marketing speak flag requested"]
+    }
+  },
+  {
+    id: "mktg-content-strategy", category: "Content Strategy", icon: "🗺️",
+    title: "Content Strategy & Planning", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "Content Without Strategy Is Just Publishing", body: "Most content fails not because it's badly written but because it has no clear role in the customer journey. A content strategy answers three questions before any content is created: Who is it for and what do they need at each stage of their journey? What do we want them to think, feel, or do after consuming it? How does content connect to business outcomes? AI can help you build this architecture quickly — but you have to bring the business and audience knowledge." },
+      { heading: "The Content Mix Framework", body: "Effective content strategies balance three types: (1) Awareness content — draws in people who don't know you yet, answers the questions they're already searching. (2) Nurture content — builds trust and demonstrates expertise with people who know you but aren't ready to buy. (3) Conversion content — gives warm prospects the specific information or social proof they need to act. Brief AI with which type you're building and why." }
+    ],
+    tips: ["Map content to the customer journey stage it serves", "Identify the top 5 questions your audience has before buying", "Define what 'success' looks like for each content piece", "Ask AI to identify content gaps: 'what questions aren't we answering?'", "Plan for a content series, not just one-off pieces"],
+    activity: {
+      instruction: "Write a prompt that produces a practical content strategy — including content pillars, topic ideas, and a 4-week plan — for a specific audience and business goal.",
+      weakPrompt: "Help me plan some content for next month.",
+      placeholder: "Act as a content strategist. Build a content strategy for the following:\n\nBusiness: [what we do and who we serve]\nAudience: [who we're creating content for — their role, goals, challenges]\nBusiness goal for content: [what we want content to achieve — e.g. 'generate 50 qualified leads per month']\nCurrent content situation: [what we're already producing and what's working/not working]\nChannels: [where we publish]\nResources: [how much content we can realistically produce — e.g. '2 long-form posts and 10 social posts per week']\n\nDeliver:\n1. 3-4 content pillars that balance awareness, nurture, and conversion\n2. 5 specific topic ideas per pillar with a suggested format\n3. A 4-week content calendar showing what to publish where and when\n4. The top 3 metrics to track to know if this strategy is working",
+      evalCriteria: ["business goal specified", "audience defined", "current situation given", "resource constraints included", "metrics requested"]
+    }
+  },
+  {
+    id: "mktg-audience-writing", category: "Brand & Copy", icon: "🎯",
+    title: "Writing for Different Audiences", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "The Same Message, Completely Rewritten", body: "A technical product needs to be explained completely differently to an engineer, a CFO, and an end user. Not because the product changes — but because each audience cares about different things, uses different language, and has different objections. Adapting messaging for audiences is one of AI's great strengths, but it needs you to define what each audience values, what they worry about, and how they talk. Without that, you get the same message with different labels." },
+      { heading: "Vocabulary Is Not the Only Difference", body: "Beginner mistake: adapting copy by changing technical words to simpler ones. Expert move: changing the entire argument based on what each audience most cares about. A CFO cares about ROI and risk. An engineer cares about reliability and integration. A user cares about ease and time saved. The core product is the same — but the story you tell each person is fundamentally different. Tell AI what each audience prioritises, not just who they are." }
+    ],
+    tips: ["Define what each audience specifically cares about, fears, and values", "Give the objection each audience will have in their head", "Specify vocabulary level and technical depth for each version", "Ask AI to rewrite the same message 3 ways for 3 audiences", "Check: does each version feel written for that person, or just translated?"],
+    activity: {
+      instruction: "Write a prompt that takes a single core message and rewrites it for 3 different audiences — each version tailored to what that specific person actually cares about, not just simplified or re-labelled.",
+      weakPrompt: "Rewrite this for different audiences.",
+      placeholder: "I have the following core message I need to communicate:\n\n'[Paste your core message or product description]'\n\nRewrite this message for each of the following 3 audiences. For each version, change the argument, not just the vocabulary — focus on what that specific person most cares about:\n\nAudience 1: [role/type] — they care most about [priority], they worry about [concern], their main objection is [objection]\nAudience 2: [role/type] — they care most about [priority], they worry about [concern], their main objection is [objection]\nAudience 3: [role/type] — they care most about [priority], they worry about [concern], their main objection is [objection]\n\nFor each version: write a headline + 3 sentences of body copy. Then note in one line what the key argument shift was between versions.",
+      evalCriteria: ["core message provided", "3 distinct audiences defined", "priorities and concerns given per audience", "argument shift not just vocabulary", "key difference noted"]
+    }
+  },
+
+  // ── HR & PEOPLE TEAMS ───────────────────────────────────────────────────────
+  {
+    id: "hr-job-descriptions", category: "Recruitment & Hiring", icon: "📋",
+    title: "Job Descriptions That Attract the Right People", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Most Job Descriptions Are Wish Lists, Not Adverts", body: "A job description written as a list of requirements is passive — it describes what you want, not why someone exceptional would want to join you. The best candidates read job descriptions as marketing: they're assessing whether this role is worth leaving their current job for. The structure that works is: the problem this person will solve, why it matters, what exceptional looks like in the first year, and what makes this team or company genuinely worth joining. Requirements last, not first." },
+      { heading: "Requirements Lists Create Bias and Miss Great Candidates", body: "Research consistently shows that long requirements lists cause qualified candidates — particularly women and underrepresented groups — to self-select out. If a candidate meets 7 of 10 criteria and is exceptional, you want them to apply. Write requirements as the minimum bar, not a comprehensive profile of the ideal person. Use AI to help you separate 'must have' from 'nice to have' and rewrite requirements as outcomes rather than credentials." }
+    ],
+    tips: ["Lead with the problem the person will solve, not the job title", "Describe what success looks like in 6 months, not just responsibilities", "Split requirements into 'essential' (3-5 max) and 'desirable'", "Include what makes this role genuinely worth taking — not just perks", "Ask AI to flag any requirements that might deter strong candidates unnecessarily"],
+    activity: {
+      instruction: "Write a prompt that produces a compelling job description for a role you're hiring — one that reads like an advert for an exceptional opportunity, not a compliance document.",
+      weakPrompt: "Write a job description for a marketing manager.",
+      placeholder: "You are an expert recruiter and talent brand specialist. Write a compelling job description for the following role:\n\nRole title: [title]\nTeam/company: [brief description of the company and team — 2 sentences]\nThe core problem this person will solve: [what gap or challenge does this hire address?]\nKey responsibilities: [3-5 core things they'll own, framed as outcomes not tasks]\nWhat success looks like at 6 months: [specific, concrete]\nMust-have requirements: [maximum 4 — only genuine blockers]\nNice-to-have: [2-3 things that would be a bonus]\nWhat makes this role genuinely worth taking: [growth, impact, team, mission — be specific, not generic]\nSalary range: [include if possible — reduces wasted time for everyone]\n\nFormat: opening hook (2 sentences) → the opportunity → what you'll do → what we're looking for → why join us → how to apply.\n\nThen flag any language that might deter qualified candidates unnecessarily.",
+      evalCriteria: ["problem framed not just tasks", "success defined at 6 months", "requirements split essential vs desirable", "genuine reasons to join included", "bias check requested"]
+    }
+  },
+  {
+    id: "hr-interviews", category: "Recruitment & Hiring", icon: "🤝",
+    title: "Designing Better Interview Questions", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Most Interview Questions Test Interview Performance, Not Job Performance", body: "'Tell me about yourself' and 'what's your greatest weakness' are performance theatre — they reveal interview skill, not capability. Structured interviews with carefully designed behavioural and situational questions consistently outperform unstructured interviews in predicting performance. Each question should target a specific competency you've identified as critical for the role, and should require evidence from real experience, not hypothetical answers." },
+      { heading: "The STAR Framework Is a Starting Point, Not an Endpoint", body: "Behavioural questions (Situation, Task, Action, Result) are good at uncovering what someone has done. Situational questions ('what would you do if...') test judgement. The best interviews use both, plus probing follow-ups that go deeper: 'what was hardest about that?', 'what would you do differently?', 'how did you know it worked?' Brief AI with the specific competencies you're hiring for and it will produce questions that actually discriminate between good and exceptional candidates." }
+    ],
+    tips: ["Map each question to a specific competency you're assessing", "Mix behavioural ('tell me about a time') and situational ('imagine you') questions", "Always include planned follow-up probes for each question", "Avoid hypotheticals for senior roles — ask for real examples", "Ask AI to score what a 'strong' vs 'weak' answer looks like for each question"],
+    activity: {
+      instruction: "Write a prompt that produces a structured interview guide for a specific role — with questions mapped to competencies, follow-up probes, and guidance on what strong answers look like.",
+      weakPrompt: "Give me some interview questions for a marketing manager.",
+      placeholder: "Act as an expert in structured interviewing and talent assessment. Create an interview guide for the following role:\n\nRole: [job title]\nKey competencies to assess: [list 4-5 — e.g. strategic thinking, stakeholder influence, data-driven decision making, team leadership]\nLevel: [junior/mid/senior]\nInterview format: [e.g. '60-minute panel interview with hiring manager and team lead']\nAny specific situations or challenges relevant to this role: [e.g. 'this person will need to manage ambiguity in a fast-scaling startup']\n\nFor each competency, provide:\n1. One behavioural question and one situational question\n2. Two follow-up probes to go deeper\n3. What a strong answer includes vs what a weak answer looks like\n\nEnd with 2 culture/values questions and 3 questions candidates should expect to ask us.",
+      evalCriteria: ["competencies specified", "behavioural and situational mix", "follow-up probes included", "strong vs weak answer guidance", "candidate questions included"]
+    }
+  },
+  {
+    id: "hr-performance", category: "People & Performance", icon: "📈",
+    title: "Performance Reviews That Actually Develop People", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "Most Performance Reviews Are Anxiety-Inducing and Useless", body: "The typical performance review fails because it conflates two incompatible goals: rating the past (evaluation) and developing the future (growth). People can't genuinely reflect on development when they're anxious about their rating. The reviews that produce real change are specific about behaviour and impact, forward-looking in their focus, and written in a tone that assumes the person is capable of growth. AI can help you write these — but the specific observations have to come from you." },
+      { heading: "Specificity Is the Difference Between Useful and Hollow", body: "'Good communicator' is useless feedback. 'In the Q3 board presentation, your ability to translate technical detail into business impact clearly influenced the funding decision' is useful. AI is excellent at helping you structure and express performance observations — but only if you give it the specific examples and evidence. Vague input produces vague output that helps no one." }
+    ],
+    tips: ["Always start with specific examples, not generalisations", "Structure as: what they did → impact it had → pattern you're observing", "Separate 'what to keep doing' from 'what to develop'", "Frame development areas as opportunities, not deficits", "Ask AI to check tone: 'does this read as constructive or critical?'"],
+    activity: {
+      instruction: "Write a prompt that produces a specific, constructive, and genuinely developmental performance review narrative for a team member — grounded in real examples, not generic competencies.",
+      weakPrompt: "Write a performance review for my team member.",
+      placeholder: "You are an experienced people manager and coach. Help me write a performance review narrative for a team member.\n\nRole and level: [their job title and seniority]\nReview period: [e.g. H1 2025]\nKey responsibilities in this period: [what they were accountable for]\n\nPositive observations with examples:\n[List 3-4 specific things they did well with concrete examples and their impact]\n\nAreas for development with examples:\n[List 2-3 specific behaviours or gaps with examples — what happened and why it matters]\n\nContext: [anything relevant — were they dealing with major challenges? Did something change in the team?]\n\nTone guidance: [e.g. 'this is a high performer who needs stretch goals' / 'this person is struggling and needs clear direction but also support']\n\nOutput a 400-500 word review narrative. Then review your own output and flag: any generalisations that need a specific example, any language that sounds critical rather than developmental, and any missed opportunities to be more encouraging.",
+      evalCriteria: ["specific examples provided", "impact of actions described", "development framed as opportunity", "tone specified", "self-critique of output requested"],
+      attachment: {
+        filename: "Performance_Review_Evidence_Template.txt",
+        fileType: "txt",
+        meta: "Use this to collect evidence before writing a review",
+        content: `# PERFORMANCE REVIEW EVIDENCE COLLECTOR
+## Fill this in before prompting AI to write the narrative
+
+---
+
+**TEAM MEMBER:**
+**ROLE:**
+**REVIEW PERIOD:**
+**REVIEWER:**
+
+---
+
+## SECTION 1: WHAT WENT WELL (Collect 3-5 examples)
+
+For each, note:
+- What specifically did they do?
+- What was the situation/context?
+- What was the measurable or observable impact?
+- What does this tell you about their capabilities?
+
+Example 1:
+Behaviour:
+Context:
+Impact:
+Capability signal:
+
+Example 2:
+Behaviour:
+Context:
+Impact:
+Capability signal:
+
+Example 3:
+Behaviour:
+Context:
+Impact:
+Capability signal:
+
+---
+
+## SECTION 2: AREAS FOR DEVELOPMENT (Collect 2-3 examples)
+
+For each, note:
+- What specifically happened?
+- What was the impact of that gap?
+- What behaviour change would address it?
+- What support or resources would help?
+
+Development area 1:
+What happened:
+Impact:
+Desired behaviour:
+Support needed:
+
+Development area 2:
+What happened:
+Impact:
+Desired behaviour:
+Support needed:
+
+---
+
+## SECTION 3: OVERALL ASSESSMENT
+
+Rating (if applicable):
+Key theme for this review in one sentence:
+Top priority for development next period:
+One thing this person should be really proud of:`
+      }
+    }
+  },
+  {
+    id: "hr-difficult-comms", category: "People & Performance", icon: "💬",
+    title: "Drafting Difficult HR Communications", difficulty: "Advanced", duration: "8 min",
+    theory: [
+      { heading: "Difficult Messages Need More Precision, Not Less", body: "When the message is hard — redundancy, poor performance, disciplinary action, policy change — the instinct is to soften it with vague language. This backfires. Unclear language in difficult HR communications creates legal risk, confuses the recipient about what's expected, and erodes trust. The goal is clear, fair, legally appropriate, and human. AI can help you draft these communications, but you must review everything carefully — tone, accuracy, and legal compliance are your responsibility." },
+      { heading: "Separate the Message from the Emotion", body: "When writing a difficult message, there are two layers: what the message needs to say (factual, clear, complete) and how it should be delivered (tone, empathy, respect). AI is good at helping you structure the first layer clearly. The second layer — genuine human empathy and appropriate tone — requires your judgement. Always brief AI on both, then review the output as if you were the recipient reading it for the first time." }
+    ],
+    tips: ["Always have HR or legal review AI-drafted communications before sending", "Be specific about what happened and what the expectation is going forward", "Separate facts from judgements in the draft", "Brief the tone carefully: 'professional and firm but not cold'", "Ask AI: 'How might the recipient interpret this negatively?' then adjust"],
+    activity: {
+      instruction: "Write a prompt that produces a clear, fair, and appropriately toned draft for a difficult HR communication — then use AI to review it from the recipient's perspective before finalising.",
+      weakPrompt: "Write an email about a performance issue.",
+      placeholder: "You are an experienced HR professional. Help me draft a [type of communication — e.g. 'written warning', 'redundancy notification', 'performance improvement plan introduction', 'policy change announcement'].\n\nContext:\n- Recipient: [role, how long they've been with the company, relevant background]\n- The specific situation: [what has happened — be factual and specific]\n- What we need to communicate: [the core message — decision made, expectation going forward]\n- What support or next steps are available: [what happens next, who they can speak to]\n- Legal/policy framework: [any relevant policies, processes, or legal requirements]\n- Tone required: [e.g. 'firm but supportive', 'matter-of-fact and respectful']\n\nDraft the communication. Then review it from the recipient's perspective and flag:\n1. Any language that might feel unfair or unclear to the recipient\n2. Any statements that could create legal ambiguity\n3. Whether the support/next steps are clear enough\n\nNOTE: This draft must be reviewed by HR/legal before sending.",
+      evalCriteria: ["communication type specified", "specific situation described", "next steps included", "tone specified", "recipient perspective review requested"]
+    }
+  },
+  {
+    id: "hr-employee-comms", category: "L&D & Culture", icon: "📣",
+    title: "Internal Communications That Land", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Most Internal Comms Are Written for the Sender, Not the Reader", body: "All-staff emails that bury the key information in paragraph 3, change announcements that explain rationale before telling people what's changing, updates that say 'exciting news' when the news is actually stressful — these are written from the inside out. Effective internal communication leads with what the reader most needs to know, explains why it matters to them specifically, and makes the required action obvious. AI can help you restructure your thinking from reader-first." },
+      { heading: "Change Communication Has a Different Formula", body: "When communicating change, people have predictable questions in a predictable order: What is changing? Why? What does it mean for me specifically? What do I need to do? Where do I go if I have concerns? Answer them in that order, every time. Burying 'what it means for me' or missing it entirely is the most common failure in change communication — and the source of most employee anxiety during transitions." }
+    ],
+    tips: ["Lead with the most important information, not the background context", "State what's changing, not just that 'things are evolving'", "Always include 'what this means for you' — make it specific to the audience", "Close with the clear next action and who to contact", "Ask AI to rewrite from the reader's perspective: 'does this answer their first question first?'"],
+    activity: {
+      instruction: "Write a prompt that produces a clear, reader-first internal communication for a workplace announcement, change, or update — one that answers the right questions in the right order.",
+      weakPrompt: "Write an internal email about our new office policy.",
+      placeholder: "You are an expert in internal communications. Write a [type: all-staff email / team update / change announcement / leadership message] for the following:\n\nWhat is being communicated: [the core message in one sentence]\nWhy it's happening: [the rationale — honest and direct]\nWhat it means for the audience: [specific impact on their day-to-day work]\nWhat they need to do (if anything): [required actions and deadlines]\nWho to contact with questions: [point of contact]\nTone: [e.g. 'straightforward and calm', 'energetic and positive', 'empathetic and honest']\nAudience: [who is receiving this and their likely emotional response to this news]\n\nWrite the communication reader-first — lead with what they most need to know. Use plain language. Keep it under [word count].\n\nThen review it: does it answer 'what's changing, why, what does it mean for me, what do I do' in that order? Flag anything missing.",
+      evalCriteria: ["core message stated upfront", "rationale included", "audience impact specified", "action and contact included", "reader-first review requested"]
+    }
+  },
+  {
+    id: "hr-training-content", category: "L&D & Culture", icon: "🎓",
+    title: "Building Training Content Quickly", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Training Content Fails When It Transfers Information Instead of Changing Behaviour", body: "Most training content is essentially documentation with a quiz at the end. It transfers information efficiently and changes behaviour almost not at all. Training that works focuses on the specific situation where someone needs to perform differently, gives them a framework they can apply, and then practises applying it in realistic scenarios. Before asking AI to produce training content, be clear: what will people be able to do differently after this training that they couldn't before?" },
+      { heading: "The Scenario-Based Learning Approach", body: "The most effective training format is scenario-based: present a realistic situation, ask the learner what they'd do, reveal the better approach and why. AI is exceptional at generating realistic scenarios for your specific context — but you need to give it the context. Generic scenarios produce generic learning. Brief AI with your actual workplace situations, the real mistakes people make, and the specific behaviour change you're after." }
+    ],
+    tips: ["Define the behaviour change first: 'after this, people will...'", "Ask AI to generate realistic scenarios from your specific workplace context", "Build in decisions, not just information", "Include the 'why' behind every key point — not just what to do", "Ask AI to create assessment questions that test application, not recall"],
+    activity: {
+      instruction: "Write a prompt that produces a practical, scenario-based training module on a skill your team needs — one that changes behaviour, not just transfers information.",
+      weakPrompt: "Create a training module on giving feedback.",
+      placeholder: "You are a learning and development specialist. Create a practical training module on the following:\n\nSkill/topic: [what people need to learn]\nTarget audience: [who they are, their role, experience level]\nContext: [why this training is needed — what's going wrong or what new behaviour is required?]\nLearning objective (complete this sentence): 'After this training, participants will be able to...'\nCommon mistakes people make in this area: [list 2-3 real examples from your workplace]\nTime available: [e.g. '30-minute self-paced module' or '90-minute workshop']\n\nStructure the module as:\n1. Opening hook — a realistic scenario that shows why this matters (2-3 sentences)\n2. Core framework — max 3 key principles with brief explanation\n3. Two realistic practice scenarios with decision points and worked answers\n4. Common mistakes and how to avoid them\n5. One-page reference card they can use back on the job\n\nAssessment: 3 scenario-based questions that test application, not recall.",
+      evalCriteria: ["behaviour change objective stated", "audience context given", "real mistakes included", "scenario-based format", "application assessment requested"]
+    }
+  },
+
+  // ── ENTREPRENEURS ────────────────────────────────────────────────────────────
+  {
+    id: "ent-validation", category: "Validation & Strategy", icon: "🔬",
+    title: "Validating Your Business Idea", difficulty: "Beginner", duration: "7 min",
+    theory: [
+      { heading: "Most Business Ideas Die Because Founders Fall in Love With the Solution", body: "The most dangerous moment in building a business is when you become convinced your idea is brilliant before you've tested whether anyone actually has the problem you're solving — at the frequency, intensity, and willingness-to-pay you're assuming. Idea validation is not about confirming your idea is good. It's about finding out as quickly and cheaply as possible where you're wrong. AI can help you stress-test your assumptions — but only if you actually want to find the flaws." },
+      { heading: "The Riskiest Assumption Test", body: "Every business idea rests on a stack of assumptions. Most founders test the easy ones and avoid the ones that would kill the business if wrong. The skill is identifying your riskiest assumption — the one where, if you're wrong, nothing else matters — and designing the cheapest possible test to find out. Brief AI with your idea and your assumptions and ask it to rank them by risk. Then ask what each test would look like." }
+    ],
+    tips: ["List all assumptions your business relies on before testing any", "Ask AI: 'which of these assumptions would kill the business if wrong?'", "Design tests that take days, not months — minimum viable evidence", "Distinguish between 'people are interested' and 'people will pay'", "Ask AI to steelman the best argument against your idea"],
+    activity: {
+      instruction: "Write a prompt that rigorously stress-tests your business idea — identifying the riskiest assumptions, the most likely failure modes, and the cheapest tests to validate or invalidate before you invest further.",
+      weakPrompt: "Is my business idea good?",
+      placeholder: "Act as a rigorous startup advisor who has seen hundreds of businesses fail. I'm going to describe my business idea and I want you to stress-test it, not validate it.\n\nThe idea: [describe your business in 3-4 sentences — what it does, who it's for, how it makes money]\n\nMy assumptions (I think...): \n- Customers: [who has this problem, how often, how painfully]\n- Solution: [why my approach solves it better than alternatives]\n- Market: [how big the opportunity is]\n- Business model: [how I make money and unit economics]\n- Distribution: [how I'll reach customers]\n\nPlease:\n1. Rank my assumptions from most to least risky — which ones would kill the business if wrong?\n2. Give the strongest possible argument against this business working\n3. Name the 3 most common reasons businesses like this fail\n4. For my top 3 riskiest assumptions, suggest the cheapest and fastest test I could run to find out if I'm right\n\nDo not tell me this is a good idea. Tell me where I'm most likely wrong.",
+      evalCriteria: ["idea described clearly", "assumptions listed explicitly", "stress-test not validation requested", "cheapest tests requested", "anti-validation framing"]
+    }
+  },
+  {
+    id: "ent-customer-discovery", category: "Validation & Strategy", icon: "🗣️",
+    title: "Customer Discovery & Interviews", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Customer Interviews Are Research, Not Sales Calls", body: "The biggest mistake in customer discovery is asking people if they'd buy your product. They'll say yes to be polite and because they're imagining the best version of it. What you actually need is to understand their current behaviour: what do they do today when they have this problem, what's frustrating about it, what have they already tried. These answers reveal whether the problem is real and severe enough to drive behaviour change — which is the only thing that matters." },
+      { heading: "The Mom Test Principle", body: "Rob Fitzpatrick's insight: don't ask your mum if your business idea is good, she'll lie to protect your feelings. Instead, ask about her life. Ask about the problem. Ask what she's tried. Questions about the past and present behaviour are truthful. Questions about future hypothetical behaviour are not. Brief AI to help you design questions that extract genuine insight about real behaviour — not questions that fish for validation." }
+    ],
+    tips: ["Ask about past behaviour, not future intentions: 'what did you do last time...'", "Never mention your solution during discovery — just explore the problem", "Ask: 'what have you already tried?' — this reveals true pain level", "The best follow-up question is always 'why?'", "Ask AI to flag any questions in your guide that might lead the witness"],
+    activity: {
+      instruction: "Write a prompt that produces a rigorous customer discovery interview guide — questions that reveal real behaviour and genuine pain, not questions that invite polite agreement with your assumptions.",
+      weakPrompt: "Give me some customer interview questions.",
+      placeholder: "Act as an expert in customer discovery using the Mom Test methodology. Create an interview guide for the following:\n\nThe problem I think exists: [describe the problem your business addresses]\nWho I'm interviewing: [describe the person — their role, context, likely relationship to this problem]\nWhat I most need to learn: [the 2-3 most important things you need to know to validate or invalidate your idea]\nWhat I already assume is true: [your current hypothesis — so AI can help you test it, not confirm it]\n\nCreate an interview guide of 12-15 questions that:\n1. Open with rapport and context questions (3-4)\n2. Explore their current behaviour and what they do today (4-5)\n3. Uncover the depth and frequency of the problem (3-4)\n4. Reveal what they've already tried and why it fell short (2-3)\n\nRules: No leading questions. No hypothetical future questions ('would you use...'). No mention of my solution.\n\nAlso flag: what answer to each question would VALIDATE my assumption vs what would INVALIDATE it?",
+      evalCriteria: ["problem hypothesis stated", "target interviewee defined", "past behaviour focus", "leading questions avoided", "validate vs invalidate framing"]
+    }
+  },
+  {
+    id: "ent-pitch", category: "Pitching & Funding", icon: "🎤",
+    title: "Crafting Your Pitch Narrative", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "Investors Fund Stories, Not Spreadsheets", body: "A pitch deck is a narrative with data, not a data dump with slides. The best pitches follow a story arc: here is a world with a significant problem → we discovered something others missed → our insight led us to build X → here's the evidence it works → here's the enormous opportunity → here's why we are the team to capture it. Each element earns the next. If the problem isn't compelling, the solution doesn't matter. If the market isn't credible, the financial projections are irrelevant." },
+      { heading: "The Insight Slide Is the Most Underrated Slide in the Deck", body: "Most founders skip straight from 'here's the problem' to 'here's our solution'. The missing piece is the insight: what do you know or understand about this problem that others have missed? Why hasn't this been solved before — and what changed that makes now the right moment? This is where investors decide whether you've done genuine original thinking or built an obvious thing. Brief AI with your actual insight and let it help you articulate it sharply." }
+    ],
+    tips: ["Lead with the world, not the company — make them feel the problem", "The insight is what you know that others don't — articulate it precisely", "Every claim needs supporting evidence — show don't tell", "The team slide answers: why are you the ones to win this?", "Ask AI: 'what would a sceptical investor challenge most in this narrative?'"],
+    activity: {
+      instruction: "Write a prompt that produces a compelling pitch narrative for your startup — the story that connects problem to insight to solution to opportunity to team, with a sceptical investor lens applied throughout.",
+      weakPrompt: "Help me write a pitch for my startup.",
+      placeholder: "Act as a venture capitalist who has reviewed 500+ pitches. Help me build a compelling pitch narrative for my startup.\n\nThe problem: [describe the problem — who has it, how often, how painfully, and what it costs them]\nThe insight: [what do you understand about this problem that others have missed? Why hasn't it been solved?]\nThe solution: [what you've built and the key mechanism that makes it work]\nTraction/evidence: [what evidence do you have that it works — users, revenue, retention, letters of intent]\nThe market: [size and why it's the right moment to go after it]\nBusiness model: [how you make money, unit economics if known]\nThe team: [why you specifically are the ones to build this]\nWhat you're raising: [amount, what you'll use it for, what it will prove]\n\nBuild the narrative arc across 8-10 pitch slides. For each slide: headline, core message, and what evidence or proof belongs there.\n\nThen: what are the 5 hardest questions a sceptical investor would ask, and what should my answer be?",
+      evalCriteria: ["problem severity established", "insight articulated", "traction evidence included", "market sizing given", "sceptical investor questions requested"],
+      attachment: {
+        filename: "Pitch_Narrative_Framework.txt",
+        fileType: "txt",
+        meta: "Slide-by-slide pitch structure guide · Complete before prompting",
+        content: `# PITCH NARRATIVE FRAMEWORK
+## Complete this before building your deck with AI
+
+---
+
+## THE STORY ARC
+A great pitch answers: Why does this matter? What did you discover? What did you build? Does it work? How big? Why you?
+
+---
+
+## SLIDE 1: THE HOOK
+One sentence that makes an investor lean forward.
+Your hook:
+
+## SLIDE 2: THE PROBLEM
+- Who has this problem (specific person, not broad segment):
+- How often do they have it:
+- What does it cost them (time, money, frustration):
+- What do they do today (current behaviour, not ideal):
+- Why the current solution is inadequate:
+
+## SLIDE 3: THE INSIGHT
+This is what separates strong pitches from weak ones.
+- What do you know about this problem that others have missed?
+- What changed recently (in technology, regulation, behaviour) that makes now the right moment?
+- Why has this not been solved before?
+
+Your insight in one sentence:
+
+## SLIDE 4: THE SOLUTION
+- What you've built (one sentence):
+- The key mechanism that makes it work:
+- Why it works when alternatives don't:
+
+## SLIDE 5: TRACTION / EVIDENCE
+- Current users/customers:
+- Revenue (if any):
+- Key metrics that show it's working:
+- Most impressive proof point:
+
+## SLIDE 6: THE MARKET
+- Total addressable market (and source):
+- Why now is the right moment:
+- Your entry point and expansion path:
+
+## SLIDE 7: BUSINESS MODEL
+- How you make money:
+- Unit economics (CAC, LTV if known):
+- Path to profitability:
+
+## SLIDE 8: THE TEAM
+- Why you specifically are the ones to build this:
+- Relevant experience or unfair advantage:
+- Key gaps and how you'll fill them:
+
+## SLIDE 9: THE ASK
+- How much you're raising:
+- What you'll use it for (3 specific uses):
+- What this capital will prove or unlock:`
+      }
+    }
+  },
+  {
+    id: "ent-market-research", category: "Validation & Strategy", icon: "🔭",
+    title: "Market Research & Competitive Analysis", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Market Research Is Not Googling Your Competitors", body: "Real market research answers three questions: Is the problem real and common? Are people already paying to solve it (which validates demand)? And where is the current solution falling short in a way you can exploit? Looking at what competitors offer tells you the minimum bar. Understanding why customers switch, stay, or give up tells you the opportunity. AI can help you structure this analysis — but treat its output as a starting framework, not ground truth, especially on market size." },
+      { heading: "Your Competitive Advantage Must Be Specific and Defensible", body: "The most dangerous competitive position is 'we're like X but better'. Better how? Faster? Cheaper? More accurate? For whom specifically? A sustainable competitive advantage is one that compounds over time: your data gets better, your network gets denser, your brand gets stronger. Brief AI to help you articulate what specifically you're doing differently, for whom it matters most, and why it's hard to replicate." }
+    ],
+    tips: ["Ask AI to map the competitive landscape before listing individual competitors", "Define your competitive advantage in terms of who you serve best, not features", "Ask: 'what would a competitor need to build to make us irrelevant?'", "Identify the customer segment competitors serve worst — that's your entry", "Use AI to pressure-test your differentiation: 'what objections would investors raise?'"],
+    activity: {
+      instruction: "Write a prompt that produces a rigorous competitive analysis and market positioning map for your business — one that identifies genuine white space and a defensible position, not just a list of competitor features.",
+      weakPrompt: "Who are my competitors and how am I different?",
+      placeholder: "Act as a strategic analyst preparing a market entry assessment. Analyse the competitive landscape for the following:\n\nMy business: [what you do, who for, and how you make money]\nThe problem being solved: [the core problem in the market]\nMy target customer: [specific description — who they are and what they need]\nWhat I believe my advantage is: [your hypothesis about differentiation]\n\nPlease:\n1. Map the competitive landscape into 3-4 categories (e.g. incumbents, direct competitors, adjacent solutions, DIY approaches)\n2. For each category: who they serve best, where they fall short, and what switching cost keeps customers with them\n3. Identify the underserved segment — who is served worst by current solutions and why?\n4. Evaluate my stated differentiation: is it real, is it specific, is it defensible over time?\n5. What would my position on a 2x2 matrix look like — suggest the two axes that best capture the competitive dynamics in this market\n6. The three hardest questions an investor would ask about my competitive moat",
+      evalCriteria: ["landscape categories not just list", "underserved segment identified", "differentiation evaluated not just stated", "defensibility assessed", "investor challenge questions included"]
+    }
+  },
+  {
+    id: "ent-investor-comms", category: "Pitching & Funding", icon: "✉️",
+    title: "Investor Communications & Updates", difficulty: "Advanced", duration: "7 min",
+    theory: [
+      { heading: "How You Communicate With Investors Signals How You Run Your Business", body: "Investor updates are not just reporting — they're a continuous demonstration of how you think, how you handle adversity, and whether you're someone worth backing further. The founders who get follow-on investment are disproportionately those who communicate proactively, share bad news early with a plan attached, and show a coherent narrative of how the business is evolving. AI can help you structure these communications — but the honesty and the judgment calls are yours." },
+      { heading: "Bad News First, Plan Always", body: "The natural instinct is to bury bad news — miss a metric, bury it in paragraph 4. This destroys trust faster than the missed metric does. Investors are adults who understand that startups are hard. What they can't forgive is surprise. The formula for bad news: state it clearly first, explain the root cause (not the excuses), share what you're doing about it, and tell them what you expect next period. This builds more trust than a string of artificially positive updates." }
+    ],
+    tips: ["Send investor updates monthly — consistency builds trust", "Lead with the headline metric, not the context", "Bad news: state it, explain it, plan it — in that order", "Include a specific ask in every update: intro, advice, a hire", "Keep it under 400 words — investors are busy"],
+    activity: {
+      instruction: "Write a prompt that produces a compelling investor update — honest about the state of the business, clear on what you're learning, and specific about what you need.",
+      weakPrompt: "Write an update email for my investors.",
+      placeholder: "You are a founder who values radical transparency with investors. Help me write a monthly investor update.\n\nPeriod: [month/quarter]\nHeadline metric (most important number right now): [metric and whether it's on/off track]\n\nWhat went well:\n- [specific win with numbers]\n- [specific win with numbers]\n\nWhat didn't go as planned:\n- [honest description of what fell short]\n- Root cause: [why it happened — genuine analysis, not excuses]\n- What we're doing about it: [specific plan]\n\nKey learnings this period: [1-2 things you now know that you didn't]\n\nFocus for next period: [top 3 priorities with success criteria]\n\nThe Ask (always include one specific request):\n[e.g. intro to X type of customer / advice on Y decision / help finding Z hire]\n\nTone: direct, confident, honest — not defensive or over-polished. Write as a founder, not a PR team.\nTarget length: under 400 words.",
+      evalCriteria: ["headline metric leads", "bad news addressed directly", "root cause not excuses", "next period plan included", "specific ask included"]
+    }
+  },
+  {
+    id: "ent-go-to-market", category: "Growth & Operations", icon: "🚀",
+    title: "Go-to-Market Strategy", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "A Go-to-Market Strategy Is Not a Marketing Plan", body: "A marketing plan describes activities. A go-to-market strategy answers: who is your ideal first customer (specific, not a segment), how do you reach them, what do you say that makes them act, and how does landing this customer create the conditions for the next one? The best GTM strategies start ruthlessly narrow — one customer profile, one channel, one message — and expand once you have proof of what works. Trying to reach everyone at launch is how you reach no one." },
+      { heading: "Distribution Is the Hardest Part of Building a Business", body: "Most startup failures are distribution failures, not product failures. You can build something genuinely useful and still go nowhere if you can't cost-effectively reach the people who need it. Before going wide, understand your unit economics: what does it cost to acquire a customer (CAC), what is a customer worth (LTV), and at what point does this become a sustainable business? Brief AI with your actual numbers and ask it to help you find the channel that makes the math work." }
+    ],
+    tips: ["Start with one customer profile and one channel — expand after proof", "Define your ideal first 10 customers by name if possible", "Ask AI: 'what channel do businesses like mine typically underestimate?'", "Calculate CAC before choosing a channel — some channels only work at scale", "Your first GTM is an experiment — define what success looks like before you start"],
+    activity: {
+      instruction: "Write a prompt that produces a focused, realistic go-to-market strategy for your early stage — one that picks the right first customer, right channel, and right message to get the first 10-100 customers.",
+      weakPrompt: "Help me with my go-to-market strategy.",
+      placeholder: "Act as a GTM strategist who works with early-stage startups. Build a focused go-to-market plan for the following:\n\nProduct/service: [what it does and for whom]\nStage: [pre-launch / just launched / early revenue — how many customers so far]\nTarget customer (be specific): [job title, company type, size, specific situation that makes them need this now]\nProblem solved: [what pain you remove and how acutely they feel it]\nCurrent channels tried: [what you've already tested and what happened]\nConstraints: [budget, team size, timeline to first revenue]\nUnit economics (if known): [price point, estimated CAC target, LTV]\n\nDeliver:\n1. Recommended first-90-day GTM strategy with one primary channel and why\n2. The ideal customer profile for your first 10 customers — specific enough to name them\n3. The message that will make that customer act — not positioning, the actual hook\n4. How you'll know if this channel is working (leading indicators, not just revenue)\n5. What you try next if this doesn't work — a sequenced fallback\n\nBe brutally honest: what is the hardest part of this GTM and why?",
+      evalCriteria: ["specific customer profile", "single primary channel chosen", "hook not just positioning", "success metrics defined", "honest hardest part question"]
+    }
   }
 ];
 
@@ -1109,8 +1590,8 @@ const TRACKS = [
     color: "#d35400",
     colorLight: "#fef0e6",
     colorGrad: "linear-gradient(135deg, #e67e22, #d35400)",
-    categories: [],
-    available: false
+    categories: ["Brand & Copy", "Campaigns & Social", "Content Strategy"],
+    available: true
   },
   {
     id: "data-research",
@@ -1142,8 +1623,8 @@ const TRACKS = [
     color: "#b7770d",
     colorLight: "#fef9ec",
     colorGrad: "linear-gradient(135deg, #f39c12, #b7770d)",
-    categories: [],
-    available: false
+    categories: ["Validation & Strategy", "Pitching & Funding", "Growth & Operations"],
+    available: true
   },
   {
     id: "hr-people",
@@ -1153,8 +1634,8 @@ const TRACKS = [
     color: "#0e7490",
     colorLight: "#ecfeff",
     colorGrad: "linear-gradient(135deg, #06b6d4, #0e7490)",
-    categories: [],
-    available: false
+    categories: ["Recruitment & Hiring", "People & Performance", "L&D & Culture"],
+    available: true
   },
   {
     id: "finance",
