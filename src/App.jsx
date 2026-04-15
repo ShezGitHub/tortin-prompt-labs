@@ -976,6 +976,17 @@ const TRACKS = [
     colorGrad: "linear-gradient(135deg, #22c55e, #166534)",
     categories: [],
     available: false
+  },
+  {
+    id: "students",
+    title: "AI for Students",
+    tagline: "Essays, research, revision, critical thinking, study plans, and getting more from every lecture.",
+    icon: "🎒",
+    color: "#7c3aed",
+    colorLight: "#f5f3ff",
+    colorGrad: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+    categories: [],
+    available: false
   }
 ];
 
