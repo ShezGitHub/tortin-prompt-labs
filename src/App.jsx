@@ -2242,7 +2242,7 @@ export default function TortinPromptLabs() {
   };
   const handleCodeSubmit = () => {
     const code = codeInput.trim().toUpperCase();
-    const match = DEMO_CODES[code];
+    const match = adminCodes.find(c => c.code === code);
     if (match) {
       setUnlockedTracks(match.tracks);
       setWelcomeBanner({ org: match.org });
@@ -2250,12 +2250,28 @@ export default function TortinPromptLabs() {
       setCodeInput("");
       setCodeError("");
     } else {
-      setCodeError("Invalid code. Try ACME2024, SCHOOL1, or TORTIN.");
+      setCodeError("Invalid or expired code. Please check with your administrator.");
     }
   };
   const handleUnlock = (track) => {
     setUnlockedTracks(u => [...u, track.id]);
     setShowPayModal(null);
+  };
+  const addAdminCode = () => {
+    const code = newCodeForm.code.trim().toUpperCase();
+    if (!code || !newCodeForm.org.trim() || !newCodeForm.tracks.length) return;
+    if (adminCodes.some(c => c.code === code)) return;
+    setAdminCodes(prev => [...prev, { code, org: newCodeForm.org.trim(), tracks: newCodeForm.tracks }]);
+    setNewCodeForm({ code: "", org: "", tracks: [] });
+  };
+  const deleteAdminCode = (code) => {
+    setAdminCodes(prev => prev.filter(c => c.code !== code));
+  };
+  const toggleNewCodeTrack = (trackId) => {
+    setNewCodeForm(f => ({
+      ...f,
+      tracks: f.tracks.includes(trackId) ? f.tracks.filter(t => t !== trackId) : [...f.tracks, trackId]
+    }));
   };
 
 
@@ -2274,6 +2290,12 @@ export default function TortinPromptLabs() {
   const [showPayModal, setShowPayModal] = useState(null);
   const [codeInput, setCodeInput] = useState("");
   const [codeError, setCodeError] = useState("");
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [adminCodes, setAdminCodes] = useState(
+    Object.entries(DEMO_CODES).map(([code, v]) => ({ code, org: v.org, tracks: v.tracks }))
+  );
+  const [newCodeForm, setNewCodeForm] = useState({ code: "", org: "", tracks: [] });
+  const [trackPrice, setTrackPrice] = useState("9.99");
 
   // Load from storage on mount
   useEffect(() => {
@@ -2561,7 +2583,10 @@ export default function TortinPromptLabs() {
               {demoMode && (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#fff8f0", border: "1px solid #f5cba7", borderRadius: 12, padding: "12px 20px", marginBottom: 24, flexWrap: "wrap", gap: 10 }}>
                   <div style={{ fontSize: 13, color: "#e67e22", fontFamily: SF }}>🔐 <strong>Gated Mode</strong> · Tracks are locked. Enter a code or buy access below.</div>
-                  <button onClick={() => setShowCodeModal(true)} style={{ background: "linear-gradient(135deg, #e67e22, #d35400)", color: "#fff", border: "none", borderRadius: 8, padding: "7px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: SF, flexShrink: 0 }}>Enter Access Code →</button>
+                  <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
+                    <button onClick={() => setShowAdmin(true)} style={{ background: "none", border: "1.5px solid #e67e22", color: "#e67e22", borderRadius: 8, padding: "7px 13px", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: SF }}>⚙ Admin</button>
+                    <button onClick={() => setShowCodeModal(true)} style={{ background: "linear-gradient(135deg, #e67e22, #d35400)", color: "#fff", border: "none", borderRadius: 8, padding: "7px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: SF }}>Enter Access Code →</button>
+                  </div>
                 </div>
               )}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
@@ -2602,7 +2627,7 @@ export default function TortinPromptLabs() {
                           <div style={{ fontSize: 10, color: "#999", fontFamily: SF }}>🎓 Includes certificate</div>
                           <button onClick={(e) => { e.stopPropagation(); setShowPayModal(track); }}
                             style={{ background: `linear-gradient(135deg, ${RL}, ${R})`, color: "#fff", border: "none", borderRadius: 8, padding: "7px 14px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: SF, letterSpacing: 0.3, boxShadow: "0 3px 10px rgba(192,57,43,0.25)" }}>
-                            Unlock · $9.99
+                            Unlock · ${trackPrice}
                           </button>
                         </div>
                       )}
@@ -2867,6 +2892,119 @@ export default function TortinPromptLabs() {
           )}
         </div>
       )}
+      {/* ── ADMIN PANEL ─────────────────────────────────────────────── */}
+      {showAdmin && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 1100, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }} onClick={() => setShowAdmin(false)}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#fff", borderRadius: 20, width: 680, maxWidth: "95vw", maxHeight: "88vh", display: "flex", flexDirection: "column", boxShadow: "0 28px 80px rgba(0,0,0,0.25)", animation: "fadeUp 0.25s ease", overflow: "hidden" }}>
+
+            {/* Header */}
+            <div style={{ padding: "20px 28px", borderBottom: "1px solid #f0e0e0", display: "flex", alignItems: "center", justifyContent: "space-between", background: `linear-gradient(135deg, ${RL}, ${R})`, flexShrink: 0 }}>
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 800, color: "#fff", fontFamily: PF }}>⚙ Admin Panel</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.75)", fontFamily: SF, marginTop: 2, letterSpacing: 1 }}>Manage access codes & pricing</div>
+              </div>
+              <button onClick={() => setShowAdmin(false)} style={{ background: "rgba(255,255,255,0.2)", border: "none", borderRadius: 8, color: "#fff", width: 32, height: 32, fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
+            </div>
+
+            {/* Scrollable body */}
+            <div style={{ overflowY: "auto", padding: "28px 28px 32px", flex: 1 }}>
+
+              {/* ── ACCESS CODES SECTION ── */}
+              <div style={{ marginBottom: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                  <span style={{ fontSize: 16 }}>🔑</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#1a0505", fontFamily: SF, letterSpacing: 0.5 }}>Access Codes</span>
+                  <span style={{ fontSize: 11, background: RLL, color: R, borderRadius: 20, padding: "2px 10px", fontFamily: SF, fontWeight: 600 }}>{adminCodes.length}</span>
+                </div>
+
+                {/* Existing codes list */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                  {adminCodes.map(({ code, org, tracks: codeTracks }) => (
+                    <div key={code} style={{ display: "flex", alignItems: "center", gap: 12, background: "#fafafa", border: "1px solid #f0e0e0", borderRadius: 12, padding: "12px 16px" }}>
+                      <div style={{ background: RLL, borderRadius: 8, padding: "4px 10px", fontFamily: "monospace", fontSize: 13, fontWeight: 700, color: R, letterSpacing: 1.5, flexShrink: 0 }}>{code}</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: "#333", fontFamily: SF }}>{org}</div>
+                        <div style={{ fontSize: 11, color: "#999", fontFamily: SF, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          {codeTracks.map(tid => TRACKS.find(t => t.id === tid)?.title || tid).join(" · ")}
+                        </div>
+                      </div>
+                      <button onClick={() => deleteAdminCode(code)} style={{ background: "none", border: "1px solid #e0e0e0", borderRadius: 8, color: "#ccc", width: 30, height: 30, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "all 0.15s" }}
+                        onMouseEnter={e => { e.currentTarget.style.background = "#fdecea"; e.currentTarget.style.color = R; e.currentTarget.style.borderColor = R; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = "none"; e.currentTarget.style.color = "#ccc"; e.currentTarget.style.borderColor = "#e0e0e0"; }}>
+                        🗑
+                      </button>
+                    </div>
+                  ))}
+                  {adminCodes.length === 0 && (
+                    <div style={{ textAlign: "center", padding: "20px", color: "#ccc", fontSize: 13, fontFamily: SF }}>No access codes yet</div>
+                  )}
+                </div>
+
+                {/* Add new code form */}
+                <div style={{ background: "#f9f9f9", border: "1px dashed #ddd", borderRadius: 14, padding: "20px 20px" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#888", fontFamily: SF, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>Add New Code</div>
+                  <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 11, color: "#aaa", fontFamily: SF, marginBottom: 4 }}>Access Code</div>
+                      <input value={newCodeForm.code} onChange={e => setNewCodeForm(f => ({ ...f, code: e.target.value.toUpperCase() }))}
+                        placeholder="e.g. PARTNER24"
+                        style={{ width: "100%", padding: "10px 12px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 13, fontFamily: "monospace", outline: "none", boxSizing: "border-box", letterSpacing: 2, textTransform: "uppercase", background: "#fff" }} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 11, color: "#aaa", fontFamily: SF, marginBottom: 4 }}>Organisation Name</div>
+                      <input value={newCodeForm.org} onChange={e => setNewCodeForm(f => ({ ...f, org: e.target.value }))}
+                        placeholder="e.g. UN Women"
+                        style={{ width: "100%", padding: "10px 12px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 13, fontFamily: SF, outline: "none", boxSizing: "border-box", background: "#fff" }} />
+                    </div>
+                  </div>
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 11, color: "#aaa", fontFamily: SF, marginBottom: 8 }}>Unlock Tracks</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      {TRACKS.filter(t => t.available).map(t => {
+                        const checked = newCodeForm.tracks.includes(t.id);
+                        return (
+                          <button key={t.id} onClick={() => toggleNewCodeTrack(t.id)}
+                            style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", border: `1.5px solid ${checked ? t.color : "#e0e0e0"}`, borderRadius: 20, background: checked ? t.colorLight : "#fff", cursor: "pointer", fontSize: 12, fontFamily: SF, fontWeight: checked ? 700 : 400, color: checked ? t.color : "#888", transition: "all 0.15s" }}>
+                            {checked ? "✓" : "+"} {t.icon} {t.title}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <button onClick={addAdminCode}
+                    disabled={!newCodeForm.code || !newCodeForm.org || !newCodeForm.tracks.length}
+                    style={{ padding: "10px 24px", background: newCodeForm.code && newCodeForm.org && newCodeForm.tracks.length ? `linear-gradient(135deg, ${RL}, ${R})` : "#e0e0e0", color: "#fff", border: "none", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: newCodeForm.code && newCodeForm.org && newCodeForm.tracks.length ? "pointer" : "not-allowed", fontFamily: SF, transition: "all 0.2s" }}>
+                    + Add Code
+                  </button>
+                </div>
+              </div>
+
+              {/* ── PRICING SECTION ── */}
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                  <span style={{ fontSize: 16 }}>💰</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#1a0505", fontFamily: SF, letterSpacing: 0.5 }}>Pricing</span>
+                </div>
+                <div style={{ background: "#fafafa", border: "1px solid #f0e0e0", borderRadius: 14, padding: "20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#333", fontFamily: SF }}>Per-track price</div>
+                      <div style={{ fontSize: 11, color: "#aaa", fontFamily: SF, marginTop: 2 }}>Shown on locked track cards and payment modal</div>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ fontSize: 18, fontWeight: 700, color: "#555", fontFamily: SF }}>$</span>
+                      <input value={trackPrice} onChange={e => setTrackPrice(e.target.value.replace(/[^0-9.]/g, ""))}
+                        style={{ width: 80, padding: "10px 12px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 16, fontWeight: 700, fontFamily: SF, outline: "none", textAlign: "center", color: R }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── ACCESS CODE MODAL ───────────────────────────────────────────── */}
       {showCodeModal && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setShowCodeModal(false); setCodeInput(""); setCodeError(""); }}>
@@ -2906,7 +3044,7 @@ export default function TortinPromptLabs() {
             {/* Body */}
             <div style={{ padding: "26px 28px 22px" }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 18 }}>
-                <span style={{ fontSize: 38, fontWeight: 800, color: "#1a0505", fontFamily: PF }}>$9.99</span>
+                <span style={{ fontSize: 38, fontWeight: 800, color: "#1a0505", fontFamily: PF }}>${trackPrice}</span>
                 <span style={{ fontSize: 13, color: "#aaa", fontFamily: SF }}>one-time</span>
               </div>
               {/* Included items */}
