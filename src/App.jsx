@@ -1754,7 +1754,7 @@ export default function TortinPromptLabs() {
                 </p>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
-                {TRACKS.map(track => {
+                {[...TRACKS].sort((a, b) => b.available - a.available).map(track => {
                   const lessonCount = LESSONS.filter(l => track.categories.includes(l.category)).length;
                   return (
                     <div key={track.id} onClick={() => track.available && setSelectedTrack(track)}
