@@ -2363,7 +2363,7 @@ export default function TortinPromptLabs() {
           <img src={LOGO} alt="Tortin" style={{ height: 36, objectFit: "contain" }} />
           <div style={{ width: 1, height: 26, background: "#f0dede", margin: "0 16px" }} />
           <div>
-            <div style={{ fontFamily: PF, fontSize: 15, fontWeight: 700, color: R }}>Prompt Labs</div>
+            <div style={{ fontFamily: PF, fontSize: 15, fontWeight: 700, color: R }}>AI Learning Labs</div>
             <div style={{ fontSize: 9, letterSpacing: 3, color: "#ccc", textTransform: "uppercase", fontFamily: SF }}>AI Learning Platform</div>
           </div>
         </div>
