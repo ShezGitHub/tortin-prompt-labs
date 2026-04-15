@@ -2294,7 +2294,7 @@ export default function TortinPromptLabs() {
   const [showScores, setShowScores] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [noteSaved, setNoteSaved] = useState(false);
-  const [demoMode, setDemoMode] = useState(false);
+  const [demoMode, setDemoMode] = useState(true);
   const [logoClicks, setLogoClicks] = useState(0);
   const [unlockedTracks, setUnlockedTracks] = useState([]);
   const [welcomeBanner, setWelcomeBanner] = useState(null);
