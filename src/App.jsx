@@ -1944,6 +1944,7 @@ const TRACKS = [
 const DEMO_CODES = {
   "ACME2024": { org: "Acme Corp", tracks: ["marketing", "hr-people"] },
   "SCHOOL1":  { org: "Riverside Academy", tracks: ["students", "fundamentals"] },
+  "ITCILO":   { org: "ITCILO", tracks: ["fundamentals", "labour-policy"] },
   "TORTIN":   { org: "Tortin Team", tracks: ["fundamentals", "labour-policy", "marketing", "hr-people", "entrepreneurs", "students"] },
 };
 
