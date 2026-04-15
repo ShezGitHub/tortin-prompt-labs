@@ -1008,6 +1008,67 @@ NOTE: This passage is intentionally dense and uses specialised philosophical voc
       placeholder: "I have [number] days until my [exam/assignment deadline] in [subject]. I need a realistic daily study plan.\n\nHere is my honest situation:\n- Topics I understand well: [list them]\n- Topics I'm weakest on: [list them — be specific]\n- Time available each day: [e.g. '3 hours on weekdays, 5 hours on weekends']\n- Other commitments I can't move: [e.g. 'work Tuesday evenings, seminar Thursday 2pm']\n- How I learn best: [e.g. 'practice questions work better than re-reading for me']\n- Exam format: [e.g. '3 essay questions from a choice of 6, 2 hours']\n\nBuild me a day-by-day plan that:\n1. Prioritises my weakest topics with the most focused time\n2. Uses spaced repetition rather than cramming\n3. Includes active recall sessions, not just re-reading\n4. Has a checkpoint at the halfway point where I can assess progress\n5. Is honest about what's realistic given my time — don't overschedule",
       evalCriteria: ["exam date and time given", "weak topics identified honestly", "real constraints included", "active recall built in", "spaced repetition requested"]
     }
+  },
+  {
+    id: "student-exam-questions", category: "Revision & Exams", icon: "🎯",
+    title: "Deconstructing Exam Questions", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Most Exam Failures Are Comprehension Failures, Not Knowledge Failures", body: "Research on student performance consistently shows that a significant proportion of lost marks come not from not knowing the content — but from misunderstanding what the question was asking. 'Discuss' does not mean 'describe'. 'Evaluate' requires you to make a judgement. 'Compare' demands both similarities and differences. 'To what extent' demands a nuanced position, not a yes/no. If you can't decode the question precisely before you start writing, you are flying blind." },
+      { heading: "AI as a Question Analyst", body: "Before your exam, practise feeding past questions to AI and asking it to break them down: what command word is used and what does it require? What is the scope (what's in, what's out)? What would a full-marks answer need to include? What are the common ways students go wrong on this type of question? This is not asking AI to answer the question — it's training yourself to read questions the way your marker reads them." }
+    ],
+    tips: ["Always identify the command word first: discuss, evaluate, analyse, compare, assess", "Ask AI: 'What does this question NOT want me to do?'", "Ask: 'What would a first-class answer include that a 2:2 answer would miss?'", "Ask: 'What are the 3 most common mistakes students make on this type of question?'", "Practise with past papers — deconstruct before you attempt"],
+    activity: {
+      instruction: "Take a past exam question from a subject you're studying (or use the example below). Write a prompt that gets AI to fully deconstruct it — not answer it — so you know exactly what a top-mark response requires before you write a single word.",
+      weakPrompt: "What does this exam question mean?",
+      placeholder: "I'm preparing for a [subject] exam at [level]. Here is a past exam question:\n\n'[Paste your exam question here]'\n\nDo NOT answer this question. Instead, help me understand exactly what it's asking:\n1. What is the command word (e.g. discuss, evaluate, compare) and what does it specifically require me to do?\n2. What is the precise scope — what topics, time periods, or concepts are in and out of bounds?\n3. What would a first-class answer include that a passing answer would miss?\n4. What are the 3 most common mistakes students make when answering this type of question?\n5. What is the implicit assumption or debate that a strong answer must engage with?\n\nI want to be able to plan my answer myself after reading your analysis.",
+      evalCriteria: ["question pasted", "asked to deconstruct not answer", "command word analysis", "first-class vs passing distinction", "common mistakes requested"],
+      attachment: {
+        filename: "Sample_Exam_Questions_by_Subject.txt",
+        fileType: "txt",
+        meta: "Practice questions across 6 subject areas · Use if you don't have your own",
+        content: `# SAMPLE EXAM QUESTIONS FOR PRACTICE
+## Use any of these to practise deconstructing before attempting
+
+---
+
+## HISTORY
+'To what extent was the Treaty of Versailles responsible for the rise of Hitler?' (25 marks)
+
+## ECONOMICS
+'Evaluate the view that minimum wage legislation always leads to unemployment.' (20 marks)
+
+## LITERATURE
+'Compare the ways in which power is presented in two texts you have studied.' (30 marks)
+
+## BIOLOGY
+'Discuss the evidence for and against the theory of natural selection as the sole mechanism of evolution.' (15 marks)
+
+## LAW
+'Critically assess the extent to which the doctrine of precedent promotes certainty at the expense of justice.' (25 marks)
+
+## PSYCHOLOGY
+'Assess the contribution of the biological approach to our understanding of aggression.' (16 marks)
+
+---
+
+NOTE: Notice how different command words — 'to what extent', 'evaluate', 'compare', 'discuss', 'critically assess', 'assess' — require fundamentally different structures and types of argument. This is what you are practising to decode.`
+      }
+    }
+  },
+  {
+    id: "student-learn-mistakes", category: "Revision & Exams", icon: "💡",
+    title: "Learning From Your Mistakes", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Getting a Grade Back Is Only Useful If You Actually Learn From It", body: "Most students look at their mark, feel briefly pleased or disappointed, and move on. This is one of the most wasteful habits in academic life. Every piece of marked work is a precise diagnostic — it shows you exactly where your understanding breaks down, which arguments don't hold, which concepts you haven't fully grasped. AI can help you mine that feedback for genuine insight, but only if you engage with it actively rather than using it to get the 'correct' answer to copy." },
+      { heading: "The Diagnosis First Rule", body: "When you get something wrong, the goal is not to find out the right answer — it's to understand why your thinking produced the wrong answer. These are completely different things. Knowing the right answer to question 3 doesn't help you in the exam if you still have the same gap in understanding. Ask AI to diagnose the flaw in your reasoning, not just correct it. Then check your understanding by explaining it back." }
+    ],
+    tips: ["Share your wrong answer AND your reasoning, not just the question", "Ask: 'What gap in my understanding led me to this answer?'", "Ask: 'What concept do I need to properly understand to avoid this mistake?'", "Never ask for the right answer first — ask for the diagnosis first", "After AI explains, close the chat and explain it back in your own words"],
+    activity: {
+      instruction: "Take something you got wrong — a marked essay, an exam answer, a practice question, or a problem set. Write a prompt that gets AI to diagnose the flaw in your thinking and help you actually understand it, not just tell you the right answer.",
+      weakPrompt: "What is the right answer to this question?",
+      placeholder: "I'm studying [subject] and I got the following question wrong:\n\nQuestion: [paste the question]\nMy answer: [paste what you wrote or your reasoning]\nFeedback/mark received: [paste any feedback, or 'incorrect' if no feedback given]\n\nDo NOT just give me the correct answer. Instead:\n1. Identify exactly what is wrong with my reasoning — be specific about where my thinking broke down\n2. What concept or principle have I misunderstood or misapplied?\n3. What is the correct way to think about this, and why does it lead to the right answer?\n4. Give me an analogous practice question I can try immediately to check I've actually understood it — and don't give me the answer until I've attempted it\n\nI want to fix the gap in my understanding, not just know this answer.",
+      evalCriteria: ["own answer shared not just question", "reasoning explained", "diagnosis not answer requested", "concept gap identified", "follow-up practice requested"]
+    }
   }
 ];
 
