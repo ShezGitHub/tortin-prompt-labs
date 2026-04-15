@@ -943,6 +943,39 @@ const TRACKS = [
     colorGrad: "linear-gradient(135deg, #f39c12, #b7770d)",
     categories: [],
     available: false
+  },
+  {
+    id: "hr-people",
+    title: "AI for HR & People Teams",
+    tagline: "Job descriptions, performance reviews, recruitment, L&D content, and employee communications.",
+    icon: "👥",
+    color: "#0e7490",
+    colorLight: "#ecfeff",
+    colorGrad: "linear-gradient(135deg, #06b6d4, #0e7490)",
+    categories: [],
+    available: false
+  },
+  {
+    id: "finance",
+    title: "AI for Finance & Reporting",
+    tagline: "Financial narratives, board reports, variance analysis, forecasting summaries, and investor comms.",
+    icon: "💹",
+    color: "#155724",
+    colorLight: "#eafaf1",
+    colorGrad: "linear-gradient(135deg, #27ae60, #155724)",
+    categories: [],
+    available: false
+  },
+  {
+    id: "nonprofits",
+    title: "AI for Non-profits & Development",
+    tagline: "Grant writing, donor reports, impact storytelling, stakeholder comms, and theory of change.",
+    icon: "🌱",
+    color: "#166534",
+    colorLight: "#f0fdf4",
+    colorGrad: "linear-gradient(135deg, #22c55e, #166534)",
+    categories: [],
+    available: false
   }
 ];
 
