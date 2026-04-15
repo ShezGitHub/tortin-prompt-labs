@@ -868,6 +868,146 @@ Language needs: English-only comfortable: 61% | Need French option: 28% | Need S
 "I'd love a short course specifically on using AI for donor reporting."`
     }
     }
+  },
+  // ── STUDENTS ────────────────────────────────────────────────────────────────
+  {
+    id: "student-thinking-partner", category: "Thinking & Research", icon: "🧠",
+    title: "AI as Your Thinking Partner", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "The Difference Between Using AI and Outsourcing Your Brain", body: "There are two ways to use AI as a student. The first is to ask it to think for you — generate the essay, solve the problem, summarise the reading. This feels productive but quietly erodes the very skills you're at university to build. The second is to use AI as a sparring partner — you think first, then challenge your thinking against the AI. This approach makes you sharper, not lazier. Every great prompt in this mode starts with YOUR idea." },
+      { heading: "Why Arguing With AI Makes You Smarter", body: "When you ask AI to challenge your position, you're forced to defend it — and defence requires deep understanding. If your argument collapses under AI questioning, it would have collapsed in an exam or seminar too. Better to find that out now. The students who use AI this way consistently outperform those who use it to avoid the hard work of thinking." }
+    ],
+    tips: ["Always write your own position BEFORE asking AI to challenge it", "Ask: 'What are the three strongest objections to this argument?'", "Ask: 'What am I assuming that might be wrong?'", "Ask: 'What evidence would disprove my position?'", "End with: 'What would a strong counter-argument look like?'"],
+    activity: {
+      instruction: "Pick any topic you're currently studying and write 2-3 sentences defending a position on it. Then write a prompt that gets AI to rigorously challenge your thinking — exposing weaknesses, missing evidence, and alternative perspectives. The AI should push back, not agree with you.",
+      weakPrompt: "What do you think about my argument?",
+      placeholder: "I'm a second-year undergraduate studying [subject]. I've just written this argument: '[paste your argument here]'.\n\nAct as a rigorous academic critic. Do NOT agree with me or validate my position. Instead:\n1. Identify the 3 strongest objections to my argument\n2. Point out any assumptions I'm making that I haven't justified\n3. Name any key counter-arguments or evidence I've ignored\n4. Ask me 2 questions I'd struggle to answer in an exam\n\nBe direct and challenging. The goal is to stress-test my thinking, not make me feel good about it.",
+      evalCriteria: ["student writes position first", "AI asked to challenge not validate", "specific objections requested", "assumptions identified", "questions posed back"]
+    }
+  },
+  {
+    id: "student-research", category: "Thinking & Research", icon: "🔍",
+    title: "Smarter Research, Not Lazy Research", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "AI Cannot Replace Your Sources — But It Can Transform How You Use Them", body: "AI models have a knowledge cutoff, can hallucinate citations, and cannot access paywalled journals. Never use AI as a primary source. What AI can do brilliantly is help you understand what you're reading, identify the questions you should be asking, map out debates in a field, and tell you what you don't know yet. Used this way, it makes your actual research faster and deeper." },
+      { heading: "The Research Conversation Approach", body: "Instead of asking AI 'tell me about X topic', treat it like a research supervisor. Tell it what you already know, what you're trying to argue, and ask it what you're missing. Ask it to generate the 5 key questions your essay must answer. Ask it to explain the main schools of thought so you know which sources to look for. This is research amplification — you remain in control." }
+    ],
+    tips: ["Tell AI what you already know before asking what you're missing", "Ask: 'What are the main academic debates in this field?'", "Ask: 'What questions must I answer to make this argument credible?'", "Ask: 'What kind of evidence do I need and where would I find it?'", "Never cite AI — use it to find the real sources, then read them"],
+    activity: {
+      instruction: "You're starting research for an essay or assignment. Write a prompt that uses AI as a research guide — helping you understand the landscape of the topic, identify key debates, and know what questions your work must answer. Don't ask it to write anything for you.",
+      weakPrompt: "Tell me about climate change policy.",
+      placeholder: "I'm writing a [word count] essay arguing that [your thesis]. I'm studying [subject] at [undergraduate/postgraduate] level.\n\nI already know: [briefly summarise what you know]\n\nAct as my research supervisor. Help me understand this topic better by:\n1. Identifying the 3 main academic debates or schools of thought I need to engage with\n2. Listing the 5 key questions my essay must answer to be credible\n3. Telling me what type of evidence (empirical studies, case studies, theoretical frameworks) would strengthen my argument\n4. Flagging any major counter-arguments I must address\n\nDo NOT write the essay or give me direct answers — help me know what to look for.",
+      evalCriteria: ["own position stated first", "research supervisor framing", "debates and schools identified", "key questions generated", "evidence types requested"]
+    }
+  },
+  {
+    id: "student-essay-planning", category: "Academic Writing", icon: "📝",
+    title: "Essay Planning, Not Essay Writing", difficulty: "Intermediate", duration: "8 min",
+    theory: [
+      { heading: "There Is a Hard Line Between Planning Help and Ghostwriting", body: "Getting AI to critique your essay structure is legitimate and valuable. Getting AI to write your essay is academic dishonesty — and beyond the ethics, it also means you've learned nothing and will struggle in exams. The prompting skill here is using AI as a structural editor: you produce the ideas, the argument, the evidence — AI tells you if your logic holds together and where the gaps are." },
+      { heading: "How to Use AI to Write Better Essays Yourself", body: "Write your own rough outline first — always. Then ask AI to examine your argument structure: Does paragraph 2 actually follow from paragraph 1? Is your conclusion earned by your evidence? Are you making claims you haven't substantiated? This feedback loop, applied to YOUR thinking, produces essays that are genuinely better because YOU understand why they're better." }
+    ],
+    tips: ["Always produce your own outline before involving AI", "Ask: 'Does my argument flow logically from introduction to conclusion?'", "Ask: 'Which of my claims am I not supporting with evidence?'", "Ask: 'Where is my reasoning weakest and why?'", "Ask: 'What would a marker likely criticise about this structure?'"],
+    activity: {
+      instruction: "Write a rough bullet-point outline for an essay you're working on (even 5-6 bullets is fine). Then write a prompt that gets AI to critique the structure and logic — identifying gaps, weak links, and unsupported claims. The AI should improve YOUR plan, not replace it.",
+      weakPrompt: "Can you check my essay plan?",
+      placeholder: "I'm writing a [word count] essay for [subject] with the title: '[essay title]'.\n\nHere is my rough outline:\n[paste your bullet-point outline]\n\nMy core argument is: [one sentence]\n\nPlease critique this structure as a strict academic marker would:\n1. Does my argument build logically from intro to conclusion?\n2. Which points are claims without evidence I'll need to support?\n3. Where are the weakest links in my reasoning?\n4. Am I missing any obvious counter-arguments I must address?\n5. What would a first-class answer include that mine currently doesn't?\n\nDo NOT rewrite my outline. Give me feedback I can act on myself.",
+      evalCriteria: ["own outline provided", "core argument stated", "logic flow checked", "unsupported claims flagged", "AI asked not to rewrite"]
+    }
+  },
+  {
+    id: "student-feedback", category: "Academic Writing", icon: "✏️",
+    title: "Getting Feedback That Actually Helps", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Vague Feedback Requests Produce Vague Feedback", body: "If you ask AI 'is my essay good?', you'll get hollow reassurance. If you ask it to evaluate your writing against specific academic criteria, flag where your argument loses the reader, and point out every unsupported claim — you'll get something genuinely useful. The quality of feedback you receive is entirely determined by the quality of your request." },
+      { heading: "Feedback on YOUR Work Builds YOUR Skills", body: "There is a meaningful difference between asking AI to improve your writing (it rewrites, you learn nothing) and asking AI to explain specifically what is weak and why (you understand, you revise, you improve). Always ask for diagnosis, not surgery. The revision should be yours." }
+    ],
+    tips: ["Share the marking criteria or learning outcomes with the AI", "Ask it to act as your subject's marker, not a general editor", "Request specific examples of weak sentences, not general feedback", "Ask: 'What would push this from a 2:1 to a first?'", "Ask for feedback on argument, not just grammar"],
+    activity: {
+      instruction: "Take a paragraph from something you've written (or use the sample attached). Write a prompt that gets specific, actionable, academically-rigorous feedback on it — as if from your actual module marker. The feedback should make you want to revise it yourself, not hand it back to AI.",
+      weakPrompt: "Please check my writing.",
+      placeholder: "I'm a [year] student studying [subject]. Below is a paragraph from my essay on [topic]. The module is assessed on: [list marking criteria, e.g. 'critical analysis, use of evidence, clarity of argument'].\n\n[Paste your paragraph here]\n\nPlease give me feedback as my module tutor would. Be specific and honest:\n1. Where does my argument lose clarity or precision?\n2. Which claims am I making without adequate evidence?\n3. Where am I describing rather than analysing?\n4. What does this paragraph do well that I should keep?\n5. What one thing, if I fixed it, would most improve this paragraph's mark?\n\nDo not rewrite the paragraph. I want to revise it myself based on your feedback.",
+      evalCriteria: ["marking criteria shared", "tutor/marker framing", "specific weaknesses requested", "analysis vs description checked", "AI asked not to rewrite"],
+      attachment: {
+        filename: "Sample_Student_Essay_Paragraph.txt",
+        fileType: "txt",
+        meta: "Example undergraduate paragraph · Use this if you don't have your own work yet",
+        content: `# SAMPLE STUDENT ESSAY PARAGRAPH
+## Topic: The causes of the 2008 financial crisis
+## Module: Economics / Politics / History (adapt as needed)
+
+---
+
+The 2008 financial crisis was caused by many different factors that all came together at the same time. Banks were giving out mortgages to people who couldn't really afford them and this led to a housing bubble. When the bubble burst, banks lost a lot of money. Deregulation also played a role because it meant banks could take more risks. The government should have done more to prevent this from happening. Overall, the crisis shows that financial systems can be very fragile and need better oversight to prevent future crises from occurring in the same way.
+
+---
+
+NOTE: This paragraph is intentionally written at a mediocre standard — it describes rather than analyses, makes unsupported claims, and lacks specific evidence. Use it to practise getting feedback, then compare the AI's critique to your own assessment.`
+      }
+    }
+  },
+  {
+    id: "student-revision", category: "Revision & Exams", icon: "🔄",
+    title: "Active Recall & Revision", difficulty: "Beginner", duration: "6 min",
+    theory: [
+      { heading: "Passive Reading Is the Least Effective Revision Method", body: "Re-reading your notes feels productive but produces almost no long-term retention. The most effective revision technique, backed by decades of cognitive science research, is active recall — retrieving information from memory rather than recognising it on a page. AI can generate unlimited, customised practice questions for exactly what you need to know. Used this way, it is one of the most powerful revision tools available." },
+      { heading: "The Key Is to Answer First, Then Check", body: "The whole point of active recall is the struggle of retrieval. If you ask AI to generate questions AND immediately give you the answers, you've removed the learning. The correct workflow: prompt AI for questions, close the chat, answer them on paper, then return to check. Alternatively, explicitly tell AI not to give answers until you've responded. Structure your prompt to protect the learning mechanism." }
+    ],
+    tips: ["Ask for questions at specific difficulty levels: 'start easy, get harder'", "Specify the exact topics: 'focus on X, Y, Z — not general overview'", "Add: 'Do not give answers until I respond to each question'", "Ask for exam-style questions matching your actual paper format", "Ask: 'After I answer, tell me what I got right, wrong, and what I missed'"],
+    activity: {
+      instruction: "Write a prompt that generates a personalised set of active recall questions for a topic you're currently revising. The prompt should specify your exact topic, level, exam format, and — crucially — instruct the AI not to give you the answers until you've attempted them.",
+      weakPrompt: "Give me some revision questions on the French Revolution.",
+      placeholder: "I'm revising for a [exam type, e.g. 'closed-book written exam'] in [subject] at [level]. The specific topic I need to practise is: [topic].\n\nGenerate 8 active recall questions following this structure:\n- 2 questions testing basic factual recall\n- 3 questions requiring explanation or analysis\n- 2 questions in the style of my actual exam (e.g. 'Assess the extent to which...')\n- 1 question that is harder than anything likely to appear, to stretch my understanding\n\nIMPORTANT: Do NOT provide answers yet. Present the questions only, then wait for me to attempt each one before giving feedback. After I answer each question, tell me: what I got right, what I missed, and what a full mark answer would include.",
+      evalCriteria: ["topic specified precisely", "difficulty levels defined", "exam format matched", "answers withheld instruction", "feedback structure requested"]
+    }
+  },
+  {
+    id: "student-difficult-texts", category: "Thinking & Research", icon: "📖",
+    title: "Unlocking Difficult Texts", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "Asking AI to Summarise a Text You Haven't Read Is Not Learning", body: "If you ask AI to summarise a journal article so you don't have to read it, you've saved 20 minutes and learned nothing. You won't be able to engage with the argument in a seminar, apply it in an essay, or discuss it in an exam. The legitimate use of AI with difficult texts is to ask it to help you understand what you're reading — to clarify concepts, explain dense passages, and map the argument structure so that when you read it, you actually get it." },
+      { heading: "The Socratic Dialogue Method", body: "Instead of asking AI to explain a text, ask it to walk you through it step by step and check your understanding as you go. Ask it to define terms you don't know. Ask it to explain the logical structure of the argument. Ask it what the author is responding to. This active engagement with the text, mediated by AI, produces genuine understanding — not just familiarity." }
+    ],
+    tips: ["Read the text first, mark what you don't understand, then ask AI about those specific parts", "Ask: 'What is the author's core claim in this passage?'", "Ask: 'What is this author arguing against?'", "Ask: 'Explain this sentence in plain language without losing the meaning'", "Ask: 'What do I need to understand before this argument makes sense?'"],
+    activity: {
+      instruction: "Use the attached sample academic text (or paste your own). Write a prompt that helps you genuinely understand a difficult passage — not by asking AI to summarise it for you, but by asking it to walk you through the argument, clarify what you don't follow, and check your comprehension.",
+      weakPrompt: "Summarise this article for me.",
+      placeholder: "I'm reading the following passage for my [subject] module. I've read it but I'm struggling to follow the argument fully.\n\n[Paste the passage here]\n\nHelp me understand it deeply — but do NOT just summarise it for me. Instead:\n1. What is the author's central claim in this passage?\n2. What is this argument responding to or pushing back against?\n3. Explain the key terms [list any terms you don't understand] in plain language without losing academic precision\n4. Walk me through the logical structure: what does the author claim, what evidence do they use, and how do they reach their conclusion?\n5. Then ask me 2 questions to check whether I've actually understood it\n\nI want to understand this well enough to use it in an essay and discuss it in a seminar.",
+      evalCriteria: ["text pasted or attached", "asked to explain not summarise", "key terms clarified", "argument structure requested", "comprehension questions asked"],
+      attachment: {
+        filename: "Sample_Academic_Passage.txt",
+        fileType: "txt",
+        meta: "Example of a dense academic text · Philosophy / Social Theory · Use this to practise",
+        content: `# SAMPLE ACADEMIC PASSAGE
+## From a hypothetical text on social theory
+## Use this if you don't have your own reading to hand
+
+---
+
+The liberal conception of freedom, as Berlin famously argued, rests on a distinction between negative liberty — the absence of external constraint — and positive liberty — the capacity to be the author of one's own life. Yet this distinction, ostensibly clarifying, conceals more than it reveals. For the absence of external coercion is not sufficient for genuine agency where structural conditions systematically foreclose the real options available to individuals. A worker who is formally free to refuse any particular employment but faces destitution if she does so is not, in any substantively meaningful sense, free to choose. The formal absence of direct interference thus coexists with a form of domination that operates through the shaping of preference and the restriction of viable alternatives — what Pettit terms 'unfreedom as dependence' rather than unfreedom as interference.
+
+This critique does not straightforwardly collapse into a demand for positive liberty in Berlin's sense, however. It is not that individuals require the state to provide them with the capacity for self-realisation. Rather, it is that the conditions under which negative liberty is exercised must themselves be subject to normative scrutiny. Freedom, on this reading, cannot be assessed independently of the background conditions — social, economic, and institutional — within which choices are embedded. What appears as voluntary exchange may, on examination, reproduce relations of domination that are no less constraining for being structurally rather than legally imposed.
+
+---
+
+NOTE: This passage is intentionally dense and uses specialised philosophical vocabulary. It is designed to practise the skill of understanding difficult academic writing with AI assistance.`
+      }
+    }
+  },
+  {
+    id: "student-study-plan", category: "Revision & Exams", icon: "📅",
+    title: "Building a Study Plan That Works", difficulty: "Beginner", duration: "5 min",
+    theory: [
+      { heading: "Generic Study Plans Fail Because They Ignore Your Actual Situation", body: "A timetable downloaded from the internet tells you to 'revise history 9-11am' without knowing that you understand the Tudor period fine but haven't touched the Cold War. A personalised study plan built around your specific gaps, your real time constraints, and your actual exam dates is orders of magnitude more useful. AI can build this with you — but only if you give it honest, detailed information about where you actually are." },
+      { heading: "The Plan Should Challenge You, Not Comfort You", body: "The instinct when building a study plan is to schedule easy subjects first and front-load the things you enjoy. This is the wrong approach. A good study plan deliberately targets your weakest areas with the most focused attention, spaces out retrieval practice rather than clustering it, and builds in checkpoints so you know if you're actually learning. Be honest with the AI about what you're avoiding — that's exactly where the plan needs to focus." }
+    ],
+    tips: ["Give AI your actual exam dates and remaining time", "Be honest about which topics you're weakest on", "Ask for spaced repetition built into the schedule", "Include buffer time for things that take longer than expected", "Ask: 'Where should I spend the most time given my gaps?'"],
+    activity: {
+      instruction: "Write a prompt that generates a realistic, personalised study plan for an upcoming exam or deadline. Give AI enough honest detail about your situation — gaps, time, constraints — that it can produce something genuinely useful rather than a generic timetable.",
+      weakPrompt: "Make me a study plan for my exams.",
+      placeholder: "I have [number] days until my [exam/assignment deadline] in [subject]. I need a realistic daily study plan.\n\nHere is my honest situation:\n- Topics I understand well: [list them]\n- Topics I'm weakest on: [list them — be specific]\n- Time available each day: [e.g. '3 hours on weekdays, 5 hours on weekends']\n- Other commitments I can't move: [e.g. 'work Tuesday evenings, seminar Thursday 2pm']\n- How I learn best: [e.g. 'practice questions work better than re-reading for me']\n- Exam format: [e.g. '3 essay questions from a choice of 6, 2 hours']\n\nBuild me a day-by-day plan that:\n1. Prioritises my weakest topics with the most focused time\n2. Uses spaced repetition rather than cramming\n3. Includes active recall sessions, not just re-reading\n4. Has a checkpoint at the halfway point where I can assess progress\n5. Is honest about what's realistic given my time — don't overschedule",
+      evalCriteria: ["exam date and time given", "weak topics identified honestly", "real constraints included", "active recall built in", "spaced repetition requested"]
+    }
   }
 ];
 
@@ -985,8 +1125,8 @@ const TRACKS = [
     color: "#7c3aed",
     colorLight: "#f5f3ff",
     colorGrad: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
-    categories: [],
-    available: false
+    categories: ["Thinking & Research", "Academic Writing", "Revision & Exams"],
+    available: true
   }
 ];
 
