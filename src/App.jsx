@@ -1941,6 +1941,12 @@ const TRACKS = [
   }
 ];
 
+const DEMO_CODES = {
+  "ACME2024": { org: "Acme Corp", tracks: ["marketing", "hr-people"] },
+  "SCHOOL1":  { org: "Riverside Academy", tracks: ["students", "fundamentals"] },
+  "TORTIN":   { org: "Tortin Team", tracks: ["fundamentals", "labour-policy", "marketing", "hr-people", "entrepreneurs", "students"] },
+};
+
 const R = "#c0392b", RL = "#e74c3c", RLL = "#fdecea";
 const SF = "DM Sans, sans-serif";
 const PF = "Playfair Display, serif";
@@ -2220,6 +2226,37 @@ export default function TortinPromptLabs() {
   const [error, setError] = useState("");
   const [showHint, setShowHint] = useState(false);
   const resultRef = useRef(null);
+  const handleLogoClick = () => {
+    setLogoClicks(prev => {
+      const next = prev + 1;
+      if (next >= 3) {
+        setDemoMode(d => {
+          if (!d) { setUnlockedTracks([]); setWelcomeBanner(null); }
+          return !d;
+        });
+        return 0;
+      }
+      return next;
+    });
+  };
+  const handleCodeSubmit = () => {
+    const code = codeInput.trim().toUpperCase();
+    const match = DEMO_CODES[code];
+    if (match) {
+      setUnlockedTracks(match.tracks);
+      setWelcomeBanner({ org: match.org });
+      setShowCodeModal(false);
+      setCodeInput("");
+      setCodeError("");
+    } else {
+      setCodeError("Invalid code. Try ACME2024, SCHOOL1, or TORTIN.");
+    }
+  };
+  const handleUnlock = (track) => {
+    setUnlockedTracks(u => [...u, track.id]);
+    setShowPayModal(null);
+  };
+
 
   // ── Scores: { lessonId: { score, max, criteria: [{label, hit}], prompt, timestamp } }
   const [scores, setScores] = useState({});
@@ -2228,6 +2265,14 @@ export default function TortinPromptLabs() {
   const [showScores, setShowScores] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
   const [noteSaved, setNoteSaved] = useState(false);
+  const [demoMode, setDemoMode] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
+  const [unlockedTracks, setUnlockedTracks] = useState([]);
+  const [welcomeBanner, setWelcomeBanner] = useState(null);
+  const [showCodeModal, setShowCodeModal] = useState(false);
+  const [showPayModal, setShowPayModal] = useState(null);
+  const [codeInput, setCodeInput] = useState("");
+  const [codeError, setCodeError] = useState("");
 
   // Load from storage on mount
   useEffect(() => {
@@ -2360,7 +2405,7 @@ export default function TortinPromptLabs() {
       {/* ── HEADER ─────────────────────────────────────────────────────── */}
       <header style={{ padding: "0 32px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between", background: "#fff", borderBottom: "1px solid #f0e0e0", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 2px 12px rgba(192,57,43,0.06)" }}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <img src={LOGO} alt="Tortin" style={{ height: 36, objectFit: "contain" }} />
+          <img src={LOGO} alt="Tortin" onClick={handleLogoClick} title="×3 for demo mode" style={{ height: 36, objectFit: "contain", cursor: "pointer", userSelect: "none" }} />
           <div style={{ width: 1, height: 26, background: "#f0dede", margin: "0 16px" }} />
           <div>
             <div style={{ fontFamily: PF, fontSize: 15, fontWeight: 700, color: R }}>AI Learning Labs</div>
@@ -2503,12 +2548,28 @@ export default function TortinPromptLabs() {
                   Pick the track that fits your work. Each one is a focused curriculum with live AI practice and instant feedback.
                 </p>
               </div>
+              {demoMode && welcomeBanner && (
+                <div style={{ background: "linear-gradient(135deg, #e8f8f0, #d5f5e3)", border: "1px solid #a9dfbf", borderRadius: 14, padding: "14px 22px", marginBottom: 24, display: "flex", alignItems: "center", gap: 14, animation: "fadeUp 0.4s ease" }}>
+                  <span style={{ fontSize: 28 }}>👋</span>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#1e8449", fontFamily: SF }}>Welcome, {welcomeBanner.org} team!</div>
+                    <div style={{ fontSize: 12, color: "#27ae60", fontFamily: SF, marginTop: 2 }}>Your access code has been applied — unlocked tracks are highlighted below.</div>
+                  </div>
+                </div>
+              )}
+              {demoMode && (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#fff8f0", border: "1px solid #f5cba7", borderRadius: 12, padding: "12px 20px", marginBottom: 24, flexWrap: "wrap", gap: 10 }}>
+                  <div style={{ fontSize: 13, color: "#e67e22", fontFamily: SF }}>🔐 <strong>Gated Mode</strong> · Tracks are locked. Enter a code or buy access below.</div>
+                  <button onClick={() => setShowCodeModal(true)} style={{ background: "linear-gradient(135deg, #e67e22, #d35400)", color: "#fff", border: "none", borderRadius: 8, padding: "7px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: SF, flexShrink: 0 }}>Enter Access Code →</button>
+                </div>
+              )}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
                 {[...TRACKS].sort((a, b) => b.available - a.available).map(track => {
                   const lessonCount = LESSONS.filter(l => track.categories.includes(l.category)).length;
+                  const isLocked = demoMode && track.available && !unlockedTracks.includes(track.id);
                   return (
-                    <div key={track.id} onClick={() => track.available && setSelectedTrack(track)}
-                      style={{ background: "#fff", border: `1px solid ${track.available ? track.color + "33" : "#eee"}`, borderRadius: 20, padding: 28, cursor: track.available ? "pointer" : "default", position: "relative", overflow: "hidden", transition: "all 0.2s", opacity: track.available ? 1 : 0.6, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
+                    <div key={track.id} onClick={() => { if (isLocked) setShowPayModal(track); else if (track.available) setSelectedTrack(track); }}
+                      style={{ background: "#fff", border: `1px solid ${isLocked ? track.color + "55" : track.available ? track.color + "33" : "#eee"}`, borderRadius: 20, padding: isLocked ? "28px 28px 80px" : 28, cursor: track.available ? "pointer" : "default", position: "relative", overflow: "hidden", transition: "all 0.2s", opacity: track.available ? 1 : 0.6, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
                       onMouseEnter={e => { if (track.available) e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,0,0,0.10)"; }}
                       onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.04)"; }}>
                       {/* colour bar */}
@@ -2516,16 +2577,28 @@ export default function TortinPromptLabs() {
                       {!track.available && (
                         <div style={{ position: "absolute", top: 14, right: 14, background: "#f0f0f0", color: "#aaa", fontSize: 10, letterSpacing: 2, padding: "3px 10px", borderRadius: 20, textTransform: "uppercase", fontFamily: SF }}>Coming Soon</div>
                       )}
+                      {isLocked && (
+                        <div style={{ position: "absolute", top: 14, right: 14, fontSize: 16, filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.15))" }}>🔒</div>
+                      )}
                       <div style={{ fontSize: 36, marginBottom: 14, marginTop: 6 }}>{track.icon}</div>
                       <h2 style={{ fontFamily: PF, fontSize: 20, fontWeight: 700, color: "#1a0505", marginBottom: 8, lineHeight: 1.25 }}>{track.title}</h2>
                       <p style={{ fontSize: 13, color: "#777", lineHeight: 1.7, fontFamily: SF, marginBottom: 20 }}>{track.tagline}</p>
-                      {track.available ? (
+                      {track.available && !isLocked ? (
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                           <span style={{ fontSize: 12, color: track.color, fontFamily: SF, fontWeight: 600, background: track.colorLight, padding: "4px 12px", borderRadius: 20 }}>{lessonCount} lessons</span>
                           <span style={{ fontSize: 13, color: track.color, fontFamily: SF, fontWeight: 600 }}>Start →</span>
                         </div>
-                      ) : (
+                      ) : !track.available ? (
                         <div style={{ fontSize: 12, color: "#bbb", fontFamily: SF }}>Launching soon</div>
+                      ) : null}
+                      {isLocked && (
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "14px 20px", background: "linear-gradient(to top, rgba(255,255,255,1) 70%, rgba(255,255,255,0))", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <div style={{ fontSize: 10, color: "#999", fontFamily: SF }}>🎓 Includes certificate</div>
+                          <button onClick={(e) => { e.stopPropagation(); setShowPayModal(track); }}
+                            style={{ background: `linear-gradient(135deg, ${RL}, ${R})`, color: "#fff", border: "none", borderRadius: 8, padding: "7px 14px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: SF, letterSpacing: 0.3, boxShadow: "0 3px 10px rgba(192,57,43,0.25)" }}>
+                            Unlock · $9.99
+                          </button>
+                        </div>
                       )}
                     </div>
                   );
@@ -2788,6 +2861,79 @@ export default function TortinPromptLabs() {
           )}
         </div>
       )}
+      {/* ── ACCESS CODE MODAL ───────────────────────────────────────────── */}
+      {showCodeModal && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setShowCodeModal(false); setCodeInput(""); setCodeError(""); }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#fff", borderRadius: 20, padding: "36px 32px", width: 420, maxWidth: "90vw", boxShadow: "0 24px 64px rgba(0,0,0,0.22)", animation: "fadeUp 0.25s ease" }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>🔑</div>
+            <h2 style={{ fontFamily: PF, fontSize: 22, color: "#1a0505", margin: "0 0 8px" }}>Enter Access Code</h2>
+            <p style={{ fontSize: 13, color: "#888", fontFamily: SF, marginBottom: 24, lineHeight: 1.6 }}>Your organisation's admin will have shared this code with you.</p>
+            <input value={codeInput} onChange={e => { setCodeInput(e.target.value.toUpperCase()); setCodeError(""); }}
+              onKeyDown={e => e.key === "Enter" && handleCodeSubmit()}
+              placeholder="e.g. ACME2024"
+              style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${codeError ? "#e74c3c" : "#e0e0e0"}`, borderRadius: 10, fontSize: 15, fontFamily: SF, outline: "none", boxSizing: "border-box", letterSpacing: 3, textTransform: "uppercase" }} />
+            {codeError && <p style={{ color: "#e74c3c", fontSize: 12, fontFamily: SF, marginTop: 6, marginBottom: 0 }}>{codeError}</p>}
+            <button onClick={handleCodeSubmit}
+              style={{ width: "100%", marginTop: 16, padding: "13px", background: `linear-gradient(135deg, ${RL}, ${R})`, color: "#fff", border: "none", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: SF, boxShadow: "0 4px 14px rgba(192,57,43,0.25)" }}>
+              Apply Code →
+            </button>
+            <button onClick={() => { setShowCodeModal(false); setCodeInput(""); setCodeError(""); }}
+              style={{ width: "100%", marginTop: 10, padding: "10px", background: "none", border: "none", color: "#bbb", fontSize: 13, cursor: "pointer", fontFamily: SF }}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── PAYMENT MODAL ───────────────────────────────────────────────── */}
+      {showPayModal && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => setShowPayModal(null)}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#fff", borderRadius: 20, width: 440, maxWidth: "90vw", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.22)", animation: "fadeUp 0.25s ease" }}>
+            {/* Track header */}
+            <div style={{ background: showPayModal.colorGrad, padding: "22px 28px", display: "flex", alignItems: "center", gap: 14 }}>
+              <span style={{ fontSize: 34 }}>{showPayModal.icon}</span>
+              <div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.75)", letterSpacing: 2.5, textTransform: "uppercase", fontFamily: SF }}>Unlock Track</div>
+                <div style={{ fontSize: 19, fontWeight: 700, color: "#fff", fontFamily: PF, lineHeight: 1.2 }}>{showPayModal.title}</div>
+              </div>
+            </div>
+            {/* Body */}
+            <div style={{ padding: "26px 28px 22px" }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 18 }}>
+                <span style={{ fontSize: 38, fontWeight: 800, color: "#1a0505", fontFamily: PF }}>$9.99</span>
+                <span style={{ fontSize: 13, color: "#aaa", fontFamily: SF }}>one-time</span>
+              </div>
+              {/* Included items */}
+              <div style={{ marginBottom: 22, padding: "14px 16px", background: "#f9fdfb", borderRadius: 10, border: "1px solid #e0f0e8" }}>
+                {["Full track access — every lesson included", "Live AI practice with real-time feedback", "Certificate of completion 🎓", "Lifetime access — learn at your own pace"].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: i < 3 ? 8 : 0 }}>
+                    <span style={{ color: "#27ae60", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>✓</span>
+                    <span style={{ fontSize: 13, color: "#555", fontFamily: SF }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Mock card fields */}
+              <div style={{ marginBottom: 16 }}>
+                <input readOnly placeholder="Card number" style={{ width: "100%", padding: "11px 14px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 13, fontFamily: SF, outline: "none", boxSizing: "border-box", marginBottom: 8, color: "#aaa" }} />
+                <div style={{ display: "flex", gap: 8 }}>
+                  <input readOnly placeholder="MM / YY" style={{ flex: 1, padding: "11px 14px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 13, fontFamily: SF, outline: "none", color: "#aaa" }} />
+                  <input readOnly placeholder="CVV" style={{ flex: 1, padding: "11px 14px", border: "1.5px solid #e0e0e0", borderRadius: 8, fontSize: 13, fontFamily: SF, outline: "none", color: "#aaa" }} />
+                </div>
+              </div>
+              <button onClick={() => handleUnlock(showPayModal)}
+                style={{ width: "100%", padding: "13px", background: "linear-gradient(135deg, #2ecc71, #27ae60)", color: "#fff", border: "none", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: SF, boxShadow: "0 4px 14px rgba(39,174,96,0.3)" }}>
+                Complete Purchase →
+              </button>
+              <button onClick={() => setShowPayModal(null)}
+                style={{ width: "100%", marginTop: 10, padding: "10px", background: "none", border: "none", color: "#bbb", fontSize: 13, cursor: "pointer", fontFamily: SF }}>
+                Cancel
+              </button>
+              <p style={{ textAlign: "center", fontSize: 10, color: "#ccc", fontFamily: SF, marginTop: 10, marginBottom: 0 }}>🔒 Demo only — no real payment is processed</p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
