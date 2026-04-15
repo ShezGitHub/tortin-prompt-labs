@@ -932,6 +932,17 @@ const TRACKS = [
     colorGrad: "linear-gradient(135deg, #8e44ad, #6c3483)",
     categories: [],
     available: false
+  },
+  {
+    id: "entrepreneurs",
+    title: "AI for Entrepreneurs",
+    tagline: "Pitch decks, business plans, market research, customer discovery, and growth strategy.",
+    icon: "🚀",
+    color: "#b7770d",
+    colorLight: "#fef9ec",
+    colorGrad: "linear-gradient(135deg, #f39c12, #b7770d)",
+    categories: [],
+    available: false
   }
 ];
 
