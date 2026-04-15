@@ -1550,6 +1550,275 @@ Your insight in one sentence:
       placeholder: "Act as a GTM strategist who works with early-stage startups. Build a focused go-to-market plan for the following:\n\nProduct/service: [what it does and for whom]\nStage: [pre-launch / just launched / early revenue — how many customers so far]\nTarget customer (be specific): [job title, company type, size, specific situation that makes them need this now]\nProblem solved: [what pain you remove and how acutely they feel it]\nCurrent channels tried: [what you've already tested and what happened]\nConstraints: [budget, team size, timeline to first revenue]\nUnit economics (if known): [price point, estimated CAC target, LTV]\n\nDeliver:\n1. Recommended first-90-day GTM strategy with one primary channel and why\n2. The ideal customer profile for your first 10 customers — specific enough to name them\n3. The message that will make that customer act — not positioning, the actual hook\n4. How you'll know if this channel is working (leading indicators, not just revenue)\n5. What you try next if this doesn't work — a sequenced fallback\n\nBe brutally honest: what is the hardest part of this GTM and why?",
       evalCriteria: ["specific customer profile", "single primary channel chosen", "hook not just positioning", "success metrics defined", "honest hardest part question"]
     }
+  },
+  // ── ENTREPRENEURS (SESSION COMPANION LESSONS) ────────────────────────────────
+  {
+    id: "ent-command-center", category: "AI Command Center", icon: "🧠",
+    title: "Build Your AI Business Brain", difficulty: "Intermediate", duration: "9 min",
+    theory: [
+      { heading: "Your AI Is Only as Smart as the Context You Give It", body: "Every time you start a new conversation with an AI, it knows nothing about you, your business, your customers, or your voice. Most entrepreneurs lose 20-30% of every session just re-establishing context. The solution is a Foundational Business Prompt — a master document that captures your business identity, your target customer, your brand voice, your key offerings, your competitive position, and your non-negotiables. Load this at the start of any session and your AI instantly becomes a senior team member who knows your business." },
+      { heading: "The Business Brain Is a Living Document", body: "Your Foundational Prompt is not a one-time setup — it evolves as your business does. When you nail a positioning statement, add it. When you identify a new customer insight, add it. When you lock a tone-of-voice example, add it. Over time, this document becomes the most leveraged asset in your business: a single source of truth that makes every AI interaction dramatically more productive. Treat it like a company wiki, not a setup task." }
+    ],
+    tips: ["Include a 3-sentence business description, target customer, and core value proposition", "Add 3 examples of your brand voice: one email, one social post, one how you'd never write", "List your key products/services with one-line descriptions", "Add your non-negotiables: things the AI should never do or say in your name", "Include your competitive position: who you're for, who you're not for, who you compete with"],
+    activity: {
+      instruction: "Build your Foundational Business Prompt — the master context document you'll load at the start of every AI session. It should be specific enough that an AI reading it could write in your voice and make sensible decisions on your behalf.",
+      weakPrompt: "Here's some info about my business: we sell software to small businesses.",
+      placeholder: "You are my dedicated business AI assistant. Here is everything you need to know to work effectively with me:\n\n## MY BUSINESS\nName: [business name]\nWhat we do (one sentence): [core offering]\nWho we serve (one specific person): [ideal customer — their role, situation, problem we solve]\nHow we make money: [revenue model]\nStage: [pre-revenue / early revenue / scaling]\n\n## OUR VOICE & TONE\nWe sound like: [3 adjectives + one contrasting 'not']\nExample of us at our best: [paste a real piece of your writing]\nWe never: [things your brand would never say or do]\n\n## OUR PRODUCTS/SERVICES\n1. [Name]: [one-line description + price if relevant]\n2. [Name]: [one-line description]\n\n## OUR COMPETITIVE POSITION\nWe're the best choice for: [specific situation]\nWe're NOT right for: [who should go elsewhere]\nOur main alternatives: [2-3 competitors and how we differ]\n\n## KEY CONTEXT YOU ALWAYS NEED\n[Any other standing context — current priorities, ongoing projects, team structure]\n\n## YOUR OPERATING RULES\n- Always match my voice when writing content\n- Flag if you're uncertain rather than guess\n- Ask clarifying questions before long outputs\n- [Add your own rules]",
+      evalCriteria: ["business described specifically", "ideal customer profiled", "voice examples given", "competitive position stated", "operating rules included"],
+      attachment: {
+        filename: "Foundational_Business_Prompt_Template.txt",
+        fileType: "txt",
+        meta: "Session 1 companion · Fill in before the live session",
+        content: `# FOUNDATIONAL BUSINESS PROMPT BUILDER
+## Your AI Command Center — Session 1 Companion Document
+
+Complete each section before Session 1. The more specific you are, the more powerful your AI assistant becomes.
+
+---
+
+## SECTION 1: BUSINESS IDENTITY
+
+Business name:
+Website (if live):
+Industry / sector:
+Founded / how long operating:
+
+One-sentence description (what you do + who for + key outcome):
+
+Three-sentence elevator pitch:
+
+Current stage:
+[ ] Idea / pre-validation
+[ ] MVP / first customers
+[ ] Early revenue (under £100k ARR)
+[ ] Growth stage (£100k-£1M ARR)
+[ ] Scaling (£1M+ ARR)
+
+---
+
+## SECTION 2: YOUR IDEAL CUSTOMER
+
+Describe your single best customer (not a segment — a specific person):
+Name/role:
+Company type and size:
+Their biggest problem you solve:
+What they've tried before (and why it didn't work):
+What success looks like for them after using you:
+Where they spend time online:
+What they'd Google to find something like you:
+
+---
+
+## SECTION 3: YOUR PRODUCTS & SERVICES
+
+Product/Service 1:
+Name:
+What it does:
+Price:
+Who it's for:
+The one reason people buy it:
+
+Product/Service 2 (if applicable):
+Name:
+What it does:
+Price:
+
+---
+
+## SECTION 4: BRAND VOICE
+
+Three words that describe how we sound:
+One word we are NOT:
+
+Best example of our voice (paste a real email, post, or piece of copy you're proud of):
+
+Example of writing that sounds WRONG for us (competitor, or generic corporate):
+
+Things we never say or do in our communications:
+
+---
+
+## SECTION 5: COMPETITIVE POSITION
+
+Our main competitors:
+1.
+2.
+3.
+
+How we're different (be specific, not just 'better quality'):
+
+Who we are NOT the right choice for (be honest):
+
+Our unfair advantage (what's genuinely hard to replicate):
+
+---
+
+## SECTION 6: CURRENT PRIORITIES
+
+Top 3 business goals for the next 90 days:
+1.
+2.
+3.
+
+Biggest current bottleneck or problem:
+
+What would make the next month a success:`
+      }
+    }
+  },
+  {
+    id: "ent-sops", category: "AI Operations", icon: "⚙️",
+    title: "Writing SOPs with AI", difficulty: "Intermediate", duration: "7 min",
+    theory: [
+      { heading: "An SOP Is the Difference Between a Business and a Job", body: "If the only way a task gets done correctly is because you're doing it, you don't have a business — you have a job that doesn't let you take holidays. Standard Operating Procedures turn your tribal knowledge into documented, delegatable processes that a human team member, a VA, or increasingly an AI agent can execute without you. The barrier most entrepreneurs face is that writing SOPs is tedious. AI eliminates that barrier: describe how you do something and AI turns it into a clean, replicable process document in minutes." },
+      { heading: "The Process Extraction Technique", body: "You don't need to write SOPs from scratch. The most effective method is to either (1) narrate your process as you do it — talk through what you're doing in a voice note or stream of consciousness, then feed it to AI — or (2) describe a process from memory with all its messiness and edge cases, then ask AI to structure it. The messier your input, the more valuable the AI's structuring becomes. The key is to include the 'why' behind each step, not just the 'what'." }
+    ],
+    tips: ["Talk through your process messily — AI can structure it, you just need the knowledge", "Include decision points: 'if X then Y, if Z then W'", "Add the 'why' for non-obvious steps so others understand intent", "Include common mistakes and how to avoid them", "End every SOP with a quality check: how do you know the task was done correctly?"],
+    activity: {
+      instruction: "Take a process you do regularly in your business — onboarding a client, sending a weekly report, publishing a piece of content, handling a refund. Describe it messily to AI and get it to produce a clean, replicable SOP.",
+      weakPrompt: "Write an SOP for how I onboard clients.",
+      placeholder: "I'm going to describe a business process messily and I need you to turn it into a clean, replicable Standard Operating Procedure.\n\nProcess name: [what this process is called]\nWho does this: [you, a VA, a team member, or eventually an AI agent]\nHow often: [daily / weekly / per new client / on trigger]\nTools used: [software, platforms, templates involved]\n\nHere is how I currently do it (messy, stream of consciousness — include everything you do even if it feels obvious):\n[Describe the full process — every step, every decision, every 'I usually check...' and 'then I remember to...']\n\nCommon mistakes or things that go wrong:\n[What typically breaks or gets missed]\n\nHow I know it's been done correctly:\n[The quality check — what does 'done' look like?]\n\nNow structure this into a clean SOP with:\n1. Purpose (why this process exists)\n2. When to run it (trigger or schedule)\n3. Step-by-step instructions (numbered, with decision branches where needed)\n4. Tools and templates required\n5. Common mistakes and how to avoid them\n6. Quality check / definition of done",
+      evalCriteria: ["process described with full detail", "decision points included", "common mistakes shared", "quality check defined", "structured SOP format requested"],
+      attachment: {
+        filename: "Raw_Process_Notes_Client_Onboarding.txt",
+        fileType: "txt",
+        meta: "Session 2 companion · Example messy process notes ready to turn into an SOP",
+        content: `# RAW PROCESS NOTES: CLIENT ONBOARDING
+## Example of messy founder notes — use this to practise SOP creation
+
+---
+
+ok so when someone signs a new client basically what happens is i get the signed contract back and then i need to set them up... first i send them the welcome email (i have a template somewhere in gmail drafts i think its called "new client welcome v3") and i cc my assistant on that. then i need to create their folder in google drive - i do it under Clients > [year] > [client name] and there are subfolders for Contracts, Assets, Deliverables, Comms. then i add them to notion - theres a client database and i need to fill in: name, company, start date, contract value, payment terms, the service they bought, and their main contact.
+
+then i schedule the kickoff call - i use calendly for this, the link is in my email signature. i usually try to do this within 3 days of signing. before the kickoff i send them the onboarding questionnaire (its in google forms, i have the link bookmarked). they need to fill this in before the call otherwise the call is a waste of time. sometimes they dont fill it in and i have to chase them which is annoying.
+
+on the kickoff call i cover: introductions, reviewing their answers from the questionnaire, setting expectations on timelines and communication, agreeing the first milestone. i take notes in notion. after the call i send a summary email with the agreed next steps and first milestone date - i usually do this same day but sometimes i forget and do it the next morning.
+
+then i set up their slack channel (if they're on our slack workspace) or i add them to a shared slack connect channel. i also add the first milestone as a task in asana with the due date.
+
+things that go wrong: sometimes i forget to create the notion record and then i cant find their info later. also sometimes the questionnaire doesnt get sent and the kickoff call is useless. also i once forgot to add the payment terms to notion and then invoicing was a mess 3 months later.
+
+i know its done when theyve had the kickoff call, their folder exists, theyre in notion, and the first milestone is in asana.`
+      }
+    }
+  },
+  {
+    id: "ent-contracts", category: "AI Operations", icon: "📄",
+    title: "AI-Assisted Contract & Document Review", difficulty: "Advanced", duration: "8 min",
+    theory: [
+      { heading: "AI Can Be Your First-Pass Legal Eye — But Not Your Last", body: "Most early-stage entrepreneurs can't afford a lawyer for every document they sign. AI gives you something previously unavailable: a knowledgeable first pass that flags unusual clauses, explains what terms actually mean, identifies missing protections, and highlights the risks you're accepting. This is not a substitute for legal advice on significant contracts — but it catches the obvious problems before they become expensive ones, and it educates you so you ask better questions when you do see a lawyer." },
+      { heading: "What to Ask AI to Look For", body: "A generic 'review this contract' prompt produces generic output. The valuable questions are specific: What liability am I accepting that isn't standard? What are my exit rights if this goes wrong? What's missing that should be here? Who does this contract protect more — me or the other party? Asking AI to identify the three clauses most likely to cause a dispute is more useful than asking for a general summary." }
+    ],
+    tips: ["Always ask: who does this contract protect more — me or them?", "Ask AI to flag any unlimited liability, auto-renewal, or IP assignment clauses", "Ask: 'what is missing that a standard contract of this type would include?'", "Get AI to explain any clause you don't understand in plain English", "ALWAYS have a qualified lawyer review before signing anything significant"],
+    activity: {
+      instruction: "Take a contract or agreement you've received (or use the sample attached). Write a prompt that gets AI to perform a structured first-pass review — identifying risk areas, unusual clauses, missing protections, and plain-English explanations of the things that matter most.",
+      weakPrompt: "Can you check this contract for me?",
+      placeholder: "Act as a commercially experienced business advisor reviewing a contract on behalf of a founder. I am [brief description of my business] and I have received the following [contract type].\n\n[Paste the contract text here]\n\nPlease review it and provide:\n1. A plain-English summary of what I'm agreeing to (3-5 bullet points)\n2. The 3 clauses most likely to cause a dispute or cost me money — explain what each means in practice\n3. Any unusual or one-sided terms that favour the other party over standard market terms\n4. What's missing that a well-drafted contract of this type would normally include\n5. The clauses I should push back on or negotiate, and what to ask for instead\n6. An overall risk rating: Low / Medium / High — and why\n\nIMPORTANT: Flag clearly that this is a preliminary review and I should consult a qualified solicitor before signing anything material.",
+      evalCriteria: ["contract type specified", "plain-English summary requested", "dispute-risk clauses identified", "missing protections checked", "legal advice caveat included"],
+      attachment: {
+        filename: "Sample_Freelancer_Services_Agreement.txt",
+        fileType: "txt",
+        meta: "Session 2 companion · Sample contract with several clauses worth flagging",
+        content: `# FREELANCE SERVICES AGREEMENT
+## Sample document for practice — contains intentionally problematic clauses
+
+---
+
+This Agreement is entered into as of the date of last signature between:
+CLIENT: Acme Ventures Ltd ("Client")
+CONTRACTOR: [Your Name / Business] ("Contractor")
+
+---
+
+**1. SERVICES**
+Contractor agrees to provide such services as Client may request from time to time. The scope, timeline, and deliverables for each project shall be determined solely by Client in its reasonable discretion.
+
+**2. COMPENSATION**
+Client shall pay Contractor at a rate to be agreed per project. Client reserves the right to adjust rates with 7 days notice. Payment terms are net-60 from invoice receipt. Client may withhold payment if, in Client's sole judgement, deliverables do not meet Client's satisfaction.
+
+**3. INTELLECTUAL PROPERTY**
+All work product, deliverables, inventions, developments, and materials created by Contractor in connection with the Services, and all intellectual property rights therein, shall be the sole and exclusive property of Client from the moment of creation. Contractor hereby assigns all such rights to Client. This assignment includes any work created on Contractor's own time that relates in any way to Client's business or industry.
+
+**4. CONFIDENTIALITY**
+Contractor shall maintain in strict confidence all information relating to Client's business, customers, technology, and affairs. This obligation shall survive termination of this Agreement indefinitely and without limitation.
+
+**5. NON-COMPETE**
+During the term of this Agreement and for a period of 24 months following termination, Contractor shall not provide services to any business that competes with Client in any market in which Client operates or intends to operate.
+
+**6. LIABILITY**
+Contractor shall indemnify and hold harmless Client from any and all claims, losses, damages, liabilities, costs, and expenses (including legal fees) arising from or related to Contractor's performance of the Services. There shall be no limitation on Contractor's liability under this Agreement.
+
+**7. TERMINATION**
+Client may terminate this Agreement at any time, for any reason, with immediate effect. Upon termination, Contractor shall immediately cease all work and return all Client materials. Client shall have no obligation to pay for work in progress at time of termination.
+
+**8. GOVERNING LAW**
+This Agreement shall be governed by the laws of the jurisdiction Client determines appropriate at time of dispute.
+
+---
+
+NOTE FOR PRACTICE: This contract contains multiple unusual and one-sided clauses. Use the review prompt to identify them.`
+      }
+    }
+  },
+  {
+    id: "ent-personalized-outreach", category: "Growth & Supercharging", icon: "🎯",
+    title: "Hyper-Personalized Outreach at Scale", difficulty: "Advanced", duration: "8 min",
+    theory: [
+      { heading: "The Death of Spray-and-Pray Outreach", body: "Mass cold email is dying. Spam filters are smarter, inboxes are more crowded, and buyers are more sophisticated. What cuts through in 2024 is genuine, specific, relevant personalization — a message that demonstrates you've actually looked at the person's specific situation and have something relevant to say. The problem is that real personalization at scale used to be impossible without a large team. AI changes this: with the right framework, you can produce genuinely personalized messages for hundreds of prospects without it feeling like a mail merge." },
+      { heading: "The Three Layers of Personalization", body: "Level 1 — Name merge: useless, everyone does it. Level 2 — Role/company reference: table stakes. Level 3 — Specific, timely, relevant observation about their situation: this is what gets replies. The third level requires research inputs — a recent company announcement, a LinkedIn post they wrote, a specific challenge their industry is facing, a mutual connection. Brief AI with these inputs and ask it to weave them into an opening that feels hand-written. The AI writes; you provide the intelligence." }
+    ],
+    tips: ["Research inputs first, write second — AI needs real specifics to personalize", "The opening line must reference something genuinely specific to them", "One email, one ask — don't pitch and request a call and ask for feedback in the same email", "Your value prop must connect to their specific situation, not your generic offering", "Ask AI to write 3 versions: direct, curiosity-led, and referral-style"],
+    activity: {
+      instruction: "Write a prompt that produces a genuinely personalized outreach sequence for a specific prospect — using real research inputs to create messages that feel hand-written, not mass-produced.",
+      weakPrompt: "Write a cold email for my business.",
+      placeholder: "You are an expert in B2B outreach and persuasive communication. Write a personalized cold outreach sequence for the following prospect.\n\nAbout me / my business: [what you do and the specific outcome you deliver]\nTarget prospect:\n- Name and role: [specific person]\n- Company: [company name + brief description]\n- What I know about them specifically: [LinkedIn post, recent news, shared connection, company announcement, challenge their industry faces]\n- Why I'm reaching out NOW: [the specific trigger that makes this timely]\n- The problem I believe they have: [based on your research]\n- Why my offering is relevant to their specific situation: [not generic — connect to what you know about them]\n\nWrite a 3-touch sequence:\n1. Email 1 (day 1): Opening hook using the specific research insight → one-sentence value prop → soft CTA\n2. Email 2 (day 5): Different angle, add new value (insight, resource, or relevant case study) → restate CTA\n3. Email 3 (day 12): Brief, honest break-up email — gives them an easy out but keeps the door open\n\nEach email under 150 words. Subject lines for each. Flag any line that sounds generic or like a template.",
+      evalCriteria: ["specific research inputs provided", "timely trigger included", "value prop connected to their situation", "3-touch sequence requested", "generic language flagged"]
+    }
+  },
+  {
+    id: "ent-prototyping", category: "Growth & Supercharging", icon: "⚡",
+    title: "Rapid Prototyping & Vibe Coding", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "You No Longer Need a Developer for an MVP", body: "For the first time in history, a non-technical founder can describe a product they want to build and have a working prototype within hours. Vibe coding — giving AI a product specification and iterating on the output in real time — has collapsed the time and cost of going from idea to testable product. The skill is not coding; it's product specification. The more precisely you can describe what you want, how it should behave, and what edge cases matter, the better the output. Imprecise specs produce imprecise software." },
+      { heading: "The Product Spec Is Your New Core Competency", body: "Before any prototype session, write a product specification: what problem does this solve, who uses it, what are the core user journeys, what are the inputs and outputs, what should happen in edge cases? This document is what separates a vibe coding session that produces something useful from one that produces a confused mess. Treat it like a brief to a developer — because that's effectively what it is. AI will build what you specify; the quality of your specification determines the quality of what gets built." }
+    ],
+    tips: ["Write the full product spec before opening any AI coding tool", "Describe user journeys step by step: 'user arrives → does X → sees Y → can do Z'", "Specify what happens when things go wrong — edge cases and error states", "Start with the simplest possible version that tests the core hypothesis", "Ask AI to explain what it built and flag any assumptions it made"],
+    activity: {
+      instruction: "Write a product specification prompt that would enable an AI coding tool to build a working MVP of a feature or tool your business needs — specific enough that the output would be genuinely usable.",
+      weakPrompt: "Build me a simple CRM tool.",
+      placeholder: "I need you to build a working prototype of the following tool. I will describe it precisely and I need you to build it, then explain what you built and flag any assumptions you made.\n\nTool name: [what you're calling it]\nProblem it solves: [the specific workflow pain this eliminates]\nWho uses it: [me only / my team / my customers]\nTech constraints: [e.g. 'must work in a browser, no install', 'Python script is fine', 'needs to connect to Google Sheets']\n\nCore user journey:\n1. User arrives and sees: [what they see first]\n2. User inputs: [what data/information they enter]\n3. System does: [what happens in the background]\n4. User sees/gets: [the output]\n\nEdge cases to handle:\n- If [X] happens: [what should occur]\n- If input is missing: [what should happen]\n\nMust have:\n- [non-negotiable feature 1]\n- [non-negotiable feature 2]\n\nNice to have (build these only if core works):\n- [optional feature]\n\nAfter building: explain what you built, what assumptions you made, and what I should test first.",
+      evalCriteria: ["problem specified precisely", "user journey step by step", "edge cases defined", "tech constraints given", "assumption explanation requested"]
+    }
+  },
+  {
+    id: "ent-ai-workforce", category: "The Solopreneur", icon: "🤖",
+    title: "Managing Your AI Workforce", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "Think in Roles, Not Tasks", body: "Most entrepreneurs use AI reactively — they think of a task, they prompt, they get output. The shift that characterises truly AI-powered operators is thinking in roles: what would a copywriter do in my business this week? What would a data analyst do? What would a research assistant do? Assigning AI to a role — with a clear brief, context, and operating rules — produces more consistent, higher-quality output than ad hoc prompting. You become the CEO of an AI team rather than an occasional AI user." },
+      { heading: "The Prompt Library Is Your Most Valuable Asset", body: "Every time you write a great prompt that produces great output, save it. Build a prompt library organised by function: a folder of copy prompts, a folder of research prompts, a folder of analysis prompts. These become reusable workflows — press a button, get a result. The difference between an entrepreneur who uses AI occasionally and one who has built an AI-powered operation is not intelligence; it's the discipline to capture, organise, and iterate on what works." }
+    ],
+    tips: ["Assign AI to roles with standing briefs, not just one-off tasks", "Build a prompt library and add to it every time a prompt works well", "Chain prompts: output of prompt 1 becomes input of prompt 2", "Define quality standards for each AI role: what does 'good' look like?", "Schedule regular AI 'shifts' — block time for specific AI-assisted workflows"],
+    activity: {
+      instruction: "Design the operating structure for your AI workforce — the roles, responsibilities, standing briefs, and quality standards that turn AI from an occasional tool into a reliable part of your operation.",
+      weakPrompt: "How can I use AI more in my business?",
+      placeholder: "Act as a business operations consultant specialising in AI-powered companies. Help me design my AI workforce structure.\n\nMy business: [description + stage + team size]\nMy biggest time drains: [the 3-5 tasks that consume most of your time]\nCurrent AI usage: [what you already use AI for and how consistently]\n\nFor each of the following potential AI roles, tell me:\n1. Whether this role is relevant to my business\n2. What the standing brief for this role would look like (what context and rules this 'employee' needs)\n3. The top 3 tasks this role would own\n4. What 'good output' looks like (quality standard)\n5. How much time it would save per week\n\nRoles to evaluate:\n- AI Copywriter (content, emails, social)\n- AI Research Analyst (market intel, competitor tracking, opportunity spotting)\n- AI Operations Manager (SOPs, process documentation, checklists)\n- AI Customer Success (response drafts, FAQ creation, onboarding docs)\n- AI Financial Analyst (expense categorisation, report summaries, forecast narratives)\n\nEnd with: a prioritised order for which roles to activate first based on my specific situation, and the first prompt I should write for each.",
+      evalCriteria: ["business context given", "time drains identified", "roles evaluated not just listed", "quality standards defined", "activation priority requested"]
+    }
+  },
+  {
+    id: "ent-solopreneur-os", category: "The Solopreneur", icon: "🏗️",
+    title: "The Solopreneur Operating System", difficulty: "Advanced", duration: "9 min",
+    theory: [
+      { heading: "A Company of One Needs Systems, Not Willpower", body: "The solopreneur's biggest risk is not competition — it's operational chaos. Without systems, every week is a fire-fighting exercise: reacting to what's loudest rather than working on what matters most. The AI-powered solopreneur builds an operating system: a set of repeatable workflows, recurring AI-assisted reviews, and decision frameworks that run the business without requiring your full attention on every detail. This is what allows one person to do what previously required a team." },
+      { heading: "The Weekly CEO Review", body: "The highest-leverage habit in a solopreneur business is a structured weekly review — a 30-45 minute session where you review what happened, assess where the business stands, identify the top priorities for next week, and make any strategic decisions pending. AI makes this dramatically more valuable: feed it your week's notes, metrics, and observations, and ask it to help you identify patterns, flag risks, and prioritise ruthlessly. This is not admin — it's the most important work you do." }
+    ],
+    tips: ["Design your week in advance: which days are for creation, delivery, business development?", "Build a weekly AI review template and run it every Friday", "Use AI to identify what to stop doing, not just what to add", "Create a 'not doing' list alongside your to-do list", "Ask AI: 'based on my goals, what am I spending time on that I shouldn't be?'"],
+    activity: {
+      instruction: "Design your Solopreneur Operating System — the weekly rhythm, recurring AI workflows, and decision frameworks that let you run a high-output business without a team. Then run your first weekly CEO review.",
+      weakPrompt: "Help me be more productive as a solo founder.",
+      placeholder: "Act as a business systems designer specialising in one-person and small-team operations. Help me build my Solopreneur Operating System.\n\nMy business: [description, stage, revenue if applicable]\nMy goals for the next 90 days: [top 3 specific goals]\nHow I currently spend my time (approximate): [break down your week by activity type and hours]\nWhat feels chaotic or unmanaged: [where things fall through the cracks]\nWhat I most want to protect time for: [the work that only you can do]\n\nDesign:\n1. My ideal weekly structure — which days for which types of work (deep work, client delivery, business development, admin)\n2. My Monday planning ritual (15 min): what I review and decide each week\n3. My Friday CEO review (30 min): what I assess, what AI analyses, what I decide\n4. Three recurring AI workflows I should build (with the standing prompt for each)\n5. What I should stop doing or delegate to AI based on my situation\n\nThen run my first Friday CEO review using the following data from this week:\n[Paste your week's notes, wins, problems, metrics — even messy stream of consciousness]",
+      evalCriteria: ["business context and goals given", "current time breakdown shared", "weekly structure designed", "recurring AI workflows defined", "first CEO review run"]
+    }
   }
 ];
 
@@ -1623,7 +1892,7 @@ const TRACKS = [
     color: "#b7770d",
     colorLight: "#fef9ec",
     colorGrad: "linear-gradient(135deg, #f39c12, #b7770d)",
-    categories: ["Validation & Strategy", "Pitching & Funding", "Growth & Operations"],
+    categories: ["Validation & Strategy", "Pitching & Funding", "Growth & Operations", "AI Command Center", "AI Operations", "Growth & Supercharging", "The Solopreneur"],
     available: true
   },
   {
