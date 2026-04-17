@@ -1819,7 +1819,715 @@ NOTE FOR PRACTICE: This contract contains multiple unusual and one-sided clauses
       placeholder: "Act as a business systems designer specialising in one-person and small-team operations. Help me build my Solopreneur Operating System.\n\nMy business: [description, stage, revenue if applicable]\nMy goals for the next 90 days: [top 3 specific goals]\nHow I currently spend my time (approximate): [break down your week by activity type and hours]\nWhat feels chaotic or unmanaged: [where things fall through the cracks]\nWhat I most want to protect time for: [the work that only you can do]\n\nDesign:\n1. My ideal weekly structure — which days for which types of work (deep work, client delivery, business development, admin)\n2. My Monday planning ritual (15 min): what I review and decide each week\n3. My Friday CEO review (30 min): what I assess, what AI analyses, what I decide\n4. Three recurring AI workflows I should build (with the standing prompt for each)\n5. What I should stop doing or delegate to AI based on my situation\n\nThen run my first Friday CEO review using the following data from this week:\n[Paste your week's notes, wins, problems, metrics — even messy stream of consciousness]",
       evalCriteria: ["business context and goals given", "current time breakdown shared", "weekly structure designed", "recurring AI workflows defined", "first CEO review run"]
     }
-  }
+  },
+  // ── AI FOR DATA & RESEARCH ───────────────────────────────────────────
+  {
+    id: "data-tables",
+    category: "Data Analysis",
+    title: "Turning Data Tables into Insight",
+    icon: "📊",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Most people paste a data table into AI and ask "what does this mean?" and get a generic summary. The real power is in asking precise, directed questions — telling the AI *what decisions* the data needs to inform, *who* the audience is, and *what kind of insight* you're after (trend, comparison, anomaly, or recommendation).\n\nA strong data prompt has four parts:\n- **The data** (pasted inline or described clearly)\n- **The context** (what this data is about, what period, what unit)\n- **The question** (what specific insight do you need?)\n- **The output format** (bullet points, narrative, table, executive summary)`,
+    tips: [
+      "Always tell the AI who will read the output — a board vs a field team need very different language",
+      "Ask for 'the top 3 findings' rather than 'summarise this' — it forces prioritisation",
+      "Request that the AI flag data quality issues or missing context it notices",
+      "If the table is large, describe its structure first, then paste a sample"
+    ],
+    activity: {
+      instruction: `You have a quarterly performance table with columns: Region, Target, Actual, Variance %, and a note column. Write a prompt that asks the AI to produce a 3-bullet executive summary of the key findings, flag the worst-performing region, and suggest one question the leadership team should investigate. Include the context that this is for a Monday board call.`,
+      placeholder: `Write a prompt that turns a regional performance table into a board-ready executive summary with findings and a question to investigate.`
+    },
+    eval: [
+      { label: "Specifies the audience (board)", weight: 1 },
+      { label: "Asks for a specific format (3 bullets)", weight: 1 },
+      { label: "Requests anomaly/flag (worst region)", weight: 1 },
+      { label: "Includes context (Monday board call)", weight: 1 }
+    ]
+  },
+  {
+    id: "lit-review",
+    category: "Research Synthesis",
+    title: "AI-Assisted Literature Review",
+    icon: "📚",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `A literature review is one of the most time-consuming parts of any research project — and one of the highest-leverage use cases for AI. The key is not to ask AI to *write* your review, but to use it to **structure, synthesise, and surface gaps** across sources you've already identified.\n\nThe most effective approach is the **SPEC framework**:\n- **S**ources: paste abstracts or summaries of your papers\n- **P**urpose: what is your research question?\n- **E**xtract: what specific themes, findings, or methods do you want compared?\n- **C**ontrast: ask the AI to identify agreements, tensions, and gaps`,
+    tips: [
+      "Feed abstracts rather than full papers — AI synthesises better with clean summaries",
+      "Ask for a comparison table first, then a narrative synthesis",
+      "Always ask: 'What important perspectives or counterarguments are missing?'",
+      "Use AI to suggest search terms and adjacent fields you may have missed"
+    ],
+    activity: {
+      instruction: `You're reviewing research on remote work productivity. You have 5 papers with different findings. Write a prompt that gives AI 3 fictional paper abstracts (invent them) and asks it to: (1) identify the common themes, (2) highlight contradictions between the studies, and (3) suggest 2 gaps in the literature that your research could address.`,
+      placeholder: `Write a prompt that synthesises 3 research abstracts, surfaces themes and contradictions, and identifies literature gaps.`
+    },
+    eval: [
+      { label: "Provides source material (abstracts)", weight: 1 },
+      { label: "States the research focus clearly", weight: 1 },
+      { label: "Asks for contradictions/tensions", weight: 1 },
+      { label: "Requests gap identification", weight: 1 }
+    ]
+  },
+  {
+    id: "structured-extraction",
+    category: "Data Analysis",
+    title: "Structured Data Extraction from Documents",
+    icon: "🔍",
+    difficulty: "Intermediate",
+    duration: "15 min",
+    theory: `One of AI's most underused capabilities is extracting structured data from unstructured text — turning reports, transcripts, PDFs, or meeting notes into clean, usable tables or JSON.\n\nThe secret is **schema-first prompting**: you define the exact fields you want *before* you paste the document. This is far more effective than asking "extract the key information" (which gives you whatever the AI decides is key).\n\nSchema-first prompt structure:\n1. Define your output schema: "Extract into a table with columns: [Name, Date, Amount, Status]"\n2. Specify handling for missing data: "If a field is missing, write N/A"\n3. Define scope: "Only extract entries from Q3 2024"\n4. Set format: "Return as a markdown table / CSV / JSON"`,
+    tips: [
+      "Define your schema before pasting the document — it dramatically improves accuracy",
+      "Tell the AI what to do with ambiguous or missing fields explicitly",
+      "For long documents, process section by section and combine outputs",
+      "Validate the output against a few known values before trusting the full extract"
+    ],
+    activity: {
+      instruction: `You have meeting minutes from a project review. You need to extract all action items into a structured table. Write a prompt that defines a schema (Action, Owner, Deadline, Priority), specifies how to handle missing information, and asks the AI to extract from a short sample of minutes you'll write inline in the prompt.`,
+      placeholder: `Write a schema-first extraction prompt that pulls action items from meeting minutes into a structured table.`
+    },
+    eval: [
+      { label: "Defines explicit schema/columns", weight: 1 },
+      { label: "Handles missing data instruction", weight: 1 },
+      { label: "Specifies output format", weight: 1 },
+      { label: "Includes sample source text", weight: 1 }
+    ]
+  },
+  {
+    id: "survey-design",
+    category: "Research Synthesis",
+    title: "Designing Better Surveys with AI",
+    icon: "📋",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Poor survey questions are one of the most common sources of bad research data. Common problems: leading questions, double-barrelled questions, ambiguous response scales, and missing coverage of key topics.\n\nAI excels at **question auditing** (spotting flaws in existing questions) and **question generation** (drafting options given a research goal). The key is to give it your research objective and target respondent — without that context, it generates generic questions.\n\n**The 3-step survey prompt workflow:**\n1. **Generate**: "Given my research goal [X] and audience [Y], suggest 8 questions covering [themes]"\n2. **Audit**: "Review these questions for bias, ambiguity, or double-barrelling"\n3. **Refine**: "Rewrite question 3 to be more neutral and split question 5 into two"`,
+    tips: [
+      "Always specify your respondent — a manager survey reads very differently from a frontline worker survey",
+      "Ask AI to suggest both open and closed questions for each theme",
+      "Run your draft through AI's 'survey bias audit' before piloting",
+      "Ask for a logical flow / grouping of questions, not just a flat list"
+    ],
+    activity: {
+      instruction: `You're designing a 10-question employee engagement survey for a 200-person NGO. Write a prompt that asks AI to generate questions across 3 themes (belonging, workload, leadership), specifies the audience (mid-level professional staff), requests a mix of Likert scale and open-ended questions, and asks it to flag any potential bias in what it produces.`,
+      placeholder: `Write a prompt to generate a 10-question employee engagement survey across 3 themes, with a self-audit for bias.`
+    },
+    eval: [
+      { label: "Specifies themes/coverage areas", weight: 1 },
+      { label: "Defines respondent clearly", weight: 1 },
+      { label: "Requests mixed question types", weight: 1 },
+      { label: "Includes bias check instruction", weight: 1 }
+    ]
+  },
+  {
+    id: "research-brief",
+    category: "Insight Communication",
+    title: "Writing Research Briefs That Get Read",
+    icon: "📄",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Research briefs fail not because the research is weak, but because the communication is — too long, too jargon-heavy, buried findings, no clear ask. AI can transform a dense research summary into a crisp, decision-focused brief.\n\nThe **BLUF method** (Bottom Line Up Front) is the gold standard for research briefs:\n- **Finding** (1 sentence): what did you find?\n- **So what** (1–2 sentences): why does it matter to this audience?\n- **Evidence** (3 bullets): the supporting data\n- **Recommendation** (1 sentence): what should they do?\n\nWhen prompting AI to write a research brief, always specify the decision-maker and the decision they need to make — that context completely changes what "relevant" means.`,
+    tips: [
+      "Give AI your raw findings, not a pre-written summary — let it do the distilling",
+      "Specify word count hard limits: 'in under 250 words'",
+      "Ask for a 'key message in one sentence' first, then expand",
+      "Always ask: 'What would make a sceptical reader push back on this?'"
+    ],
+    activity: {
+      instruction: `You've completed a study on digital skills gaps among workers over 50 in your sector. Key findings: 67% lack basic spreadsheet skills, 45% have never used cloud tools, training uptake is low because timing clashes with shifts, and peer-learning pilots have 3x better completion rates than e-learning. Write a prompt that turns these bullet points into a 200-word BLUF research brief for a HR Director who needs to decide next year's training budget.`,
+      placeholder: `Write a prompt that turns raw research findings into a 200-word BLUF brief for a HR Director making a budget decision.`
+    },
+    eval: [
+      { label: "Names the decision-maker and decision", weight: 1 },
+      { label: "Provides raw findings to synthesise", weight: 1 },
+      { label: "Requests BLUF or bottom-line-first structure", weight: 1 },
+      { label: "Sets a clear word/length constraint", weight: 1 }
+    ]
+  },
+  {
+    id: "qualitative-analysis",
+    category: "Data Analysis",
+    title: "Qualitative Analysis & Thematic Coding",
+    icon: "🗂️",
+    difficulty: "Advanced",
+    duration: "25 min",
+    theory: `Qualitative data — interview transcripts, open survey responses, focus group notes — is rich but time-consuming to analyse. AI can dramatically accelerate thematic coding without replacing the researcher's judgement.\n\nThe key principle: **AI as first-pass coder, human as final analyst**. Use AI to:\n1. Suggest an initial codebook from a sample of data\n2. Apply codes consistently across all responses\n3. Count code frequency and identify co-occurring themes\n4. Surface representative quotes for each theme\n\nNever ask AI to interpret meaning in isolation — always bring your domain knowledge to validate and challenge its coding choices.`,
+    tips: [
+      "Feed 5–10 responses first and ask AI to propose a codebook — then refine it before processing everything",
+      "Ask for direct quotes alongside each theme — don't trust a summary without evidence",
+      "Request a 'minority view' analysis to surface themes that appear only 1–2 times but matter",
+      "Always check: does this coding reflect what respondents said, or what AI assumed they meant?"
+    ],
+    activity: {
+      instruction: `You have 6 open-ended responses to the question "What's the biggest barrier to using AI in your work?" Write a prompt that asks AI to: (1) propose a 4–5 theme codebook, (2) apply codes to each of 4 invented responses you include inline, (3) count frequency, and (4) pull one representative quote per theme. Include 4 short invented responses in your prompt.`,
+      placeholder: `Write a prompt to generate a thematic codebook, apply it to 4 responses, count themes, and surface quotes.`
+    },
+    eval: [
+      { label: "Asks for codebook generation first", weight: 1 },
+      { label: "Provides sample responses inline", weight: 1 },
+      { label: "Requests frequency count", weight: 1 },
+      { label: "Asks for representative quotes per theme", weight: 1 }
+    ]
+  },
+  {
+    id: "data-visualisation-prompt",
+    category: "Insight Communication",
+    title: "Prompting for Data Visualisation",
+    icon: "📈",
+    difficulty: "Intermediate",
+    duration: "15 min",
+    theory: `AI can't directly create charts (unless you're using a tool like Code Interpreter), but it can do three highly valuable things around data visualisation:\n1. **Recommend** the right chart type for your data and story\n2. **Write the narrative** that accompanies a chart\n3. **Generate code** (Python/R/JavaScript) to produce the chart\n\nMost people under-use option 1. "What chart should I use?" seems simple but the answer depends on: the data type (categorical vs continuous), the relationship you're showing (comparison, trend, distribution, composition), and the audience's chart literacy.\n\nFor chart narratives, the best prompts specify: what the chart shows, who the audience is, what action you want them to take, and the key insight in one sentence.`,
+    tips: [
+      "Describe your data type and the story you want to tell before asking for a chart recommendation",
+      "For chart narratives, lead with the insight in the title ('Revenue grew 40% in Q3') not the label ('Q3 Revenue')",
+      "Ask AI to write the chart annotation text separately from the surrounding body copy",
+      "Always ask 'What could mislead a reader about this chart?' before publishing"
+    ],
+    activity: {
+      instruction: `You have data showing training completion rates by department over 4 quarters, and you want to show that one department improved dramatically while others stagnated. Write a prompt that asks AI to: (1) recommend the best chart type and explain why, (2) write a 2-sentence chart title and subtitle that lead with the key insight, and (3) write a 3-sentence narrative to accompany the chart for a non-technical audience.`,
+      placeholder: `Write a prompt to get a chart type recommendation, an insight-led title, and a narrative for a training completion chart.`
+    },
+    eval: [
+      { label: "Describes the data and the story clearly", weight: 1 },
+      { label: "Asks for reasoning behind chart recommendation", weight: 1 },
+      { label: "Requests insight-led title/subtitle", weight: 1 },
+      { label: "Specifies audience for the narrative", weight: 1 }
+    ]
+  },
+
+  // ── AI FOR LEARNING DESIGN ────────────────────────────────────────────
+  {
+    id: "learning-objectives",
+    category: "Curriculum Design",
+    title: "Writing Learning Objectives That Actually Work",
+    icon: "🎯",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Vague learning objectives are the root cause of most bad training programmes. "Participants will understand X" tells you nothing about what learners can actually *do* differently after the session.\n\nThe **Bloom's Taxonomy + Condition + Criterion** formula produces objectives that are measurable, achievable, and design-ready:\n- **Verb** (from Bloom's): analyse, create, evaluate, apply, explain, demonstrate\n- **What** (the skill or content)\n- **Condition**: in what context or with what constraints\n- **Criterion**: to what standard\n\nExample: "Participants will be able to **write** a 200-word donor update email (**what**) using only the programme data sheet (**condition**) that meets the organisation's tone guidelines (**criterion**)."\n\nAI is excellent at upgrading weak objectives — give it your vague draft and ask it to apply the formula.`,
+    tips: [
+      "Start with the end: what should a learner be able to DO, not just know?",
+      "Avoid 'understand', 'appreciate', and 'be aware of' — these aren't measurable",
+      "Write objectives before designing content — they're your filter for what belongs in the session",
+      "Ask AI to generate 3 versions at different Bloom's levels for the same topic"
+    ],
+    activity: {
+      instruction: `You're designing a half-day workshop on giving feedback. You have this weak objective: "Participants will understand the importance of giving good feedback." Write a prompt that asks AI to (1) diagnose what's wrong with this objective, (2) rewrite it using the Bloom's + Condition + Criterion formula, and (3) generate 3 additional objectives at different cognitive levels (applying, analysing, creating) for the same workshop.`,
+      placeholder: `Write a prompt to upgrade a weak learning objective and generate 3 new ones at different Bloom's levels for a feedback workshop.`
+    },
+    eval: [
+      { label: "Provides the weak objective to diagnose", weight: 1 },
+      { label: "Asks for specific formula (Bloom's/measurable)", weight: 1 },
+      { label: "Requests multiple cognitive levels", weight: 1 },
+      { label: "Context of workshop is clear", weight: 1 }
+    ]
+  },
+  {
+    id: "case-study-design",
+    category: "Content Creation",
+    title: "Building Case Studies for Training",
+    icon: "📖",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Case studies are the backbone of applied learning — but most are either too long, too obviously scripted, or have a single "right answer" that learners spot immediately. Great case studies are realistic, morally ambiguous, and generate genuine debate.\n\nAI is excellent at generating case study drafts, but needs precise direction on:\n- **Protagonist**: who is making the decision (role, level, context)\n- **Dilemma**: what is the genuine tension (not a simple right/wrong)\n- **Constraints**: what resources, time, politics are in play\n- **Discussion questions**: what should learners explore?\n- **Facilitator notes**: what are the key teaching points?\n\nThe best cases leave the outcome open — they stop at the decision point and ask "what would you do?"`,
+    tips: [
+      "Ask AI to add a 'complicating detail' — something that makes the obvious answer harder",
+      "Include realistic character flaws and organisational politics for authenticity",
+      "Always request a separate facilitator guide with the key learning points",
+      "Test your case: if everyone immediately agrees, it's not challenging enough"
+    ],
+    activity: {
+      instruction: `You're building a management training programme. Write a prompt that asks AI to create a 300-word case study about a team leader who discovers a high-performing team member has been falsifying their timesheets. The case should include: a clear dilemma (performance vs integrity), at least one complicating detail that makes the decision harder, and 3 discussion questions. Ask AI to also write a 100-word facilitator note on the key learning points.`,
+      placeholder: `Write a prompt to generate a training case study about a falsified timesheet dilemma, with discussion questions and facilitator notes.`
+    },
+    eval: [
+      { label: "Specifies protagonist and context clearly", weight: 1 },
+      { label: "Asks for a genuine dilemma (not simple right/wrong)", weight: 1 },
+      { label: "Requests complicating detail", weight: 1 },
+      { label: "Includes facilitator notes/debrief questions", weight: 1 }
+    ]
+  },
+  {
+    id: "assessment-design",
+    category: "Assessment & Evaluation",
+    title: "Designing Assessments with AI",
+    icon: "✅",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Assessments should measure whether learning objectives were achieved — not just whether learners remember what was covered. The most common mistake is designing assessments that test recall rather than application.\n\n**Assessment alignment rule**: every assessment question should map to a specific learning objective and require the cognitive skill in that objective.\n\nTypes AI excels at generating:\n- **Scenario-based MCQs**: realistic situations with plausible distractors\n- **Short answer tasks**: apply a framework to a new situation\n- **Rubric-based assignments**: clear criteria for assessing open-ended work\n- **Self-reflection prompts**: what did you learn, what will you do differently?\n\nThe prompt key for MCQs: always ask for *plausible wrong answers* (distractors that reflect real misconceptions), not obviously wrong ones.`,
+    tips: [
+      "Always map each question to a learning objective before generating",
+      "For MCQs, ask AI to explain why each distractor is wrong — it reveals whether the question is well-designed",
+      "Include at least one application-level question for every knowledge question",
+      "Ask AI to write the marking rubric at the same time as the assignment — they should mirror each other"
+    ],
+    activity: {
+      instruction: `You've run a workshop on stakeholder communication. Write a prompt that asks AI to generate: (1) 3 scenario-based MCQs that test application (not recall), where each wrong answer represents a real misconception, (2) one short-answer task asking learners to apply a stakeholder mapping framework to a new situation, and (3) a 4-criterion rubric for marking the short answer. Include a learning objective for each question.`,
+      placeholder: `Write a prompt to generate 3 scenario MCQs, a short-answer task, and a marking rubric for a stakeholder communication workshop.`
+    },
+    eval: [
+      { label: "Requests scenario-based (application) questions", weight: 1 },
+      { label: "Asks for plausible distractors representing misconceptions", weight: 1 },
+      { label: "Includes a short answer / applied task", weight: 1 },
+      { label: "Requests a marking rubric", weight: 1 }
+    ]
+  },
+  {
+    id: "facilitation-guide",
+    category: "Facilitation",
+    title: "Writing Facilitation Guides with AI",
+    icon: "🎙️",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `A facilitation guide is the difference between a trainer who runs the agenda and one who holds the room. Good guides include not just the content flow, but the questions to ask, the energy moments to manage, and the things that typically go wrong.\n\nAI can generate detailed facilitation guides quickly — but you need to brief it on:\n- **Session goal**: what outcome do you need by the end?\n- **Group profile**: experience level, size, dynamics to manage\n- **Time blocks**: how long is the session, what are the key segments?\n- **Risk scenarios**: what if a debate gets heated? What if no one speaks?\n\nThe most valuable AI output for facilitation is **contingency notes** — "if this happens, try this." Most generic guides don't include these and they're what makes the difference in the room.`,
+    tips: [
+      "Ask AI to write transition phrases between sections — these are often the hardest to improvise",
+      "Request 'energiser alternatives' for each major activity in case timing goes off",
+      "Include the room set-up, materials, and pre-session checklist in your prompt",
+      "Ask for 3 versions of the opening question — the first one you use often doesn't land"
+    ],
+    activity: {
+      instruction: `You're facilitating a 90-minute team session on "Working better across departments." The group of 15 managers has known tensions between 2 teams. Write a prompt asking AI to produce a facilitation guide with: a timed agenda (3 segments), 2 opening questions (one safe, one challenging), discussion questions for the main activity, contingency notes for if the tension surfaces, and a closing reflection exercise.`,
+      placeholder: `Write a prompt to generate a 90-minute facilitation guide for a cross-team session, including contingency notes for managing tension.`
+    },
+    eval: [
+      { label: "Specifies session goal and group profile", weight: 1 },
+      { label: "Requests timed agenda structure", weight: 1 },
+      { label: "Asks for contingency/risk scenarios", weight: 1 },
+      { label: "Includes opening and closing elements", weight: 1 }
+    ]
+  },
+  {
+    id: "microlearning",
+    category: "Content Creation",
+    title: "Creating Microlearning Modules",
+    icon: "⚡",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Microlearning — 3–7 minute focused learning bursts — has better completion rates, better retention, and fits into how people actually work. But "short" doesn't mean "shallow": each microlearning unit still needs a clear objective, a hook, content, and a takeaway.\n\n**The 4-part microlearning structure:**\n1. **Hook** (30 sec): a surprising stat, a question, or a common mistake\n2. **Core concept** (2 min): the one thing to know, explained simply\n3. **Application** (1–2 min): a scenario showing it in practice\n4. **Takeaway** (30 sec): one action to try immediately\n\nAI is excellent at adapting existing long-form content into this structure — give it a full lesson or document and ask it to distil it into 3 microlearning units on the key themes.`,
+    tips: [
+      "One microlearning unit = one idea. If you're covering 3 things, you need 3 units",
+      "Write the hook last — it's easier to find the surprising angle after you know the content",
+      "Ask AI to write in second person ('You're in a meeting and...') for immediacy",
+      "Always end with a single, specific action — not 'reflect on this' but 'try this phrase today'"
+    ],
+    activity: {
+      instruction: `You have a 45-minute workshop on 'Active Listening' that needs to become a microlearning series. Write a prompt that asks AI to break the topic into 3 microlearning units, each following the Hook → Core Concept → Application → Takeaway structure, each no longer than 150 words, written for a busy manager who has 5 minutes between meetings. Specify that each hook should start with a common mistake people make.`,
+      placeholder: `Write a prompt to convert an Active Listening workshop into 3 microlearning units with the Hook → Concept → Application → Takeaway structure.`
+    },
+    eval: [
+      { label: "Requests the 4-part structure explicitly", weight: 1 },
+      { label: "Sets a word/time constraint per unit", weight: 1 },
+      { label: "Defines the target learner and context", weight: 1 },
+      { label: "Specifies hook style (common mistake)", weight: 1 }
+    ]
+  },
+  {
+    id: "role-play-scenarios",
+    category: "Facilitation",
+    title: "Designing Role-Play Scenarios",
+    icon: "🎭",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Role-plays are powerful for building skills that require practice — negotiation, feedback, difficult conversations, customer handling. But poorly designed role-plays feel artificial, generate awkward silence, and teach little.\n\nEffective role-play scenarios have:\n- **Asymmetric briefing**: each person gets different information (as in real life)\n- **Emotional stakes**: something the character genuinely cares about\n- **A plausible trigger**: a realistic reason the conversation is happening now\n- **Observer task**: a specific thing for non-participants to watch for\n\nAI can generate complete role-play packs — separate participant briefs, observer checklists, and debrief questions — from a simple scenario description.`,
+    tips: [
+      "Make the emotions real: 'slightly irritated' is more useful than 'unhappy'",
+      "Give each character a hidden piece of information the other doesn't know — this creates dynamic conversation",
+      "Always write the observer checklist before the briefs — it clarifies what skill you're actually practising",
+      "Include a 'reset instruction' for if the role-play goes off track early"
+    ],
+    activity: {
+      instruction: `You need a role-play for a training on managing underperformance. Write a prompt asking AI to create: (1) a manager brief (knows about 3 months of missed targets, worried about team morale), (2) a team member brief (has a personal situation affecting work that the manager doesn't know about), (3) an observer checklist with 5 specific behaviours to watch for, and (4) 3 debrief questions. Ask AI to make the emotional stakes feel real for both characters.`,
+      placeholder: `Write a prompt to generate an underperformance role-play with asymmetric briefs, observer checklist, and debrief questions.`
+    },
+    eval: [
+      { label: "Requests separate asymmetric briefs", weight: 1 },
+      { label: "Asks for hidden information per character", weight: 1 },
+      { label: "Includes observer checklist", weight: 1 },
+      { label: "Requests debrief questions", weight: 1 }
+    ]
+  },
+  {
+    id: "eval-feedback-tools",
+    category: "Assessment & Evaluation",
+    title: "Building Evaluation & Feedback Tools",
+    icon: "📊",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Kirkpatrick's 4 levels of training evaluation are well-known (Reaction, Learning, Behaviour, Results) — but most training teams only measure Level 1 (a smile sheet at the end of the session). AI can help you design tools for all 4 levels without the usual resource burden.\n\n**Level 1 — Reaction**: beyond 'did you enjoy it?', ask what specifically worked and what didn't\n**Level 2 — Learning**: pre/post knowledge checks, scenario tests\n**Level 3 — Behaviour**: 30/60/90-day follow-up questions for managers and learners\n**Level 4 — Results**: connecting training to the KPIs you actually care about\n\nAI is particularly useful for Level 3 — generating follow-up interview guides and structured observation checklists that most teams skip because they take too long to design.`,
+    tips: [
+      "Write Level 4 (Results) first — what business metric will improve? Work backwards from there",
+      "Avoid rating scales for Level 1 — open questions give you more actionable feedback",
+      "Ask AI to generate the follow-up email for managers at the 30-day mark as part of the evaluation pack",
+      "Always include one 'what got in the way?' question at Level 3 — barriers are more actionable than successes"
+    ],
+    activity: {
+      instruction: `You've run a 2-day leadership development programme for 20 managers. Write a prompt asking AI to design a Kirkpatrick evaluation pack including: (1) a 5-question Level 1 reaction form (open questions, no rating scales), (2) a 4-question Level 2 knowledge check for the key frameworks covered, (3) a 6-question Level 3 follow-up guide for line managers to use at 60 days, and (4) 2 suggested Level 4 metrics linked to leadership outcomes. Specify the programme covered: feedback skills, prioritisation, and managing up.`,
+      placeholder: `Write a prompt to generate a full Kirkpatrick evaluation pack for a 2-day leadership programme covering feedback, prioritisation, and managing up.`
+    },
+    eval: [
+      { label: "Requests all 4 Kirkpatrick levels", weight: 1 },
+      { label: "Specifies open questions for Level 1 (no rating scales)", weight: 1 },
+      { label: "Asks for manager follow-up tool at Level 3", weight: 1 },
+      { label: "Provides programme content context", weight: 1 }
+    ]
+  },
+
+  // ── AI FOR FINANCE & REPORTING ────────────────────────────────────────
+  {
+    id: "board-report-narrative",
+    category: "Financial Writing",
+    title: "Writing the Board Report Narrative",
+    icon: "📋",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Numbers don't speak for themselves — especially in a board report. The narrative is where you connect financial performance to strategic context, manage expectations, and frame what comes next. Most finance professionals find this the hardest part to write under time pressure.\n\nThe **SCR structure** works well for board report narratives:\n- **Situation**: what happened this period (headline numbers, context)\n- **Complication**: what doesn't look right, what risks or tensions exist\n- **Resolution**: what's being done, what the board needs to decide\n\nAI can draft this narrative from bullet-point financial data, but the prompt needs to include: the audience (board members, trustees, investors), what decisions they face, the organisational context, and the tone (confident, cautious, transparent about risk).`,
+    tips: [
+      "Lead with the headline — don't make the board hunt for the number that matters",
+      "Separate 'what happened' from 'what it means' — AI often conflates them",
+      "Ask AI to write 3 versions: optimistic, neutral, and cautious — then pick the right register",
+      "Always include a 'what we are watching' section — it shows rigour and manages future surprises"
+    ],
+    activity: {
+      instruction: `Your organisation came in 8% under budget this quarter due to delayed project starts, but forecast is intact for year-end. One programme is running 15% over budget. Write a prompt that asks AI to draft a 200-word board report narrative using the SCR structure, for a board that is generally supportive but risk-averse, in a tone that is transparent about the over-run without causing alarm. Include the figures and context in your prompt.`,
+      placeholder: `Write a prompt to draft a 200-word board report narrative using the SCR structure for a mixed financial picture, with appropriate tone for a risk-averse board.`
+    },
+    eval: [
+      { label: "Provides the financial data/context inline", weight: 1 },
+      { label: "Specifies audience and their disposition", weight: 1 },
+      { label: "Requests SCR or equivalent structure", weight: 1 },
+      { label: "Specifies tone and length", weight: 1 }
+    ]
+  },
+  {
+    id: "variance-analysis",
+    category: "Analysis & Commentary",
+    title: "Variance Analysis Commentary",
+    icon: "📉",
+    difficulty: "Intermediate",
+    duration: "15 min",
+    theory: `Variance analysis commentary is one of the highest-volume, most repetitive writing tasks in finance — and one of the best use cases for AI. The challenge is that generic commentary ("costs were higher due to increased activity") is useless. Decision-makers need to know: *why* it happened, *whether it was expected*, and *what it means going forward*.\n\nA strong variance comment has four elements:\n1. **The variance**: how much, vs what benchmark\n2. **The driver**: the primary cause (be specific — not "overheads increased" but "contractor costs up due to project X delay")\n3. **The nature**: favourable/adverse, recurring/one-off, within/outside management control\n4. **The implication**: is this a forecast risk, or contained?\n\nAI writes excellent variance commentary when given specific numbers and context — it fails when given vague inputs.`,
+    tips: [
+      "Give AI the actual numbers, not just percentages — it produces better commentary",
+      "Specify whether variances are recurring or one-off — this changes the implication entirely",
+      "Ask for commentary in the house style: 'concise, active voice, no jargon, max 50 words per line'",
+      "Review AI commentary for specificity — replace any generic phrases before sending"
+    ],
+    activity: {
+      instruction: `You're writing management accounts commentary. Staff costs are £45k adverse vs budget (£320k actual vs £275k budget) due to 2 temporary hires brought in to cover a vacancy that's now been filled. Travel costs are £8k favourable due to a deferred conference. Write a prompt giving AI this data and asking for variance commentary following the 4-element structure (variance, driver, nature, implication), in a professional but plain-English style, max 60 words per variance line.`,
+      placeholder: `Write a prompt to generate variance commentary for a staff cost overspend and travel underspend, using the 4-element structure in plain English.`
+    },
+    eval: [
+      { label: "Provides specific numbers (not just percentages)", weight: 1 },
+      { label: "Explains the reason for each variance", weight: 1 },
+      { label: "Asks for recurring/one-off distinction", weight: 1 },
+      { label: "Sets style and word count constraints", weight: 1 }
+    ]
+  },
+  {
+    id: "investor-update",
+    category: "Investor Comms",
+    title: "Writing Investor Update Emails",
+    icon: "📧",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Investor updates are one of the most relationship-defining communications a founder or finance leader sends. Done well, they build trust, surface support, and demonstrate leadership maturity. Done badly, they erode confidence even when the numbers are good.\n\n**The anatomy of a strong investor update:**\n- **Headline metric** (1 line): the number that matters most this period\n- **Momentum** (2–3 bullets): what's working and why\n- **Challenges** (1–2 bullets): what's hard — be specific, not vague\n- **Ask** (1 line): one specific thing you need from investors (intro, advice, connection)\n- **Next milestone** (1 line): what you're focused on achieving by next update\n\nAI drafts these well but needs the actual data — not a description of what happened, but the numbers, the specific wins, and the honest challenges.`,
+    tips: [
+      "Never bury the ask — investors want to help but only if you make it specific and easy",
+      "Include one challenge in every update — trust is built by transparency, not by only sharing wins",
+      "Ask AI to write 2 versions: one for supportive investors, one for more sceptical ones",
+      "Keep it under 300 words — investors read dozens of these"
+    ],
+    activity: {
+      instruction: `You're a Series A startup CFO. This quarter: ARR grew from £800k to £1.1M, churn improved from 8% to 5%, you missed your enterprise sales target (2 deals vs 4 planned) due to long procurement cycles, and you're 6 weeks from needing to close your next round. Write a prompt that asks AI to draft a 250-word investor update following the 5-part structure, in a tone that is confident but honest, with a specific ask around warm introductions to relevant VCs.`,
+      placeholder: `Write a prompt to draft a 250-word investor update with growth data, a missed target, honest framing, and a specific VC intro ask.`
+    },
+    eval: [
+      { label: "Provides specific metrics (ARR, churn)", weight: 1 },
+      { label: "Includes honest framing of a challenge", weight: 1 },
+      { label: "Requests a specific ask", weight: 1 },
+      { label: "Specifies tone and word count", weight: 1 }
+    ]
+  },
+  {
+    id: "budget-justification",
+    category: "Financial Writing",
+    title: "Writing Budget Justifications",
+    icon: "💼",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Budget justifications get rejected not because the spend is wrong, but because the case is written for the person making the request rather than the person approving it. Approvers care about: does this deliver value, is the cost proportionate, and what happens if we don't fund it?\n\n**The RVC framework for budget justifications:**\n- **Return**: what does this investment deliver (outcome, not output)?\n- **Value**: why is this the right amount / best option?\n- **Consequence**: what's the cost of not doing this?\n\nAI is excellent at stress-testing budget justifications. Give it your draft and ask it to play the role of a sceptical finance director — the challenges it raises are exactly what you need to pre-empt.`,
+    tips: [
+      "Lead with the outcome, not the cost: 'This investment will reduce onboarding time by 30%' before 'Cost: £15k'",
+      "Always include a 'do nothing' cost — what is the status quo costing you?",
+      "Ask AI to generate the 3 most likely objections, then write pre-emptive responses",
+      "Use AI to benchmark: 'Is £X a reasonable cost for Y in this sector?'"
+    ],
+    activity: {
+      instruction: `You want to spend £18,000 on a new HR system to replace spreadsheet-based processes currently taking your team 12 hours/week. Write a prompt that asks AI to write a one-page budget justification using the RVC framework for a CFO who is known to be cost-conscious, then immediately ask it to play the role of that CFO and raise the 3 most likely objections to the request.`,
+      placeholder: `Write a prompt to draft a budget justification for an £18k HR system using the RVC framework, then generate 3 CFO objections to pre-empt.`
+    },
+    eval: [
+      { label: "Uses or references the RVC framework", weight: 1 },
+      { label: "Specifies the approver's perspective (cost-conscious CFO)", weight: 1 },
+      { label: "Asks for objections/stress-test", weight: 1 },
+      { label: "Includes the 'do nothing' cost context", weight: 1 }
+    ]
+  },
+  {
+    id: "risk-communication",
+    category: "Analysis & Commentary",
+    title: "Communicating Financial Risk",
+    icon: "⚠️",
+    difficulty: "Advanced",
+    duration: "20 min",
+    theory: `Financial risk communication fails in two ways: over-alarming (panic without context) or under-stating (burying the severity to avoid uncomfortable conversations). The goal is calibrated transparency — communicating the risk clearly enough that decision-makers can act, without creating noise.\n\n**The RICE framework for risk communication:**\n- **Risk**: what is the risk, specifically? (not "market uncertainty" but "a 20% drop in grant income if policy X passes")\n- **Impact**: quantify if possible — best, base, and worst case\n- **Cause**: what is driving this? Is it internal or external?\n- **Escalation**: what triggers escalation, and what actions are pre-approved?\n\nAI can draft risk registers, risk narratives for board papers, and scenario analyses — but it needs you to provide the specific numbers and context.`,
+    tips: [
+      "Quantify ranges, not just single point estimates — boards make better decisions with scenarios",
+      "Separate 'likelihood' from 'impact' explicitly — a likely but small risk is very different from an unlikely but catastrophic one",
+      "Ask AI to write the risk at three severity levels — it helps calibrate your actual view",
+      "Always include a 'mitigation already in place' line — it prevents pure alarm without action"
+    ],
+    activity: {
+      instruction: `Your organisation depends on 3 major funders for 70% of income. One funder (35% of income) has signalled they may exit the sector. Write a prompt asking AI to draft a risk entry for the board risk register using the RICE framework, quantify the impact in 3 scenarios (partial reduction, full exit, early exit), suggest 2 mitigations already within management's control, and write a 3-sentence summary for the board paper in plain English.`,
+      placeholder: `Write a prompt to draft a board risk register entry and 3-scenario impact analysis for a major funder exit risk, using the RICE framework.`
+    },
+    eval: [
+      { label: "Uses RICE or equivalent structured framework", weight: 1 },
+      { label: "Provides specific financial context (35%, 70%)", weight: 1 },
+      { label: "Requests multiple scenarios (not single estimate)", weight: 1 },
+      { label: "Asks for mitigations and plain-English summary", weight: 1 }
+    ]
+  },
+  {
+    id: "forecasting-narrative",
+    category: "Investor Comms",
+    title: "Writing Forecasting Assumptions",
+    icon: "🔮",
+    difficulty: "Advanced",
+    duration: "20 min",
+    theory: `Forecasts without documented assumptions are opinions. The assumptions narrative is what turns a spreadsheet into a credible, auditable plan — and it's what gets scrutinised hardest by boards, auditors, and investors.\n\nWell-written assumptions documentation:\n- Names the assumption explicitly (not "revenue will grow" but "we assume a 15% growth in Q3 driven by 2 new enterprise contracts currently in negotiation")\n- States the source or basis for the assumption\n- Identifies sensitivity: what happens to the forecast if this assumption is wrong by 10%?\n- Flags owner accountability: who is responsible for monitoring this assumption?\n\nAI is helpful for structuring assumptions documentation and for stress-testing: give it your key assumptions and ask it to identify which are most fragile.`,
+    tips: [
+      "Write assumptions before building the model — it forces you to be explicit about what you believe",
+      "Ask AI to identify circular assumptions (where one assumption depends on another)",
+      "Rate each assumption: High / Medium / Low confidence, and explain why",
+      "Always include a 'what would have to be true' check — if an assumption requires something unlikely, say so"
+    ],
+    activity: {
+      instruction: `You're finalising an annual forecast. Key assumptions: (1) 20% revenue growth from 3 new partnerships (currently MOU stage), (2) headcount stays flat despite growth (productivity assumption), (3) no major regulatory changes in your sector. Write a prompt asking AI to structure these as formal documented assumptions, rate each on confidence (H/M/L with reasoning), identify which is most fragile, and write a sensitivity note for the most fragile one showing the forecast impact if it's wrong by 20%.`,
+      placeholder: `Write a prompt to structure 3 forecast assumptions with confidence ratings, identify the most fragile, and write a sensitivity note for it.`
+    },
+    eval: [
+      { label: "Provides the specific assumptions to document", weight: 1 },
+      { label: "Requests confidence ratings with reasoning", weight: 1 },
+      { label: "Asks for fragility/sensitivity analysis", weight: 1 },
+      { label: "Specifies quantified sensitivity test (20%)", weight: 1 }
+    ]
+  },
+  {
+    id: "annual-report-section",
+    category: "Financial Writing",
+    title: "Writing Annual Report Sections",
+    icon: "📑",
+    difficulty: "Advanced",
+    duration: "25 min",
+    theory: `Annual reports are read by investors, donors, regulators, potential employees, and journalists — often at the same time. The financial narrative sections need to work for all of them, which means being accurate, accessible, and strategically framed.\n\nThe sections AI handles best:\n- **CEO/Chair message**: strategic tone, forward-looking, no jargon\n- **Financial highlights**: presenting numbers accessibly with context\n- **Year in review**: connecting activities to financial outcomes\n- **Going concern / risk disclosures**: clear, proportionate, not alarming\n\nThe critical prompt elements: who is the primary reader, what are the 2–3 strategic messages you want them to leave with, and what tone do you want (confident growth, cautious stewardship, transparent recovery)?`,
+    tips: [
+      "Give AI last year's equivalent section plus this year's numbers — it will match the structure and upgrade the content",
+      "Ask for 3 different openings for the CEO message and pick the strongest",
+      "Always humanise: one story about impact per financial highlight keeps reports from reading as pure accounts",
+      "Check every passive construction AI uses — annual reports often need active voice to convey accountability"
+    ],
+    activity: {
+      instruction: `Your organisation had a strong year: income grew 22% to £4.2M, you reached 12,000 beneficiaries (up from 8,500), launched 2 new programmes, and invested in a new CRM system. A key funder did not renew (15% of income) but was replaced. Write a prompt asking AI to draft a 300-word CEO message for the annual report that leads with impact over finance, acknowledges the funder transition honestly, and ends with a forward-looking statement on the next 2 years.`,
+      placeholder: `Write a prompt to draft a 300-word CEO annual report message that leads with impact, acknowledges a funder transition honestly, and ends forward-looking.`
+    },
+    eval: [
+      { label: "Provides specific financial and impact data", weight: 1 },
+      { label: "Asks for impact-first framing (not finance-first)", weight: 1 },
+      { label: "Includes the difficult element (funder loss) honestly", weight: 1 },
+      { label: "Specifies forward-looking close", weight: 1 }
+    ]
+  },
+
+  // ── AI FOR NON-PROFITS & DEVELOPMENT ──────────────────────────────────
+  {
+    id: "grant-proposal",
+    category: "Grant Writing",
+    title: "Writing Grant Proposals with AI",
+    icon: "📝",
+    difficulty: "Intermediate",
+    duration: "25 min",
+    theory: `Grant writing is one of the most structured forms of persuasive writing — and AI can dramatically reduce the time it takes to produce strong first drafts. The key is understanding that grant reviewers are reading dozens of proposals looking for two things: **clarity of need** and **confidence in delivery**.\n\n**The grant proposal AI workflow:**\n1. **Brief AI** on the funder's priorities (paste their call text)\n2. **Map your project** to their language (ask AI to identify alignment)\n3. **Draft section by section** — don't ask for the whole proposal at once\n4. **Stress test** — ask AI to play the reviewer and find weaknesses\n\nThe most common proposal failure is writing about *your organisation* when the funder wants to read about *the problem and the people it affects*. AI needs explicit instruction to keep the focus external.`,
+    tips: [
+      "Paste the funder's call text and ask AI to extract their 5 key priorities before drafting",
+      "Write the needs statement before anything else — it's the foundation of the whole proposal",
+      "Ask AI to identify where your proposal language doesn't match the funder's priorities",
+      "Always ask: 'What would a sceptical reviewer say is missing or unconvincing here?'"
+    ],
+    activity: {
+      instruction: `You're applying to a foundation that funds workforce development in underserved communities. Their priority phrases are: "measurable economic outcomes", "community-led design", and "sustainability beyond the grant period." You're proposing a digital skills training programme for unemployed young people. Write a prompt that asks AI to draft a 300-word needs statement that leads with evidence of the problem, uses the funder's language naturally (not forced), and ends with a clear statement of what will change and for whom.`,
+      placeholder: `Write a prompt to draft a 300-word grant needs statement that mirrors the funder's language and leads with problem evidence.`
+    },
+    eval: [
+      { label: "Provides funder priority language to mirror", weight: 1 },
+      { label: "Asks for evidence-led problem framing", weight: 1 },
+      { label: "Specifies the beneficiary and change clearly", weight: 1 },
+      { label: "Includes word count and structural guidance", weight: 1 }
+    ]
+  },
+  {
+    id: "impact-story",
+    category: "Impact Storytelling",
+    title: "Crafting Impact Stories",
+    icon: "✨",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Impact stories are the most powerful tool in a non-profit's communication arsenal — and the most commonly done badly. The typical failure: a story about the programme, not about the person. Readers don't connect with statistics or activities; they connect with a specific human being facing a specific situation.\n\n**The STAR-T story structure for impact:**\n- **Situation**: who is this person, what was their world like?\n- **Tension**: what challenge or barrier were they facing? (make it concrete)\n- **Action**: what specifically did your programme do? (one clear thing)\n- **Result**: what changed for this person? (be specific and human)\n- **Takeaway**: what does this tell us about the wider issue?\n\nAI is helpful for drafting impact stories from interview notes or case summaries, and for adjusting the same story for different audiences (donor email vs annual report vs social media).`,
+    tips: [
+      "Give AI the raw interview notes or case summary — it's better at finding the human angle than you think",
+      "Ask for 3 different opening lines and pick the strongest",
+      "Always check: is this story about the programme, or about the person? It should be the person",
+      "Ask AI to adapt the same story for 3 different channels: 100-word donor email, 300-word annual report, 1 social post"
+    ],
+    activity: {
+      instruction: `You have these raw case notes: "Maria, 34, single mother, 3 kids. Lost job in COVID. Did our 8-week coding bootcamp. Nervous at first, missed 2 sessions (childcare issues). Completed. Got junior developer role 6 weeks later. £28k salary. First time in formal employment in 4 years. Said: 'I finally feel like I can provide for my kids.'" Write a prompt that asks AI to turn this into a 200-word STAR-T impact story for a major donor email, written in third person, with an opening line that hooks immediately, and ending with a sentence connecting Maria's story to the wider issue.`,
+      placeholder: `Write a prompt to turn raw case notes into a 200-word STAR-T impact story for a major donor email.`
+    },
+    eval: [
+      { label: "Provides the raw case material inline", weight: 1 },
+      { label: "Requests STAR-T or equivalent structure", weight: 1 },
+      { label: "Specifies the channel and audience", weight: 1 },
+      { label: "Asks for a hook opening and wider-issue close", weight: 1 }
+    ]
+  },
+  {
+    id: "donor-report",
+    category: "Donor Communications",
+    title: "Writing Donor Reports That Build Trust",
+    icon: "🤝",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Donor reports are stewardship documents — their purpose is not just compliance, but deepening the relationship. A donor who feels genuinely informed and valued renews; one who feels like they're getting a templated accountability form doesn't.\n\n**The 4 things every donor report should do:**\n1. **Show the money was well spent** — connect the grant to specific outputs\n2. **Tell a human story** — one impact story that brings the numbers to life\n3. **Be honest about challenges** — it shows maturity and builds trust\n4. **Make the donor feel part of it** — "because of your support" language, not "we achieved"\n\nAI can write excellent donor reports from a bullet-point briefing — but the prompt needs to include the funder's name, their specific grant objectives, actual numbers, and the honest challenges alongside the wins.`,
+    tips: [
+      "Address the report to a named person, not 'Dear Funder' — AI will help maintain this throughout",
+      "Lead with impact, not with financial compliance",
+      "Always include one thing that didn't go as planned — it signals honesty",
+      "End with something forward-looking that creates a reason to continue the relationship"
+    ],
+    activity: {
+      instruction: `The Blackwood Foundation funded your youth employment programme at £75k. Outcomes: 45 young people enrolled (target 50), 32 secured employment (target 30), average salary £24k. One workshop series had low attendance due to scheduling issues — you've fixed this. Write a prompt asking AI to draft a 400-word donor report using the 4-part structure, addressed to Sarah Chen at Blackwood, using "because of your support" language, including one honest challenge with the resolution, and closing with next year's ambition.`,
+      placeholder: `Write a prompt to draft a 400-word donor report to a named funder using the 4-part structure, with honest challenge acknowledgement and a forward close.`
+    },
+    eval: [
+      { label: "Provides specific grant outcomes and numbers", weight: 1 },
+      { label: "Addresses to a named person", weight: 1 },
+      { label: "Asks for honest challenge + resolution", weight: 1 },
+      { label: "Requests 'because of your support' framing", weight: 1 }
+    ]
+  },
+  {
+    id: "theory-of-change",
+    category: "Programme Design",
+    title: "Articulating Your Theory of Change",
+    icon: "🔗",
+    difficulty: "Advanced",
+    duration: "25 min",
+    theory: `A theory of change is the logical chain that explains *how* your activities lead to your intended impact. Most organisations have one buried in a funding proposal — few can articulate it clearly in a conversation. AI can help both build and communicate it.\n\n**The ToC chain:**\nInputs → Activities → Outputs → Outcomes → Impact\n\nMore importantly, a strong ToC identifies the **assumptions** at each link: what needs to be true for activities to produce outputs, for outputs to produce outcomes, etc. These assumptions are where most programmes fail — not because the logic is wrong, but because the assumptions weren't tested.\n\nAI is particularly good at identifying weak links in a ToC and helping translate dense programme logic into plain language for different audiences (funders, boards, beneficiaries).`,
+    tips: [
+      "Start with Impact and work backwards — it's clearer than working forwards from inputs",
+      "Ask AI to identify the 3 most questionable assumptions in your theory — these are your evaluation priorities",
+      "Always have 3 versions: a 1-sentence ToC for pitches, a 1-page for proposals, a full logic model for planning",
+      "Ask: 'What evidence would prove this theory wrong?' — it sharpens the whole thing"
+    ],
+    activity: {
+      instruction: `Your programme trains rural women in financial literacy and connects them to microfinance. You believe this leads to business creation and long-term economic independence. Write a prompt asking AI to: (1) map the full ToC chain from inputs to impact, (2) identify the 3 most critical assumptions in the chain, (3) suggest 2 evaluation questions that would test whether the theory is working, and (4) write a 2-sentence plain-language summary of the theory for a community audience.`,
+      placeholder: `Write a prompt to map a theory of change for a financial literacy programme, identify key assumptions, suggest evaluation questions, and produce a plain-language summary.`
+    },
+    eval: [
+      { label: "Provides the programme logic to map", weight: 1 },
+      { label: "Asks for assumption identification", weight: 1 },
+      { label: "Requests evaluation questions", weight: 1 },
+      { label: "Asks for plain-language version for community audience", weight: 1 }
+    ]
+  },
+  {
+    id: "stakeholder-brief",
+    category: "Donor Communications",
+    title: "Writing Stakeholder Briefs for Different Audiences",
+    icon: "📬",
+    difficulty: "Intermediate",
+    duration: "15 min",
+    theory: `The same programme update needs to read completely differently for a government minister, a community member, a major donor, and your own staff. Most organisations write one version and blast it to everyone — and wonder why engagement is low.\n\n**Audience-adaptive communication** means adjusting: level of detail, language register, what you lead with, and what action you're asking for. AI is excellent at taking a single source document and adapting it for multiple audiences simultaneously.\n\nKey variables to specify per audience:\n- **What they care about most** (outcomes vs process vs cost vs relationships)\n- **Their existing knowledge level** (what to explain vs what to assume)\n- **The action you want them to take** (fund, advocate, refer, share)\n- **Tone and formality** (official letter vs friendly email vs social post)`,
+    tips: [
+      "Write the 'master' version first with all the detail, then ask AI to adapt it for each audience",
+      "Ask AI to explain what it cut or changed for each version — it reveals assumptions worth checking",
+      "For government audiences, lead with policy alignment; for donors, lead with impact; for community, lead with people",
+      "Always specify the action at the end — every communication should have one clear next step"
+    ],
+    activity: {
+      instruction: `Your programme just completed its first year serving 200 families in a refugee settlement: 180 children enrolled in school, food security improved for 85% of families, and a community leadership group was established. Write a prompt asking AI to adapt this update for 3 audiences: (1) a government ministry official (formal, policy-aligned, 150 words), (2) a major donor (warm, impact-focused, 100 words), and (3) a social media post (human, visual, 50 words with a hashtag). Ask it to show what it emphasised differently for each.`,
+      placeholder: `Write a prompt to adapt one programme update for a government official, major donor, and social media — each with different emphasis and tone.`
+    },
+    eval: [
+      { label: "Provides the programme data to adapt", weight: 1 },
+      { label: "Specifies 3 distinct audiences with formats", weight: 1 },
+      { label: "Different length/tone per audience", weight: 1 },
+      { label: "Asks AI to explain what it emphasised differently", weight: 1 }
+    ]
+  },
+  {
+    id: "programme-design-doc",
+    category: "Programme Design",
+    title: "AI-Assisted Programme Design Documents",
+    icon: "🗺️",
+    difficulty: "Advanced",
+    duration: "25 min",
+    theory: `Programme design documents (PDDs, concept notes, project documents) are required by most institutional funders and take enormous time to produce. AI can cut this significantly — but only if you have the strategic thinking done first. AI is an excellent *drafter and structurer*, not a strategic thinker.\n\n**What AI does well in PDDs:**\n- Structuring sections logically\n- Writing needs assessments from data you provide\n- Drafting implementation plans from bullet-point activities\n- Writing risk matrices and mitigation sections\n- Producing M&E frameworks from stated objectives\n\n**What you must bring:**\n- The strategic rationale (why this, why now, why you)\n- The community voice and contextual knowledge\n- The budget logic and realistic timelines`,
+    tips: [
+      "Draft the Theory of Change before asking AI to write any section — everything flows from it",
+      "Give AI your previous successful proposal as style reference — it will match the structure and register",
+      "Ask AI to generate the M&E framework last, after all objectives are finalised",
+      "Use AI to generate the risk matrix: describe your operating context and ask for the top 8 risks with mitigations"
+    ],
+    activity: {
+      instruction: `You're designing a 2-year programme to reduce maternal mortality in a remote district through community health worker training and referral systems. Write a prompt asking AI to draft the 'Implementation Approach' section of the programme document (max 400 words) covering: key activities per year, roles and responsibilities, community engagement strategy, and coordination with the health ministry. Provide enough context in your prompt that AI doesn't need to guess at the operating environment.`,
+      placeholder: `Write a prompt to draft the 'Implementation Approach' section of a maternal health programme document, with activities, roles, community engagement, and ministry coordination.`
+    },
+    eval: [
+      { label: "Provides sufficient operating context", weight: 1 },
+      { label: "Specifies the exact section and structure needed", weight: 1 },
+      { label: "Requests both Year 1 and Year 2 activities", weight: 1 },
+      { label: "Includes stakeholder roles (community, ministry)", weight: 1 }
+    ]
+  },
+  {
+    id: "annual-impact-report",
+    category: "Impact Storytelling",
+    title: "Writing the Annual Impact Report",
+    icon: "🌍",
+    difficulty: "Advanced",
+    duration: "25 min",
+    theory: `Annual impact reports are the flagship communication of a non-profit — read by funders, partners, board members, beneficiaries, and potential supporters. They need to work at multiple levels: emotionally engaging, evidentially rigorous, and strategically coherent.\n\n**The three-layer impact report structure:**\n1. **The Story Layer**: 2–3 individual impact stories that represent the range of your work\n2. **The Numbers Layer**: key statistics, presented visually and accessibly, with context\n3. **The Strategy Layer**: where you're going and why the work matters now\n\nAI is most useful for the Numbers Layer (turning statistics into accessible narratives) and for the Strategy Layer (articulating direction clearly). For the Story Layer, you provide the human material and AI polishes the writing.\n\nThe biggest mistake: treating an annual report as a compliance document. The best ones read like a letter from a trusted partner.`,
+    tips: [
+      "Write the 'one sentence that captures the year' first — everything else supports it",
+      "Ask AI to suggest 3 different framings for the year (challenge overcome, momentum built, community led) and pick the most honest",
+      "Data without comparison is meaningless: always include previous year, target, or sector benchmark",
+      "Ask AI to flag any section where you're writing about activities rather than outcomes — they're not the same thing"
+    ],
+    activity: {
+      instruction: `Your organisation's year in numbers: served 8,400 people across 6 countries (up 18%), trained 340 community facilitators, 74% of programme graduates reported improved livelihoods at 6 months, income grew 31% to £6.8M, 3 new country programmes launched. Write a prompt asking AI to draft the opening 2-page spread of the annual report: a 100-word Chair message leading with impact and ambition, a 200-word Year in Review narrative that contextualises the numbers, and a pull-quote recommendation for the cover. Specify the tone: warm but authoritative, not corporate.`,
+      placeholder: `Write a prompt to draft the opening spread of an annual impact report: Chair message, Year in Review narrative, and pull-quote, in a warm but authoritative tone.`
+    },
+    eval: [
+      { label: "Provides specific impact data across all metrics", weight: 1 },
+      { label: "Requests distinct elements (Chair message, narrative, quote)", weight: 1 },
+      { label: "Specifies tone clearly (warm, authoritative, not corporate)", weight: 1 },
+      { label: "Asks for narrative that contextualises numbers (not just lists them)", weight: 1 }
+    ]
+  },
+
 ];
 
 const MODELS = [
@@ -1870,8 +2578,8 @@ const TRACKS = [
     color: "#1e8449",
     colorLight: "#e8f8ee",
     colorGrad: "linear-gradient(135deg, #27ae60, #1e8449)",
-    categories: [],
-    available: false
+    categories: ["Data Analysis", "Research Synthesis", "Insight Communication"],
+    available: true
   },
   {
     id: "learning-design",
@@ -1881,8 +2589,8 @@ const TRACKS = [
     color: "#6c3483",
     colorLight: "#f4ecfa",
     colorGrad: "linear-gradient(135deg, #8e44ad, #6c3483)",
-    categories: [],
-    available: false
+    categories: ["Curriculum Design", "Content Creation", "Assessment & Evaluation", "Facilitation"],
+    available: true
   },
   {
     id: "entrepreneurs",
@@ -1914,8 +2622,8 @@ const TRACKS = [
     color: "#155724",
     colorLight: "#eafaf1",
     colorGrad: "linear-gradient(135deg, #27ae60, #155724)",
-    categories: [],
-    available: false
+    categories: ["Financial Writing", "Analysis & Commentary", "Investor Comms"],
+    available: true
   },
   {
     id: "nonprofits",
@@ -1925,8 +2633,8 @@ const TRACKS = [
     color: "#166534",
     colorLight: "#f0fdf4",
     colorGrad: "linear-gradient(135deg, #22c55e, #166534)",
-    categories: [],
-    available: false
+    categories: ["Grant Writing", "Impact Storytelling", "Donor Communications", "Programme Design"],
+    available: true
   },
   {
     id: "students",
