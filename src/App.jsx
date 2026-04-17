@@ -2528,6 +2528,218 @@ NOTE FOR PRACTICE: This contract contains multiple unusual and one-sided clauses
     ]
   },
 
+  // ── HR TOP-UP ─────────────────────────────────────────────────────────
+  {
+    id: "change-comms",
+    category: "People & Performance",
+    title: "Communicating Organisational Change",
+    icon: "🔄",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Change communications is one of the most high-stakes writing tasks in HR — done badly, it fuels rumours, erodes trust, and drives attrition. Done well, it gives people clarity, agency, and a reason to lean in.\n\nThe most common mistake: communicating the *what* without the *why*. People can accept almost any change if they understand the reasoning and feel respected in the process.\n\n**The ADKAR-aligned comms sequence:**\n- **Awareness**: what is changing and why now? (lead with organisational context, not HR process)\n- **Desire**: what's in it for people? What does the future look like?\n- **Knowledge**: what do people need to know to navigate this? (practical specifics)\n- **Reinforcement**: what happens next, and who can they talk to?\n\nFor AI prompting: always specify the change type (restructure, redundancy, policy change, leadership change) and the emotional temperature (routine update vs high-anxiety moment).`,
+    tips: [
+      "Never announce change in passive voice — it signals that leadership is hiding",
+      "Acknowledge the difficulty explicitly: 'We know this is unsettling' builds more trust than pretending it isn't",
+      "Ask AI to write 3 versions: all-staff email, manager talking points, and FAQ document",
+      "Always answer the 3 questions employees actually have: Does this affect my job? When? What should I do now?"
+    ],
+    activity: {
+      instruction: `Your organisation is merging two teams (a 12-person comms team and an 8-person marketing team) into one 18-person department. 2 roles are being made redundant. The change takes effect in 6 weeks. Write a prompt that asks AI to draft: (1) a 250-word all-staff email from the CEO announcing the change, leading with the strategic rationale before the operational detail, (2) a bullet-point FAQ covering the 5 questions staff will most likely ask, and (3) a one-paragraph acknowledgement of the difficulty that feels human, not corporate.`,
+      placeholder: `Write a prompt to draft a change announcement email, FAQ, and human acknowledgement paragraph for a team merger with redundancies.`
+    },
+    eval: [
+      { label: "Specifies the change clearly (merger, 2 redundancies)", weight: 1 },
+      { label: "Requests strategic rationale before operational detail", weight: 1 },
+      { label: "Asks for FAQ covering likely employee questions", weight: 1 },
+      { label: "Requests human acknowledgement (not corporate language)", weight: 1 }
+    ]
+  },
+  {
+    id: "dei-communications",
+    category: "L&D & Culture",
+    title: "Embedding DEI in People Practices",
+    icon: "🌈",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `DEI communications fail in two ways: empty statements that signal intent without substance, or over-engineered policy language that nobody reads. The goal is communication that is clear, specific, and tied to real actions.\n\nAI is useful for three DEI writing tasks:\n1. **Inclusive language auditing** — reviewing existing documents for exclusionary language or assumptions\n2. **Policy plain-English translation** — turning DEI policy into accessible, jargon-free guidance\n3. **Training content** — writing scenarios and discussion questions that create genuine reflection\n\nThe most important prompt discipline: ask AI to be specific, not aspirational. "We are committed to diversity" tells nobody anything. "By December, all interview panels will include at least one diverse panel member and all hiring managers will complete bias awareness training" is actionable.\n\nAlways review AI-generated DEI content carefully — the specifics matter enormously and generic content can unintentionally exclude.`,
+    tips: [
+      "Ask AI to audit your job descriptions for coded language ('rockstar', 'fast-paced', 'culture fit') that discourages diverse applicants",
+      "Request plain-English rewrites of policy sections — DEI policy is only effective if it's understood",
+      "For training scenarios, ask AI to write situations with no obvious villain — real bias is systemic, not cartoonish",
+      "Ask: 'Who might feel unseen or excluded by this communication?' as a final check"
+    ],
+    activity: {
+      instruction: `You're updating your organisation's approach to inclusive hiring. Write a prompt that asks AI to: (1) review this job description opener (write a fictional one in your prompt — include at least 3 subtle exclusionary signals like 'ninja', 'hustle culture', 'young and dynamic team') and identify what might discourage diverse applicants, (2) rewrite the opener to be inclusive without being generic, and (3) suggest 2 structural changes to the hiring process (beyond the job description) that would improve equity.`,
+      placeholder: `Write a prompt to audit a job description opener for exclusionary language, rewrite it inclusively, and suggest 2 structural hiring process improvements.`
+    },
+    eval: [
+      { label: "Writes a fictional JD with real exclusionary signals to audit", weight: 1 },
+      { label: "Asks for specific identification of problematic language", weight: 1 },
+      { label: "Requests an inclusive rewrite (not just a list of fixes)", weight: 1 },
+      { label: "Asks for structural process changes beyond language", weight: 1 }
+    ]
+  },
+
+  // ── MARKETING TOP-UP ──────────────────────────────────────────────────
+  {
+    id: "seo-content-strategy",
+    category: "Content Strategy",
+    title: "AI-Powered SEO Content Strategy",
+    icon: "🔎",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Most organisations create content they want to publish rather than content their audience is searching for. SEO strategy bridges that gap — and AI has transformed the speed at which you can research, plan, and brief SEO content.\n\nAI's role in SEO content strategy:\n1. **Keyword clustering** — grouping related search terms into content topics\n2. **Search intent mapping** — identifying whether a keyword signals information-seeking, comparison, or buying intent\n3. **Content briefing** — generating detailed briefs for writers that cover structure, headers, questions to answer, and competitors to differentiate from\n4. **Gap analysis** — identifying what questions your audience asks that your content doesn't answer\n\nThe key principle: **search intent over keyword density**. Google rewards content that genuinely answers what users are searching for — and AI is excellent at helping you think like a searcher, not a writer.`,
+    tips: [
+      "Give AI your top 5 competitors and ask it to identify content they rank for that you don't cover",
+      "Ask for search intent classification with every keyword cluster: informational / navigational / transactional",
+      "Use AI to generate the 'People Also Ask' questions for any topic — these are real search queries",
+      "Always ask AI to suggest an internal linking structure — it helps both SEO and user experience"
+    ],
+    activity: {
+      instruction: `You're the content lead for an HR software company targeting small businesses. Your pillar topic is 'employee onboarding.' Write a prompt asking AI to: (1) generate 8 keyword clusters around this topic with search intent for each, (2) identify the 3 highest-value clusters to prioritise based on likely search volume vs competition, (3) write a detailed content brief for the top-priority cluster covering: headline options, H2 structure, 5 questions to answer, and one differentiating angle vs generic HR content.`,
+      placeholder: `Write a prompt to generate SEO keyword clusters for 'employee onboarding', prioritise them, and produce a full content brief for the top cluster.`
+    },
+    eval: [
+      { label: "Specifies topic, audience, and business context", weight: 1 },
+      { label: "Asks for search intent classification per cluster", weight: 1 },
+      { label: "Requests prioritisation with reasoning", weight: 1 },
+      { label: "Asks for a full content brief (structure, questions, angle)", weight: 1 }
+    ]
+  },
+  {
+    id: "content-repurposing",
+    category: "Content Strategy",
+    title: "Content Repurposing at Scale",
+    icon: "♻️",
+    difficulty: "Beginner",
+    duration: "15 min",
+    theory: `Creating content from scratch for every channel is unsustainable. The highest-leverage content strategy is to create one strong 'pillar' piece and systematically repurpose it across formats and channels — and AI makes this faster than ever.\n\n**The Content Repurposing Pyramid:**\n- **Pillar** (top): one long-form piece (report, webinar, podcast, long article)\n- **Core** (middle): 3–5 medium-form pieces extracted from the pillar (blog posts, email newsletter sections, LinkedIn articles)\n- **Micro** (base): 10–15 short pieces (social posts, quote cards, short video scripts, email subject lines)\n\nAI prompt discipline for repurposing: always specify the *destination platform* and *audience* for each format — a LinkedIn post for a B2B audience reads completely differently from an Instagram caption for a consumer brand, even if the underlying insight is identical.`,
+    tips: [
+      "Start with your best-performing existing content — repurpose what already works",
+      "Ask AI to identify the 5 most shareable insights from a long piece before repurposing",
+      "Always give AI the platform character count and tone guidelines for each format",
+      "Ask for 3 variations of each social post — different hooks, same core message"
+    ],
+    activity: {
+      instruction: `You've published a 2,000-word report on 'The State of Remote Work in 2025' with key findings: 67% of workers prefer hybrid, productivity is up but loneliness is rising, and companies offering flexibility have 40% lower attrition. Write a prompt asking AI to repurpose this into: (1) a 150-word LinkedIn article intro with a hook opening, (2) 3 Twitter/X posts leading with different findings (one per finding), (3) one email newsletter paragraph (80 words, conversational), and (4) a 30-second video script for the company Instagram. Specify the tone for each platform.`,
+      placeholder: `Write a prompt to repurpose a remote work report into a LinkedIn intro, 3 social posts, an email paragraph, and a 30-second video script.`
+    },
+    eval: [
+      { label: "Provides the source content and key findings", weight: 1 },
+      { label: "Specifies platform and format for each output", weight: 1 },
+      { label: "Sets tone per platform (not one tone for all)", weight: 1 },
+      { label: "Requests multiple variations for social posts", weight: 1 }
+    ]
+  },
+
+  // ── NON-PROFITS GRANT WRITING TOP-UP ──────────────────────────────────
+  {
+    id: "grant-budget-narrative",
+    category: "Grant Writing",
+    title: "Writing the Grant Budget Narrative",
+    icon: "🧾",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `The budget narrative is the most scrutinised section of any grant application — and the most neglected. Funders use it to assess whether you really understand what it takes to deliver your programme, whether your costs are reasonable, and whether you're being transparent about how money will be used.\n\nA strong budget narrative does four things:\n1. **Justifies every line** — not just what the money is for, but why that amount\n2. **Shows delivery logic** — the budget tells the same story as the programme narrative\n3. **Demonstrates value for money** — benchmarks costs against sector norms or explains above-norm costs\n4. **Is honest about overheads** — hiding true costs erodes trust; funders prefer honesty\n\nAI is excellent at structuring budget narratives and stress-testing them — give it your budget lines and ask it to identify anything that looks under- or over-budgeted to a sceptical reviewer.`,
+    tips: [
+      "Write the budget narrative after the programme narrative — they should tell the same story",
+      "Justify staff costs by linking them to specific deliverables, not just time allocations",
+      "If you're including indirect costs (overheads), explain the allocation method clearly",
+      "Ask AI to play the role of a sceptical programme officer and identify the 3 lines they'd question"
+    ],
+    activity: {
+      instruction: `You're submitting a grant for a 12-month youth mentorship programme. Budget lines: Programme Manager (0.8 FTE, £38k pro-rata), 3 part-time Mentorship Coordinators (0.5 FTE each, £26k pro-rata), Training costs (£4,500 for mentor training x2 cohorts), Travel (£3,200 for home visits), Evaluation (£6,000 external), Indirect costs (15%, £9,105). Write a prompt asking AI to write a budget narrative justifying each line in 2–3 sentences each, benchmarking the staff costs against charity sector norms, and flagging any line that might draw funder scrutiny with a suggested response.`,
+      placeholder: `Write a prompt to draft a budget narrative for a youth mentorship programme, justify each cost line, and identify what might draw funder scrutiny.`
+    },
+    eval: [
+      { label: "Provides all budget lines with amounts", weight: 1 },
+      { label: "Asks for per-line justification linked to delivery", weight: 1 },
+      { label: "Requests sector benchmarking for staff costs", weight: 1 },
+      { label: "Asks for scrutiny flags and suggested responses", weight: 1 }
+    ]
+  },
+
+  // ── LEARNING DESIGN TOP-UP ────────────────────────────────────────────
+  {
+    id: "training-needs-analysis",
+    category: "Curriculum Design",
+    title: "Running a Training Needs Analysis with AI",
+    icon: "🔬",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `A training needs analysis (TNA) is the step most organisations skip — and it's why so much training doesn't change behaviour. A TNA answers three questions before you design anything: What is the performance gap? Is training the right solution? If yes, what exactly needs to be trained?\n\n**The 3-layer TNA framework:**\n- **Organisational layer**: what business goal or problem is this training meant to address?\n- **Task layer**: what specific tasks are being done poorly or not at all? What does 'good' look like?\n- **Person layer**: is this a knowledge gap, a skill gap, or a motivation/environment issue? (training only fixes the first two)\n\nAI is excellent at helping structure TNA interviews, analyse TNA data, and distinguish between training and non-training solutions. Many performance problems are caused by unclear processes, poor management, or lack of resources — not lack of training.`,
+    tips: [
+      "Ask AI to generate TNA interview questions for different stakeholders: line managers, learners, senior leaders",
+      "Use AI to analyse patterns across TNA responses — paste anonymised interview summaries and ask for themes",
+      "Always ask: 'Is training the right solution?' before designing anything — AI can help map non-training alternatives",
+      "Ask AI to write the TNA findings report from your data — it saves hours and produces a clean, actionable document"
+    ],
+    activity: {
+      instruction: `Your organisation has noticed customer satisfaction scores falling over 6 months. The leadership team wants a customer service training programme. Before designing anything, you want to run a TNA. Write a prompt asking AI to: (1) generate 6 TNA interview questions for frontline staff, (2) generate 4 different questions for line managers, (3) list 5 possible non-training root causes for falling customer satisfaction that you should investigate first, and (4) write a one-paragraph 'TNA hypothesis' framing the likely gap based on the information given.`,
+      placeholder: `Write a prompt to generate TNA interview questions for staff and managers, list non-training root causes to investigate, and frame a TNA hypothesis.`
+    },
+    eval: [
+      { label: "Specifies different stakeholder groups for interview questions", weight: 1 },
+      { label: "Asks for non-training root causes explicitly", weight: 1 },
+      { label: "Requests different question sets per stakeholder", weight: 1 },
+      { label: "Asks for a framing hypothesis, not just a list", weight: 1 }
+    ]
+  },
+
+  // ── ENTREPRENEURS TOP-UP ──────────────────────────────────────────────
+  {
+    id: "financial-model-basics",
+    category: "Growth & Operations",
+    title: "Building Your Financial Model with AI",
+    icon: "💰",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Most early-stage entrepreneurs either avoid financial models (too complex) or over-engineer them (100-tab spreadsheets that nobody updates). The right model is the simplest one that helps you make decisions and have credible conversations with investors.\n\n**The 5 things every founder's financial model needs:**\n1. **Revenue model**: how you make money (unit economics, pricing, volume assumptions)\n2. **Cost structure**: fixed vs variable costs — what scales with revenue and what doesn't\n3. **Runway**: how long does your cash last at current burn rate?\n4. **Break-even**: at what revenue level do you cover costs?\n5. **Scenarios**: base, optimistic, conservative — because the base case is always wrong\n\nAI can't build your spreadsheet directly, but it excels at: explaining financial concepts in plain English, helping you structure model assumptions, stress-testing your unit economics, and writing the narrative that accompanies your financial slides.`,
+    tips: [
+      "Start with unit economics: if you can't make money on one customer, volume won't save you",
+      "Ask AI to identify which of your assumptions are most sensitive — small changes that have big impact on the outcome",
+      "Use AI to translate your financial model into plain English for non-finance investors",
+      "Ask: 'What would a Series A investor find most questionable about these projections?' before your pitch"
+    ],
+    activity: {
+      instruction: `You're running a B2B SaaS with: £299/month pricing, 18-month average contract length, £850 customer acquisition cost, 6% monthly churn, £45/month COGS per customer, £28k/month fixed costs (team + tools). Write a prompt asking AI to: (1) calculate your LTV:CAC ratio and assess whether it's healthy, (2) identify your break-even customer count, (3) tell you what your biggest financial model risk is based on these numbers, and (4) suggest 2 specific levers you should focus on to improve unit economics.`,
+      placeholder: `Write a prompt to assess LTV:CAC ratio, find break-even, identify the biggest financial risk, and suggest unit economics improvements for a B2B SaaS.`
+    },
+    eval: [
+      { label: "Provides all key unit economics figures", weight: 1 },
+      { label: "Asks for LTV:CAC calculation and assessment", weight: 1 },
+      { label: "Requests break-even analysis", weight: 1 },
+      { label: "Asks for risk identification and improvement levers", weight: 1 }
+    ]
+  },
+
+  // ── FINANCE TOP-UP ────────────────────────────────────────────────────
+  {
+    id: "cashflow-commentary",
+    category: "Analysis & Commentary",
+    title: "Cash Flow Management & Commentary",
+    icon: "💸",
+    difficulty: "Intermediate",
+    duration: "20 min",
+    theory: `Profitable organisations go bust because of cash flow. Cash flow commentary — explaining why cash moved the way it did, and what's coming — is one of the most decision-critical narratives in finance, yet it's often the most poorly written.\n\nCash flow commentary needs to address three distinct audiences:\n- **The board**: wants assurance that the organisation can meet its obligations\n- **The CEO/COO**: wants to know what actions are needed and when\n- **The finance team**: needs the technical detail for forecasting and controls\n\n**The cash flow commentary structure:**\n1. **Opening position**: where did we start the period?\n2. **Inflows**: what came in, from where, vs expectation?\n3. **Outflows**: what went out, key drivers, any surprises?\n4. **Closing position**: where are we now, and what's the runway?\n5. **Forward look**: what are the key cash events in the next 30/60/90 days?\n\nAI is particularly useful for generating the 30/60/90-day cash event calendar — give it your known commitments and forecast income and it will structure the cash risk narrative.`,
+    tips: [
+      "Always state the number of months' runway explicitly — it's the most important single figure",
+      "Separate 'cash timing' issues from 'cash shortage' issues — they require different responses",
+      "Ask AI to draft the 'if nothing changes' scenario vs the 'with interventions' scenario",
+      "The 30-day look-ahead is the most actionable section — make it specific and assign owners"
+    ],
+    activity: {
+      instruction: `Your organisation opened the month with £380k cash. Income received: £142k (£40k below forecast due to a delayed grant payment). Outflows: £165k (payroll £108k, suppliers £42k, one-off equipment £15k). Closing position: £357k. A £95k grant payment is expected within 30 days; a £120k payroll is due in 22 days. Write a prompt asking AI to write cash flow commentary in the 5-part structure for the board, identify the single biggest cash risk in the next 30 days, and recommend one specific action to mitigate it.`,
+      placeholder: `Write a prompt to draft 5-part cash flow commentary for a board, identify the biggest 30-day cash risk, and recommend one mitigation action.`
+    },
+    eval: [
+      { label: "Provides complete cash flow figures inline", weight: 1 },
+      { label: "Requests the 5-part structure explicitly", weight: 1 },
+      { label: "Asks for forward-look (next 30 days)", weight: 1 },
+      { label: "Requests risk identification and specific action", weight: 1 }
+    ]
+  },
+
 ];
 
 const MODELS = [
