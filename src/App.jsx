@@ -2743,7 +2743,7 @@ NOTE FOR PRACTICE: This contract contains multiple unusual and one-sided clauses
 ];
 
 const MODELS = [
-  { id: "claude-sonnet-4-20250514", label: "Claude Sonnet 4", badge: "Smart" },
+  { id: "claude-sonnet-4-6", label: "Claude Sonnet 4.6", badge: "Smart" },
   { id: "claude-haiku-4-5-20251001", label: "Claude Haiku 4.5", badge: "Fast" },
 ];
 
@@ -3282,7 +3282,7 @@ export default function TortinPromptLabs() {
 
     let improved = userPrompt;
     const [improvedResult, evalResult] = await Promise.allSettled([
-      callClaude("claude-sonnet-4-20250514", improveSystemPrompt + "\n\nUser's prompt:\n" + userPrompt),
+      callClaude("claude-sonnet-4-6", improveSystemPrompt + "\n\nUser's prompt:\n" + userPrompt),
       scorePromptWithAI(userPrompt, activeLesson.title, activeLesson.activity.evalCriteria)
     ]);
 
